@@ -1,25 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './index.css';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import DashboardPage from "./pages/DashboardPage";
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
+import WhenPage from "./pages/WhenPage";
+import WherePage from "./pages/WherePage";
+import WhoPage from "./pages/WhoPage";
+import Navbar from "./components/Navbar";
+import MobileMenu from "./components/Navbar/MobileMenu";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    < Router >
+      <Navbar />
+      <Route exact path="/" component={HomePage} />
+      <Route exact path="/dashboard" component={DashboardPage} />
+      <Route exact path="/login" component={LoginPage} />
+      <Route exact path="/signup" component={SignupPage} />
+      <Route exact path="/where" component={WherePage} />
+      <Route exact path="/when" component={WhenPage} />
+      <Route exact path="/who" component={WhoPage} />
+      <MobileMenu />
+      {/* <AboutCanvas /> */}
+      {/* <Footer /> */}
+    </Router >
   );
 }
 
