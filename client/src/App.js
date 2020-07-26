@@ -10,6 +10,7 @@ import WherePage from "./pages/WherePage";
 import WhoPage from "./pages/WhoPage";
 import Navbar from "./components/Navbar";
 import MobileMenu from "./components/Navbar/MobileMenu";
+import AboutCanvas from "./components/AboutCanvas";
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
       <Route exact path="/when" component={WhenPage} />
       <Route exact path="/who" component={WhoPage} />
       <MobileMenu />
-      {/* <AboutCanvas /> */}
+      <AboutCanvas />
       {/* <Footer /> */}
     </Router >
   );
