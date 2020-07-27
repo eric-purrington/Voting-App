@@ -7,18 +7,22 @@
 }
 
 .nav-item:hover, .menu-icon:hover {
-    color: #fda387 !important;
+    /* color: #5A7EDE !important; */
+    font-weight: 300 !important;
 }
 
-.menu-icon {
-    color: gray;
-    padding: 20px;
+.mobile-nav-item:hover {
+    color: white !important;
 }
 
 .mobile-nav-item {
     font-size: 12px;
     padding-left: 10px;
     font-weight: 100;
-    color: rgb(202, 200, 200) !important;
+    color: white !important;
     text-transform: uppercase;
+}
+
+.menu-icon {
+    color: #2c3e50d8;
 }

@@ -14,7 +14,7 @@ function Navbar(props) {
     return (
         <div>
             <nav className="uk-navbar-container uk-navbar navbar" style={style.navbar}>
-                <div className="uk-navbar-right">
+                <div className="uk-navbar-left">
                     <ul className="uk-navbar-nav uk-visible@m">
                         <li><Link to="/" className="nav-item" style={{ color: props.color }}>Home</Link></li>
                         <li><a uk-toggle="target: #about-canvas" className="nav-item" style={{ color: props.color }}>About</a></li>

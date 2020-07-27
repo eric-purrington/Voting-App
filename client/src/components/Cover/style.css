@@ -1,0 +1,27 @@
+.uk-overlay {
+    text-align: center;
+}
+
+.overlay {
+    background-color: rgba(90, 125, 222, 0.932);
+}
+
+.header {
+    color: white;
+    font-size: 3.75rem;
+    font-weight: 500;
+}
+
+.blue-hover:hover {
+    color: #2c3e50 !important;
+}
+.white-hover:hover {
+    color: white !important;
+}
+
+@media only screen and (max-width: 600px) {
+.uk-overlay {
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+  }
+}

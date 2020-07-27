@@ -1,0 +1,70 @@
+#title-container {
+    padding-top: 70px;
+}
+
+.subtitle {
+  margin: 0px;
+  color: #969595 !important;
+  font-family: 'Montserrat', sans-serif !important;
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+#homepage-title {
+  color: #5A7EDE;
+  font-size: 4rem;
+  text-transform: uppercase;
+  font-weight: 500 !important;
+}
+
+/* ANIMATIONS */
+/* #homepage-title {
+  animation: fadeInLeft;
+  animation-duration: 3s;
+} */
+
+/* #homepage-sub {
+  animation: fadeInRight;
+  animation-duration: 3s;
+} */
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 390px) {
+  #homepage-title  {
+      font-size: 44px;
+  }
+
+  .subtitle {
+      font-size: 12px;
+  }
+} 
+
+@media only screen and (min-width: 460px) {
+  .subtitle {
+      font-weight: 100;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  #title-container {
+      padding-right: 30%;
+  }   
+}
+
+@media only screen and (min-width: 830px) {
+  #title-container {
+      padding-right: 50%;
+      width: 50%;
+  }   
+
+  .subtitle {
+      padding-left: 40%;
+  }
+}
+
+@media only screen and (min-width: 960px) {
+  .subtitle {
+      font-size: 18px;
+  }
+}
