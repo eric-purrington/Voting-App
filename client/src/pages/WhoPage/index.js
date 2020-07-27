@@ -1,9 +1,20 @@
 import React from "react";
 import "./style.css";
+import Cover from "../../components/Cover";
+import image from "../../assets/images/who.jpg";
+import ContentContainer from "../../components/ContentContainer";
+import ZipSearchForm from "../../components/ZipSearchForm";
 
 function WhoPage() {
     return (
-        <h1>This is the WhoPage</h1>
+        <div>
+            <Cover image={image} header={"WHO"}>
+                <ZipSearchForm />
+            </Cover>
+            <ContentContainer >
+
+            </ContentContainer>
+        </div>
     )
 };
 

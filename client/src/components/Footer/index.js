@@ -14,13 +14,12 @@ function Footer() {
                 <a className="contributor" href="https://github.com/alyssahellrung" target="_blank">Alyssa Hellrung,</a>
                 <a className="contributor" href="https://github.com/sabahsyed" target="_blank">Sabah Syed</a>
             </span>
-            <br /><br />
-            <span style={{ paddingTop: 20 }}>
+            <div>
                 <a className="view-repo">
                     View project repository
                     <span uk-icon="icon: github" href="https://github.com/eric-purrington/Voting-App" className="contact-icon contact-link-icon" target="_blank"></span>
                 </a>
-            </span>
+            </div>
         </footer>
     )
 };

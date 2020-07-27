@@ -12,6 +12,7 @@ function Cover(props) {
                 </div>
                 <div className="uk-overlay uk-position-center">
                     <h1 className="header">{props.header}</h1>
+                    {props.children}
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 import React from 'react';
 import './index.css';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import DashboardPage from "./pages/DashboardPage";
 import LoginPage from "./pages/LoginPage";
@@ -11,17 +11,21 @@ import WhoPage from "./pages/WhoPage";
 import MobileMenu from "./components/Navbar/MobileMenu";
 import AboutCanvas from "./components/AboutCanvas";
 import Footer from "./components/Footer";
+import NoMatch from "./components/NoMatch";
 
 function App() {
   return (
     < Router >
-      <Route exact path="/" component={HomePage} />
-      <Route exact path="/dashboard" component={DashboardPage} />
-      <Route exact path="/login" component={LoginPage} />
-      <Route exact path="/signup" component={SignupPage} />
-      <Route exact path="/where" component={WherePage} />
-      <Route exact path="/when" component={WhenPage} />
-      <Route exact path="/who" component={WhoPage} />
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/dashboard" component={DashboardPage} />
+        <Route exact path="/login" component={LoginPage} />
+        <Route exact path="/signup" component={SignupPage} />
+        <Route exact path="/where" component={WherePage} />
+        <Route exact path="/when" component={WhenPage} />
+        <Route exact path="/who" component={WhoPage} />
+        <Route component={NoMatch} />
+      </Switch>
       <Footer />
       <MobileMenu />
       <AboutCanvas />

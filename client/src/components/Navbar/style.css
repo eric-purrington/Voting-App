@@ -1,5 +1,7 @@
 .nav-item {
     font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 .navbar {
@@ -26,3 +28,20 @@
 .menu-icon {
     color: #2c3e50d8;
 }
+
+.my-account-btn {
+    margin-right: 15px;
+    border-radius: 20px;
+    font-weight: 200;
+    letter-spacing: 1px;
+}
+
+.drop-item {
+    text-transform: uppercase;
+}
+
+/* .my-account-btn:hover, .my-account-btn:focus {
+    background-color: rgb(253, 124, 124);
+    color: white;
+    border: none;
+} */
