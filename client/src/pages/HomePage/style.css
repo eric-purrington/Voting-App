@@ -1,0 +1,11 @@
+.home-navbar {
+    background-color: transparent !important;
+}
+
+.home-account-btn {
+    color: rgb(43, 64, 121);
+    border: none;
+    margin-top: 10px;
+    letter-spacing: 1px;
+    font-weight: 300;
+}

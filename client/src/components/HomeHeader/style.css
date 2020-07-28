@@ -18,6 +18,10 @@
   font-weight: 500 !important;
 }
 
+.btn-div {
+  margin-top: 15px;
+}
+
 /* ANIMATIONS */
 /* #homepage-title {
   animation: fadeInLeft;
@@ -48,14 +52,14 @@
 
 @media only screen and (min-width: 600px) {
   #title-container {
-      padding-right: 30%;
+      padding-right: 10%;
   }   
 }
 
 @media only screen and (min-width: 830px) {
   #title-container {
-      padding-right: 50%;
-      width: 50%;
+      padding-right: 40%;
+      width: 60%;
   }   
 
   .subtitle {

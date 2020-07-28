@@ -27,7 +27,7 @@ function Navbar(props) {
                         uk-icon="icon: menu; ratio: 1.5"></span></a>
                 </div>
                 <div className="uk-navbar-right uk-visible@m">
-                    <button class="uk-button uk-button-default my-account-btn nav-item" type="button" style={{ color: props.color }}>My Account</button>
+                    <button className="uk-button uk-button-default my-account-btn nav-item" type="button" style={{ color: props.color }}>My Account</button>
                     <AccountDropdown />
                 </div>
             </nav>

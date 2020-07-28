@@ -7,7 +7,7 @@ function AccountDropdown(props) {
 
     return (
         <div uk-dropdown="mode: click">
-            <ul class="uk-nav uk-dropdown-nav">
+            <ul className="uk-nav uk-dropdown-nav">
                 <li><Link className="drop-item" to="/dashboard">Dashboard</Link></li>
                 <li><Link className="drop-item" to="/signup">Signup</Link></li>
                 <li><Link className="drop-item" to="/login">Login</Link></li>
