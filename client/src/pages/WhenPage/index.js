@@ -8,12 +8,29 @@ import UserContext from "../../utils/userContext";
 import API from "../../utils/API";
 
 function WhenPage() {
+    const [results, setResults] = useState([]);
+
+    useEffect(() => {
+        whenData();
+    }, []);
+
+    function whenData() {
+        API.getElections().then(res => {
+            let modifiedResults = res.elections.map(election => {
+                name: election.name; 
+                electionDay: election.electionDay;
+            })
+            setResults(modifiedResults);
+        });
+    }
+
     return (
         <div>
             <Cover image={image} header={"WHEN"}>
+                {/* Don't need zip for this page */}
                 <ZipSearchForm />
             </Cover>
-            <ContentContainer >
+            <ContentContainer results={results}>
 
             </ContentContainer>
         </div>
