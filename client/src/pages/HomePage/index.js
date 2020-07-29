@@ -12,7 +12,7 @@ function HomePage() {
                 <nav className="uk-navbar-container home-navbar" uk-navbar="true">
                     <div className="uk-navbar-right">
                         <button className="uk-button uk-button-default home-account-btn">
-                            MY ACCOUNT <span className="user-icon" uk-icon="user"></span>
+                            MY ACCOUNT <span className="user-icon" uk-icon="chevron-down"></span>
                         </button>
                         <AccountDropdown />
                     </div>
