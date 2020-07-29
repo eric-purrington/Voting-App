@@ -1,10 +1,26 @@
 import React from "react";
 import "./style.css";
+import BackgroundImage from "../../components/BackgroundImage";
+import image from "../../assets/images/homepage.jpg";
+import LoginContainer from "../../components/LoginContainer";
+import SignupForm from "../../components/SingupForm";
+import Navbar from "../../components/Navbar";
+import { Link } from "react-router-dom";
 
-function SingupPage() {
+function SignupPage() {
     return (
-        <h1>This is the SingupPage</h1>
+        <BackgroundImage image={image}>
+            <Navbar accountBtn={"none"} />
+            <LoginContainer name="Sign Up">
+                <SignupForm />
+                <div className="uk-text-center">
+                    <p>Or login
+                        <Link to="/login" style={{ color: "#5A7EDE" }}> here</Link>
+                    </p>
+                </div>
+            </LoginContainer>
+        </BackgroundImage>
     )
 };
 
-export default SingupPage;
+export default SignupPage;
