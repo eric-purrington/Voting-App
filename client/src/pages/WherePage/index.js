@@ -4,6 +4,7 @@ import Cover from "../../components/Cover";
 import image from "../../assets/images/where.jpg";
 import ContentContainer from "../../components/ContentContainer";
 import ZipSearchForm from "../../components/ZipSearchForm";
+import UserContext from "../../utils/userContext";
 import API from "../../utils/API";
 
 function WherePage() {

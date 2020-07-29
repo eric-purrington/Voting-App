@@ -19,5 +19,9 @@ export default {
     // Required zipcode and optional address for more results
     getRepInfo: function(zip) {
         return axios.get(BASEURL + "/representatives?" + APIKEY + "&address=" + zip);
+    },
+    // Get signed in user
+    getUser: function(id) {
+        return axios.get("/" + id);
     }
 }
