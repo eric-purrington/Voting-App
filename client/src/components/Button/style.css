@@ -1,0 +1,15 @@
+.home-btn {
+    border-radius: 30px;
+    width: 150px;
+    margin: 10px 15px 10px 15px;
+    border-color: #5A7EDE;
+    color: #5A7EDE;
+    letter-spacing: 1px;
+    font-size: 15px;
+}
+
+.home-btn:hover {
+    background-color: #5A7EDE;
+    border: none;
+    color: white;
+}

@@ -1,0 +1,10 @@
+.about-paragraph {
+    font-size: .8rem;
+    font-weight: 100;
+    color: white;
+    /* text-transform: uppercase; */
+}
+
+#contact-title {
+    color: white !important;
+}

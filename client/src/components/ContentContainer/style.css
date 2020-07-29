@@ -1,0 +1,8 @@
+.pic-section {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    animation: fadeIn;
+    animation-duration: 3s;
+    min-height: 800px;
+}
