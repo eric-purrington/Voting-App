@@ -18,7 +18,7 @@ function SignupForm(props) {
                 </div>
             </div>
             <div class="uk-margin">
-                <label class="uk-form-label" for="form-horizontal-text">Zip Code</label>
+                <label class="uk-form-label" for="form-horizontal-text">Address</label>
                 <div class="uk-form-controls">
                     <input class="uk-input" id="form-horizontal-text" type="text" />
                 </div>
