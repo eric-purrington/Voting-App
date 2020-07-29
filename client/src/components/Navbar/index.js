@@ -26,10 +26,16 @@ function Navbar(props) {
                     <a className="uk-hidden@m" href="#menu-canvas" uk-toggle="target: #menu-canvas"><span className="menu-icon"
                         uk-icon="icon: menu; ratio: 1.5"></span></a>
                 </div>
-                <div className="uk-navbar-right uk-visible@m">
-                    <button className="uk-button uk-button-default my-account-btn nav-item" type="button" style={{ color: props.color }}>My Account</button>
-                    <AccountDropdown />
-                </div>
+                {
+                    props.accountBtn !== "none" ? (
+                        <div className="uk-navbar-right uk-visible@m">
+                            <button className="uk-button uk-button-default my-account-btn nav-item" type="button" style={{ color: props.color }}>My Account<span className="user-icon" uk-icon="chevron-down"></span></button>
+                            <AccountDropdown />
+                        </div>
+                    ) : (
+                            ""
+                        )
+                }
             </nav>
         </div>
     )
