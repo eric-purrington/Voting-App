@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
-cont routes = require("./routes");
+const routes = require("./routes");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -32,6 +32,6 @@ mongoose.connect(
 //   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 // });
 
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log(`🌎 ==> API server now on port ${PORT}!`);
 });
