@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import "./style.css";
 import Cover from "../../components/Cover";
 import image from "../../assets/images/when.jpg";
@@ -16,10 +16,10 @@ function WhenPage() {
 
     function whenData() {
         API.getElections().then(res => {
-            let modifiedResults = res.elections.map(election => {
-                name: election.name; 
-                electionDay: election.electionDay;
-            })
+            let modifiedResults = res.elections.map(election => ({
+                name: election.name,
+                electionDay: election.electionDay
+            }))
             setResults(modifiedResults);
         });
     }
