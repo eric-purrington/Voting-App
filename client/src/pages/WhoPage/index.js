@@ -5,6 +5,7 @@ import image from "../../assets/images/who.jpg";
 import ContentContainer from "../../components/ContentContainer";
 import ZipSearchForm from "../../components/ZipSearchForm";
 import API from "../../utils/API";
+import Footer from "../../components/Footer";
 
 function WhoPage() {
     const [address, setAddress] = useState("");
@@ -18,10 +19,10 @@ function WhoPage() {
 
     function loadUser() {
         // Need to figure out how to get user's id 
-        API.getUser(id).then(user => {
-            let modifiedAddress = user.pollingAddress.replace(/,./g, "").replace(/ /g, "%20");
-            setAddress(modifiedAddress);
-        });
+        // API.getUser(id).then(user => {
+        //     let modifiedAddress = user.pollingAddress.replace(/,./g, "").replace(/ /g, "%20");
+        //     setAddress(modifiedAddress);
+        // });
     }
 
     function whoData(param) {
@@ -32,9 +33,9 @@ function WhoPage() {
                 official.title = res.offices[i].name;
                 for (var j = 0; j < res.offices[i].officialIndices.length; j++) {
                     let webDive = res.officials[res.offices[i].officialIndices[j]]
-                    official.name = webDive.name; 
-                    official.party = webDive.party; 
-                    official.email = webDive.emails[0]; 
+                    official.name = webDive.name;
+                    official.party = webDive.party;
+                    official.email = webDive.emails[0];
                     official.phone = webDive.phones[0];
                 }
                 modifiedResults.push(official);
@@ -51,11 +52,12 @@ function WhoPage() {
     return (
         <div>
             <Cover image={image} header={"WHO"}>
-                <ZipSearchForm handleZipChange={handleZipChange}/>
+                <ZipSearchForm handleZipChange={handleZipChange} />
             </Cover>
             <ContentContainer results={results}>
-
+                {/* results tables go here */}
             </ContentContainer>
+            <Footer />
         </div>
     )
 };

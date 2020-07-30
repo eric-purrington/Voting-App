@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 import Cover from "../../components/Cover";
 import image from "../../assets/images/where.jpg";
@@ -6,6 +6,7 @@ import ContentContainer from "../../components/ContentContainer";
 import ZipSearchForm from "../../components/ZipSearchForm";
 import UserContext from "../../utils/userContext";
 import API from "../../utils/API";
+import Footer from "../../components/Footer";
 
 function WherePage() {
     const [address, setAddress] = useState("");
@@ -18,15 +19,15 @@ function WherePage() {
 
     function loadUser() {
         // Need to figure out how to get user's id 
-        API.getUser(id).then(user => {
-            let modifiedAddress = user.pollingAddress.replace(/,./g, "").replace(/ /g, "%20");
-            setAddress(modifiedAddress);
-        });
+        // API.getUser(id).then(user => {
+        //     let modifiedAddress = user.pollingAddress.replace(/,./g, "").replace(/ /g, "%20");
+        //     setAddress(modifiedAddress);
+        // });
     }
 
     function whereData(param) {
         API.getVoterInfo().then(res => {
-            
+
         });
     }
 
@@ -39,11 +40,12 @@ function WherePage() {
         <div>
             <Cover image={image} header={"WHERE"}>
                 {/* Need address for this page */}
-                <ZipSearchForm handleAddressChange={handleAddressChange}/>
+                <ZipSearchForm handleAddressChange={handleAddressChange} />
             </Cover>
             <ContentContainer results={results}>
 
             </ContentContainer>
+            <Footer />
         </div>
     )
 };
