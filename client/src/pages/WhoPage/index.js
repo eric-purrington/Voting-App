@@ -5,6 +5,7 @@ import image from "../../assets/images/who.jpg";
 import ContentContainer from "../../components/ContentContainer";
 import ZipSearchForm from "../../components/ZipSearchForm";
 import API from "../../utils/API";
+import Footer from "../../components/Footer";
 
 function WhoPage() {
     // const [address, setAddress] = useState("");
@@ -51,11 +52,12 @@ function WhoPage() {
     return (
         <div>
             <Cover image={image} header={"WHO"}>
-                <ZipSearchForm handleZipChange={handleZipChange}/>
+                <ZipSearchForm handleZipChange={handleZipChange} />
             </Cover>
             <ContentContainer results={results}>
-
+                {/* results tables go here */}
             </ContentContainer>
+            <Footer />
         </div>
     )
 };

@@ -9,6 +9,8 @@ import ElectionsBody from "../../components/ElectionsBody";
 import ZipSearchForm from "../../components/ZipSearchForm";
 import UserContext from "../../utils/userContext";
 import API from "../../utils/API";
+import Footer from "../../components/Footer";
+import HomeCountdown from "../../components/HomeCountdown";
 
 function WhenPage() {
     const [results, setResults] = useState([]);
@@ -41,6 +43,8 @@ function WhenPage() {
                     )}
                 </ContentTable>
             </ContentContainer>
+            <HomeCountdown />
+            <Footer />
         </div>
     )
 };

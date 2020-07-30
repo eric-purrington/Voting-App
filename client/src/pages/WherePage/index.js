@@ -6,6 +6,7 @@ import ContentContainer from "../../components/ContentContainer";
 import ZipSearchForm from "../../components/ZipSearchForm";
 import UserContext from "../../utils/userContext";
 import API from "../../utils/API";
+import Footer from "../../components/Footer";
 
 function WherePage() {
     const [address, setAddress] = useState("");
@@ -39,11 +40,12 @@ function WherePage() {
         <div>
             <Cover image={image} header={"WHERE"}>
                 {/* Need address for this page */}
-                <ZipSearchForm handleAddressChange={handleAddressChange}/>
+                <ZipSearchForm handleAddressChange={handleAddressChange} />
             </Cover>
             <ContentContainer results={results}>
 
             </ContentContainer>
+            <Footer />
         </div>
     )
 };
