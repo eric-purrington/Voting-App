@@ -3,7 +3,8 @@ import "./style.css";
 import BackgroundImage from "../../components/BackgroundImage";
 import homePic from "../../assets/images/homepage.jpg";
 import HomeHeader from "../../components/HomeHeader";
-import AccountDropdown from "../../components/Navbar/AccountDropdown";
+import Footer from "../../components/Footer";
+import HomeCountdown from "../../components/HomeCountdown";
 
 function HomePage() {
     return (
@@ -11,14 +12,15 @@ function HomePage() {
             <BackgroundImage image={homePic}>
                 <nav className="uk-navbar-container home-navbar" uk-navbar="true">
                     <div className="uk-navbar-right">
-                        <button className="uk-button uk-button-default home-account-btn">
-                            MY ACCOUNT <span className="user-icon" uk-icon="chevron-down"></span>
-                        </button>
-                        <AccountDropdown />
+                        <a className="home-menu" href="#menu-canvas" uk-toggle="target: #menu-canvas">
+                            <span uk-icon="icon: menu; ratio: 1.5"></span>
+                        </a>
                     </div>
                 </nav>
                 <HomeHeader />
+                <HomeCountdown />
             </BackgroundImage>
+            <Footer />
         </div>
     )
 };

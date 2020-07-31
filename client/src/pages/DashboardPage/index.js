@@ -3,6 +3,7 @@ import "./style.css";
 import Cover from "../../components/Cover";
 import image from "../../assets/images/dash.jpg";
 import ContentContainer from "../../components/ContentContainer";
+import Footer from "../../components/Footer";
 
 function DashboardPage() {
     return (
@@ -13,6 +14,7 @@ function DashboardPage() {
             <ContentContainer >
 
             </ContentContainer>
+            <Footer />
         </div>
     )
 };
