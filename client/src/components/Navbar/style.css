@@ -41,8 +41,6 @@
     text-transform: uppercase;
 }
 
-/* .my-account-btn:hover, .my-account-btn:focus {
-    background-color: rgb(253, 124, 124);
-    color: white;
-    border: none;
-} */
+.my-account-btn:hover, .my-account-btn:focus {
+    border: 1px solid white;
+}
