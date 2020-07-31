@@ -25,6 +25,7 @@
     "express": "^4.16.3",
     "if-env": "^1.0.4",
     "mongoose": "^5.3.16",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "react-countdown": "^2.2.1"
   }
 }
