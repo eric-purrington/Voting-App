@@ -6,20 +6,24 @@ import LoginContainer from "../../components/LoginContainer";
 import SignupForm from "../../components/SingupForm";
 import Navbar from "../../components/Navbar";
 import { Link } from "react-router-dom";
+import Footer from "../../components/Footer";
 
 function SignupPage() {
     return (
-        <BackgroundImage image={image}>
-            <Navbar accountBtn={"none"} />
-            <LoginContainer name="Sign Up">
-                <SignupForm />
-                <div className="uk-text-center">
-                    <p>Or login
+        <div>
+            <BackgroundImage image={image}>
+                <Navbar accountBtn={"none"} />
+                <LoginContainer name="Sign Up">
+                    <SignupForm />
+                    <div className="uk-text-center">
+                        <p>Or login
                         <Link to="/login" style={{ color: "#5A7EDE" }}> here</Link>
-                    </p>
-                </div>
-            </LoginContainer>
-        </BackgroundImage>
+                        </p>
+                    </div>
+                </LoginContainer>
+            </BackgroundImage>
+            <Footer />
+        </div>
     )
 };
 

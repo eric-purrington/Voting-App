@@ -10,7 +10,6 @@ import WherePage from "./pages/WherePage";
 import WhoPage from "./pages/WhoPage";
 import MobileMenu from "./components/Navbar/MobileMenu";
 import AboutCanvas from "./components/AboutCanvas";
-import Footer from "./components/Footer";
 import NoMatch from "./components/NoMatch";
 
 function App() {
@@ -26,10 +25,8 @@ function App() {
         <Route exact path="/who" component={WhoPage} />
         <Route component={NoMatch} />
       </Switch>
-      <Footer />
       <MobileMenu />
       <AboutCanvas />
-      {/* <Footer /> */}
     </Router >
   );
 }
