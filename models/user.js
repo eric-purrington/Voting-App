@@ -8,10 +8,12 @@ const userSchema = new Schema({
     required: true, 
     unique: true 
   },
-  username: { 
-    type: String, 
-    required: true,
-    unique: true 
+  email_is_verified: {
+    type: Boolean,
+    default: false
+  },
+  password: {
+    type: String
   },
   zip: { 
     type: Number, 
