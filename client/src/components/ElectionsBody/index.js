@@ -1,6 +1,6 @@
 import React from "react";
 
-function TableBody(props) {
+function ElectionsBody(props) {
     return (
         <tr>
             <td>{props.electionName}</td>
@@ -9,4 +9,4 @@ function TableBody(props) {
     )
 }
 
-export default TableBody;
+export default ElectionsBody;

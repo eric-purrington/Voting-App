@@ -1,5 +1,5 @@
-const router = require("express").Router();
 require("dotenv").config();
+const router = require("express").Router();
 const axios = require("axios");
 const BASEURL = "https://www.googleapis.com/civicinfo/v2";
 const APIKEY = process.env.REACT_APP_GAPI_KEY;
