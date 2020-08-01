@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
-const MongoStore = require("connect-mongo")(session);
+// const MongoStore = require("connect-mongo")(session);
 const routes = require("./routes");
 
 const passport = require("passport");
@@ -23,14 +23,14 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // This tells Express to use Express sessions
-app.use(
-  session({
-    secret: "keyboard cat",
-    resave: false,
-    saveUninitialized: true,
-    store: new MongoStore({ mongooseConnection: mongoose.connection })
-  })
-);
+// app.use(
+//   session({
+//     secret: "keyboard cat",
+//     resave: false,
+//     saveUninitialized: true,
+//     store: new MongoStore({ mongooseConnection: mongoose.connection })
+//   })
+// );
 
 app.use(passport.initialize());
 app.use(passport.session());
