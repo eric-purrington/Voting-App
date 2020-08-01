@@ -1,0 +1,20 @@
+.home-btn {
+    border-radius: 30px;
+    width: 150px;
+    margin: 10px 15px 10px 15px;
+    background-color: rgba(255, 255, 255, 0.616);
+    border: none;
+    color: #d27977;
+    letter-spacing: 1px;
+    font-size: 16px;
+    box-shadow: 0 5px 15px rgba(0,0,0,.08);
+    font-family: 'Montserrat', sans-serif !important;
+    padding: 3px 35px 3px 35px;
+}
+
+.home-btn:hover {
+    font-weight: 500;
+    font-size: 17px;
+    color: #d27977 !important;
+    background-color: white;
+}

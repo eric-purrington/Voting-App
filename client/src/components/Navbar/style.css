@@ -1,0 +1,46 @@
+.nav-item {
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.navbar {
+    background-color: transparent;
+}
+
+.nav-item:hover, .menu-icon:hover {
+    /* color: #5A7EDE !important; */
+    font-weight: 300 !important;
+}
+
+.mobile-nav-item:hover {
+    color: white !important;
+}
+
+.mobile-nav-item {
+    font-size: 12px;
+    padding-left: 10px;
+    font-weight: 100;
+    color: white !important;
+    text-transform: uppercase;
+}
+
+.menu-icon {
+    color: #2c3e50d8;
+}
+
+.my-account-btn {
+    margin-right: 15px;
+    border-radius: 20px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    padding: 0px 15px 0px 30px;
+}
+
+.drop-item {
+    text-transform: uppercase;
+}
+
+.my-account-btn:hover, .my-account-btn:focus {
+    border: 1px solid white;
+}

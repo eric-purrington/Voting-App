@@ -1,1 +1,1 @@
-# Voting-App
+# Vote Goat

@@ -1,0 +1,27 @@
+.countdown-div {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 20px;
+    border-radius: 7px;
+    background-color: rgba(255, 255, 255, 0.459) !important;
+}
+
+.countdown-header {
+    text-transform: uppercase;
+    color: rgb(100, 100, 100);
+    font-family: "Roboto", sans-serif !important;
+    font-weight: 200;
+    letter-spacing: 1px;
+    font-size: 12px;
+    margin: 0px;
+}
+
+.register-link {
+    margin-top: 25px !important;
+    margin-bottom: 25px !important;
+    color: #5A7EDE !important;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
