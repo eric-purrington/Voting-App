@@ -1,6 +1,6 @@
 import React from "react";
 
-function TableHead() {
+function ElectionsHead() {
     return (
         <tr>
             <th>Name of Election</th>
@@ -9,4 +9,4 @@ function TableHead() {
     )
 }
 
-export default TableHead;
+export default ElectionsHead;

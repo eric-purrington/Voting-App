@@ -3,8 +3,10 @@ const path = require("path");
 const mongoose = require("mongoose");
 const MongoStore = require("connect-mongo")(session);
 const routes = require("./routes");
+
 const passport = require("passport");
 const auth = require("./routes/auth");
+
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -32,6 +34,7 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
+
 
 app.use("/api/auth", auth);
 app.get("*", function (req, res) {
