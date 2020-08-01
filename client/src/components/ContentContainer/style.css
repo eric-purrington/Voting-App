@@ -1,8 +1,5 @@
-.pic-section {
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    animation: fadeIn;
-    animation-duration: 3s;
-    min-height: 800px;
+.content-container {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin: 100px 5% 100px 5%;
 }

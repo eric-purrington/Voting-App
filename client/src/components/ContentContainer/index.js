@@ -3,7 +3,7 @@ import "./style.css";
 
 function ContentContainer(props) {
     return (
-        <div className="uk-container" style={{ minHeight: 400 }}>
+        <div className="uk-container content-container" style={{ minHeight: 400 }}>
             {props.children}
         </div>
     )
