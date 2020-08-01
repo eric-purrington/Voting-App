@@ -1,0 +1,16 @@
+.react-calendar, .react-calendar__navigation__label__labelText, abbr{
+    font-family: 'Montserrat', sans-serif !important;
+}
+
+.react-calendar {
+    border: none !important;
+    width: 100% !important;
+}
+
+.react-calendar__tile--now {
+    background: rgba(90, 125, 222, 0.192) !important;
+}
+
+.react-calendar__month-view__days__day--weekend {
+    color: black !important;
+}
