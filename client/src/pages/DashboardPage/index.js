@@ -25,14 +25,10 @@ function DashboardPage() {
     return (
         <div>
             <Cover image={image} header={"DASHBOARD"}>
-                <p className="countdown">ELECTION DAY:
-                    <CountStyle>
-                        <Countdown date={'2020-11-03T00:00:00'} className="countdown-timer" />
-                    </CountStyle>
-                </p>
-                {/* <CountStyle>
+                <p className="countdown">ELECTION DAY:</p>
+                <CountStyle>
                     <Countdown date={'2020-11-03T00:00:00'} className="countdown-timer" />
-                </CountStyle> */}
+                </CountStyle>
             </Cover>
             <ContentContainer >
                 <div className="uk-child-width-1-2@m uk-text-center" uk-grid="true">
