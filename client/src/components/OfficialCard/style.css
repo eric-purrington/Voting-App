@@ -1,0 +1,24 @@
+#D {
+    background-color: blue;
+}
+
+#R {
+    background-color: red;
+}
+
+#N {
+    background-color: purple;
+}
+
+.uk-card {
+    border-radius: 50px;
+    margin: 20px;
+}
+
+.uk-card p, .uk-card h2 {
+    color: white !important;
+}
+
+.uk-card p {
+    font-size: 15px;
+}

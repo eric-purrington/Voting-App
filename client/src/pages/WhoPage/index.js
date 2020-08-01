@@ -3,22 +3,21 @@ import "./style.css";
 import Cover from "../../components/Cover";
 import image from "../../assets/images/who.jpg";
 import ContentContainer from "../../components/ContentContainer";
-import ContentTable from "../../components/ContentTable";
-import OfficialsHead from "../../components/OfficialsHead";
-import OfficialsBody from "../../components/OfficialsBody";
+import OfficialCard from "../../components/OfficialCard";
+import OfficialContainer from "../../components/OfficialContainer";
 import ZipSearchForm from "../../components/ZipSearchForm";
 import API from "../../utils/API";
 import Footer from "../../components/Footer";
 
 function WhoPage() {
-    // const [address, setAddress] = useState("");
-    const [zip, setZip] = useState("");
+    const [address, setAddress] = useState("98115");
+    // const [zip, setZip] = useState("98115");
     const [results, setResults] = useState([]);
 
-    // useEffect(() => {
-    //     loadUser();
-    //     whoData(address);
-    // }, []);
+    useEffect(() => {
+        // loadUser();
+        whoData(address);
+    }, []);
 
     // function loadUser() {
     //     // Need to figure out how to get user's id 
@@ -28,41 +27,46 @@ function WhoPage() {
     //     });
     // }
 
-    // function whoData(param) {
-    //     let modifiedResults = [];
-    //     let official = {};
-    //     API.getRepInfo(param).then(res => {
-    //         console.log(res);
-    //         for (var i = 0; i < res.offices.length; i++) {
-    //             official.title = res.offices[i].name;
-    //             for (var j = 0; j < res.offices[i].officialIndices.length; j++) {
-    //                 let webDive = res.officials[res.offices[i].officialIndices[j]]
-    //                 official.name = webDive.name; 
-    //                 official.party = webDive.party; 
-    //                 official.email = webDive.emails[0]; 
-    //                 official.phone = webDive.phones[0];
-    //             }
-    //             modifiedResults.push(official);
-    //         }
-    //         setResults(modifiedResults);
-    //     });
-    // }
+    function whoData(param) {
+        var modifiedResults = [];
+        API.getRepInfo(param).then(res => {
+            console.log(res);
+            for (var i = 0; i < res.data.offices.length; i++) {
+                
+                for (var j = 0; j < res.data.offices[i].officialIndices.length; j++) {
+                    var official = {};
+                    official.title = res.data.offices[i].name;
+                    let webDive = res.data.officials[res.data.offices[i].officialIndices[j]];
+                    official.name = webDive.name; 
+                    official.party = webDive.party;
+                    if (webDive.emails !== undefined) {
+                        official.email = webDive.emails[0]; 
+                    } else {
+                        official.email = "not available";
+                    }
+                    official.phone = webDive.phones[0];
+                    modifiedResults.push(official);
+                }
+            }
+            setResults(modifiedResults);
+        });
+    }
 
-    function handleZipChange(event) {
-        setZip(event.target.value);
-        // whoData(zip);
+    function handleAddressChange(event) {
+        console.log(event)
+        setAddress(event.target.value);
+        whoData(address);
     }
 
     return (
         <div>
             <Cover image={image} header={"WHO"}>
-                <ZipSearchForm handleZipChange={handleZipChange} />
+                <ZipSearchForm handleAddressChange={handleAddressChange} />
             </Cover>
             <ContentContainer>
-                <ContentTable>
-                    <OfficialsHead />
+                <OfficialContainer>
                     {results.map(official => 
-                        <OfficialsBody 
+                        <OfficialCard 
                         key={official.name} 
                         name={official.name} 
                         title={official.title}
@@ -70,7 +74,7 @@ function WhoPage() {
                         email={official.email}
                         phone={official.phone}/>
                     )}
-                </ContentTable>
+                </OfficialContainer>
             </ContentContainer>
             <Footer />
         </div>
