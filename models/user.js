@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+var passportLocalMongoose = require("passport-local-mongoose");
 
 const userSchema = new Schema({
   email: {
@@ -7,9 +8,12 @@ const userSchema = new Schema({
     required: true, 
     unique: true 
   },
-  password: { 
-    type: String, 
-    required: true 
+  email_is_verified: {
+    type: Boolean,
+    default: false
+  },
+  password: {
+    type: String
   },
   zip: { 
     type: Number, 
@@ -29,10 +33,12 @@ const userSchema = new Schema({
   }],
   electionDay: [ 
     {
-    type: Date
+    type: String
     }
   ]
 });
+
+userSchema.plugin(passportLocalMongoose);
 
 const User = mongoose.model("User", userSchema);
 

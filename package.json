@@ -1,8 +1,9 @@
 {
   "name": "votegoat",
   "version": "1.0.0",
-  "description": "",
+  "description": "An application that helps users access informaiton about voting in their area.",
   "main": "server.js",
+  "repository": "github.com/eric-purrington/Voting-App",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
     "start:prod": "node server.js",
@@ -13,7 +14,7 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
-  "author": "",
+  "author": "Hellrung, Preston, Purrington, Syed",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^4.1.0",
@@ -21,10 +22,15 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "dotenv": "^8.2.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "connect-mongo": "^3.2.0",
     "express": "^4.16.3",
     "if-env": "^1.0.4",
     "mongoose": "^5.3.16",
+    "passport": "^0.4.1",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^6.0.1",
     "path": "^0.12.7",
     "react-countdown": "^2.2.1"
   }
