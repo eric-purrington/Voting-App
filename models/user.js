@@ -28,7 +28,7 @@ const userSchema = new Schema({
   }],
   electionDay: [ 
     {
-    type: Date
+    type: String
     }
   ]
 });
