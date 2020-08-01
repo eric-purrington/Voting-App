@@ -8,6 +8,7 @@ import UserContext from "../../utils/userContext";
 import API from "../../utils/API";
 import Footer from "../../components/Footer";
 
+
 function WherePage() {
     const [address, setAddress] = useState("");
     const [results, setResults] = useState([]);

@@ -19,7 +19,10 @@ const userSchema = new Schema({
     type: Number, 
     required: true 
   },
-  pollingAddress: [String],
+  pollingAddress: {
+    type : [String],
+    required: true,
+  },
   repDetails: [{
     repName: {
       type: String
