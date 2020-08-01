@@ -26,11 +26,12 @@ function WherePage() {
     //     });
     // }
 
-    // function whereData(param) {
-    //     API.getVoterInfo(param).then(res => {
+    function whereData(param) {
+        API.getVoterInfo(param).then(res => {
+            console.log(res);
             
-    //     });
-    // }
+        });
+    }
 
     function handleAddressChange(event) {
         setAddress(event.target.value);

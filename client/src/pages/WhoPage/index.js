@@ -3,6 +3,9 @@ import "./style.css";
 import Cover from "../../components/Cover";
 import image from "../../assets/images/who.jpg";
 import ContentContainer from "../../components/ContentContainer";
+import ContentTable from "../../components/ContentTable";
+import OfficialsHead from "../../components/OfficialsHead";
+import OfficialsBody from "../../components/OfficialsBody";
 import ZipSearchForm from "../../components/ZipSearchForm";
 import API from "../../utils/API";
 import Footer from "../../components/Footer";
@@ -29,6 +32,7 @@ function WhoPage() {
     //     let modifiedResults = [];
     //     let official = {};
     //     API.getRepInfo(param).then(res => {
+    //         console.log(res);
     //         for (var i = 0; i < res.offices.length; i++) {
     //             official.title = res.offices[i].name;
     //             for (var j = 0; j < res.offices[i].officialIndices.length; j++) {
@@ -54,8 +58,19 @@ function WhoPage() {
             <Cover image={image} header={"WHO"}>
                 <ZipSearchForm handleZipChange={handleZipChange} />
             </Cover>
-            <ContentContainer results={results}>
-                {/* results tables go here */}
+            <ContentContainer>
+                <ContentTable>
+                    <OfficialsHead />
+                    {results.map(official => 
+                        <OfficialsBody 
+                        key={official.name} 
+                        name={official.name} 
+                        title={official.title}
+                        party={official.party}
+                        email={official.email}
+                        phone={official.phone}/>
+                    )}
+                </ContentTable>
             </ContentContainer>
             <Footer />
         </div>
