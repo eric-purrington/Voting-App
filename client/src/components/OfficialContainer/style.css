@@ -1,5 +1,4 @@
-.content-container {
-    margin-top: 100px;
-    margin-bottom: 100px;
-    margin: 100px 5% 100px 5%;
+.uk-grid-small {
+    display: flex;
+    flex-wrap: wrap;
 }
