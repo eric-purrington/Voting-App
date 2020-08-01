@@ -13,13 +13,24 @@ function DashCalendar(props) {
     const handleDayClick = (event) => {
         openDayCard(true);
         setActiceDay(event.toString());
+        console.log(typeof (event));
     };
+
+    const handleCloseClick = () => {
+        openDayCard(false);
+    }
 
     return (
         <div>
-            <Calendar onChange={handleDayClick} />
+            <Calendar onClickDay={handleDayClick} />
             {
-                dayCard ? <p>{activeDay}</p> : ""
+                dayCard ? (
+                    <div uk-alert="true">
+                        <a className="uk-alert-close" uk-close="true" onClick={handleCloseClick}></a>
+                        <h3>{activeDay}</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                    </div>
+                ) : ("")
             }
         </div>
     )
