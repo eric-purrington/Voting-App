@@ -11,7 +11,6 @@ import Footer from "../../components/Footer";
 
 function WhoPage() {
     const [address, setAddress] = useState("98115");
-    // const [zip, setZip] = useState("98115");
     const [results, setResults] = useState([]);
 
     useEffect(() => {
@@ -30,9 +29,7 @@ function WhoPage() {
     function whoData(param) {
         var modifiedResults = [];
         API.getRepInfo(param).then(res => {
-            console.log(res);
             for (var i = 0; i < res.data.offices.length; i++) {
-                
                 for (var j = 0; j < res.data.offices[i].officialIndices.length; j++) {
                     var official = {};
                     official.title = res.data.offices[i].name;
@@ -53,7 +50,8 @@ function WhoPage() {
     }
 
     function handleAddressChange(event) {
-        console.log(event)
+        event.preventDefault()
+        console.log(event.target.value)
         setAddress(event.target.value);
         whoData(address);
     }
