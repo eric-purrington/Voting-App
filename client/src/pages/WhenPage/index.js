@@ -10,6 +10,7 @@ import ZipSearchForm from "../../components/ZipSearchForm";
 import UserContext from "../../utils/userContext";
 import API from "../../utils/API";
 import Footer from "../../components/Footer";
+import DashCalendar from "../../components/DashCalendar";
 
 function WhenPage() {
     const [results, setResults] = useState([]);
@@ -35,12 +36,23 @@ function WhenPage() {
                 <ZipSearchForm />
             </Cover>
             <ContentContainer>
-                <ContentTable>
-                    <ElectionsHead />
-                    {results.map(election =>
-                        <ElectionsBody key={election.name} electionName={election.name} electionDay={election.electionDay} />
-                    )}
-                </ContentTable>
+                <div className="uk-child-width-1-2@m uk-text-center" uk-grid="true">
+                    <div>
+                        <div className="uk-card uk-card-default uk-card-body calendar-card">
+                            <DashCalendar />
+                        </div>
+                    </div>
+                    <div>
+                        <div className="uk-card uk-card-default uk-card-body calendar-card">
+                            <ContentTable>
+                                <ElectionsHead />
+                                {results.map(election =>
+                                    <ElectionsBody key={election.name} electionName={election.name} electionDay={election.electionDay} />
+                                )}
+                            </ContentTable>
+                        </div>
+                    </div>
+                </div>
             </ContentContainer>
             <Footer />
         </div>

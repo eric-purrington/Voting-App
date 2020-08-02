@@ -3,9 +3,9 @@ import React from "react";
 function ElectionsHead() {
     return (
         <tr>
-            <th>Name of Election</th>
-            <th>Date of Election</th>
-        </tr> 
+            <th className="uk-text-center">Upcoming Elections</th>
+            <th className="uk-text-center">Date</th>
+        </tr>
     )
 }
 
