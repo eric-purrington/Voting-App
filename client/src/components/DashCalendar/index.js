@@ -11,12 +11,6 @@ function DashCalendar(props) {
         elections: []
     });
 
-    // render days with events background color red
-    // when user clicks on day they see events they've saved that day
-    // useEffect(() => {
-    //     console.log(props.elections);
-    // }, []);
-
     const handleDayClick = (event) => {
         openDayCard(true);
         let date = moment(event).format("MM-DD-YYYY");
@@ -52,7 +46,7 @@ function DashCalendar(props) {
                         <h3 className="alert-header">{moment(activeDay.day).format('MMMM Do, YYYY')}</h3>
                         {
                             activeDay.elections.length > 0 ? (
-                                activeDay.elections.map((el, index) => <div key={index}><p>{el.name}</p></div>)
+                                activeDay.elections.map((el, index) => <div key={index}><p className="alert-election-name">{el.name}</p></div>)
                             ) : (<p>There are no elections this day.</p>)
                         }
                     </div>

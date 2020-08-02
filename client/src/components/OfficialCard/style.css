@@ -15,10 +15,10 @@
     margin: 20px;
 }
 
-.uk-card p, .uk-card h2 {
+.official-card-info, .uk-card h2 {
     color: white !important;
 }
 
-.uk-card p {
+.official-card-info {
     font-size: 15px;
 }

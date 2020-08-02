@@ -44,3 +44,11 @@
 .alert-header {
     color: #5A7EDE !important;
 }
+
+.alert-election-name {
+    color: rgb(75, 75, 75) !important;
+    font-weight: 100;
+    text-transform: uppercase;
+    font-size: 13px !important;
+    letter-spacing: 1px;
+}
