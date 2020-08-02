@@ -6,11 +6,12 @@ import ContentContainer from "../../components/ContentContainer";
 import ContentTable from "../../components/ContentTable";
 import ElectionsHead from "../../components/ElectionsHead";
 import ElectionsBody from "../../components/ElectionsBody";
-import ZipSearchForm from "../../components/ZipSearchForm";
 import UserContext from "../../utils/userContext";
 import API from "../../utils/API";
 import Footer from "../../components/Footer";
 import DashCalendar from "../../components/DashCalendar";
+import CoverCountdown from "../../components/CoverCountdown";
+import moment from "moment";
 
 function WhenPage() {
     const [results, setResults] = useState([]);
@@ -23,7 +24,7 @@ function WhenPage() {
         API.getElections().then(res => {
             let modifiedResults = res.data.elections.slice(1).map(election => ({
                 name: election.name,
-                electionDay: election.electionDay
+                electionDay: moment(election.electionDay).format("MM-DD-YYYY")
             }))
             setResults(modifiedResults);
         });
@@ -32,14 +33,13 @@ function WhenPage() {
     return (
         <div>
             <Cover image={image} header={"WHEN"}>
-                {/* Don't need zip for this page */}
-                <ZipSearchForm />
+                <CoverCountdown />
             </Cover>
             <ContentContainer>
-                <div className="uk-child-width-1-2@m uk-text-center" uk-grid="true">
+                <div className="uk-child-width-1-2@l uk-text-center" uk-grid="true">
                     <div>
                         <div className="uk-card uk-card-default uk-card-body calendar-card">
-                            <DashCalendar />
+                            <DashCalendar elections={results} />
                         </div>
                     </div>
                     <div>

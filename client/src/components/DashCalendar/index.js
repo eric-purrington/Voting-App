@@ -1,19 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import moment from "moment";
 
 function DashCalendar(props) {
     const [dayCard, openDayCard] = useState(false);
-    const [activeDay, setActiceDay] = useState("");
+    const [activeDay, setActiveDay] = useState({
+        day: "",
+        elections: []
+    });
 
     // render days with events background color red
     // when user clicks on day they see events they've saved that day
+    // useEffect(() => {
+    //     console.log(props.elections);
+    // }, []);
 
     const handleDayClick = (event) => {
         openDayCard(true);
-        setActiceDay(event.toString());
-        console.log(typeof (event));
+        let date = moment(event).format("MM-DD-YYYY");
+        console.log(date);
+        let elections = props.elections.filter(el => {
+            return el.electionDay === date;
+        });
+
+        setActiveDay({ day: date, elections: elections });
+
     };
 
     const handleCloseClick = () => {
@@ -22,13 +35,26 @@ function DashCalendar(props) {
 
     return (
         <div>
-            <Calendar onClickDay={handleDayClick} />
+            <Calendar
+                onClickDay={handleDayClick}
+                tileClassName={({ date, view }) => {
+                    for (let i = 0; i < props.elections.length; i++) {
+                        if (props.elections[i].electionDay === moment(date).format("MM-DD-YYYY")) {
+                            return 'highlight';
+                        }
+                    }
+                }}
+            />
             {
                 dayCard ? (
-                    <div uk-alert="true">
+                    <div uk-alert="true" className="day-alert">
                         <a className="uk-alert-close" uk-close="true" onClick={handleCloseClick}></a>
-                        <h3>{activeDay}</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <h3 className="alert-header">{moment(activeDay.day).format('MMMM Do, YYYY')}</h3>
+                        {
+                            activeDay.elections.length > 0 ? (
+                                activeDay.elections.map((el, index) => <div key={index}><p>{el.name}</p></div>)
+                            ) : (<p>There are no elections this day.</p>)
+                        }
                     </div>
                 ) : ("")
             }

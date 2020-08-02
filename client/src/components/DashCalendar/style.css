@@ -8,9 +8,39 @@
 }
 
 .react-calendar__tile--now {
-    background: rgba(90, 125, 222, 0.192) !important;
+    background: rgb(228, 228, 228) !important;
+    border-radius: 5px;
+}
+
+.react-calendar__tile {
+    margin-top: 7px !important;
+    margin-bottom: 7px !important;
+}
+
+.react-calendar__tile:hover {
+    border-radius: 5px !important;
 }
 
 .react-calendar__month-view__days__day--weekend {
     color: black !important;
+}
+
+.react-calendar__navigation__label__labelText {
+    font-size: 1.15rem !important;
+}
+
+.highlight {
+    background-color: #d27977a8 !important;
+    border-radius: 5px;
+    color: white !important;
+}
+
+.react-calendar__tile--active {
+    background-color: #5A7EDE !important;
+    color: white !important;
+    border-radius: 5px;
+}
+
+.alert-header {
+    color: #5A7EDE !important;
 }
