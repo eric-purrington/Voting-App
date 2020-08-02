@@ -15,7 +15,7 @@ function SignupForm(props) {
             pollingAddress:
                 `${event.target.signupAddress.value} ${event.target.signupCity.value} ${event.target.singupState.value} ${event.target.signupZip.value}`,
         };
-
+        console.log(newUser);
         UserAPI.addUser(newUser)
             .then(res => {
                 console.log(res);

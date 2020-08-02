@@ -1,10 +1,11 @@
 import React from "react";
+import "./style.css";
 
 function ElectionsBody(props) {
     return (
         <tr>
-            <td>{props.electionName}</td>
-            <td>{props.electionDay}</td>
+            <td className="elections-table-item">{props.electionName}</td>
+            <td className="elections-table-item">{props.electionDay}</td>
         </tr>
     )
 }
