@@ -4,8 +4,10 @@ import Cover from "../../components/Cover";
 import image from "../../assets/images/dash.jpg";
 import ContentContainer from "../../components/ContentContainer";
 import Footer from "../../components/Footer";
-import DashCalendar from "../../components/DashCalendar";
 import CoverCountdown from "../../components/CoverCountdown";
+import WhenCard from "../../components/WhenCard";
+import WhereCard from "../../components/WhereCard";
+import WhoCard from "../../components/WhoCard";
 
 function DashboardPage() {
     return (
@@ -14,13 +16,9 @@ function DashboardPage() {
                 <CoverCountdown />
             </Cover>
             <ContentContainer >
-                {/* <div className="uk-child-width-1-2@m uk-text-center" uk-grid="true">
-                        <div>
-                            <div className="uk-card uk-card-default uk-card-body calendar-card">
-                                <DashCalendar />
-                            </div>
-                        </div>
-                    </div> */}
+                <WhenCard />
+                <WhereCard />
+                <WhoCard />
             </ContentContainer>
             <Footer />
         </div>

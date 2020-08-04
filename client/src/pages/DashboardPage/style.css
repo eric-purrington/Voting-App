@@ -4,3 +4,33 @@
     letter-spacing: 1px;
     margin-bottom: 0px;
 }
+
+.dash-card-title {
+    text-transform: uppercase;
+    color: #2c3e50 !important;
+    font-size: 38px;
+    padding-top: 60px;
+}
+
+.dash-card {
+    min-height: 400px;
+    border-radius: 10px;
+    padding: 35px;
+    margin-bottom: 75px;
+}
+
+.dash-hr {
+    width: 5%;
+    margin: 0px auto 0px auto;
+    background-color: #d27977;
+    height: 1px;
+    border: none;
+}
+
+.dash-card-subtitle {
+    text-transform: uppercase;
+    color: rgb(100, 100, 100);
+    font-weight: 200;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
