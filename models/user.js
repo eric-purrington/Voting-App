@@ -3,19 +3,19 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
   email: {
-    type: String, 
-    required: true, 
-    unique: true 
+    type: String,
+    required: true,
+    unique: true
   },
   password: {
     type: String
   },
-  zip: { 
-    type: Number, 
-    required: true 
+  zip: {
+    type: Number,
+    required: true
   },
   pollingAddress: {
-    type : [String],
+    type: [String],
     required: true,
   },
   repDetails: [{
@@ -26,9 +26,9 @@ const userSchema = new Schema({
       type: String
     }
   }],
-  electionDay: [ 
+  electionDay: [
     {
-    type: String
+      type: String
     }
   ]
 });

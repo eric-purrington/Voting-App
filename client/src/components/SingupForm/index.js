@@ -11,7 +11,7 @@ function SignupForm(props) {
         let newUser = {
             email: event.target.signupEmail.value,
             password: event.target.signupPassword.value,
-            zip: event.target.signupZip.value,
+            zip: parseInt(event.target.signupZip.value),
             pollingAddress:
                 `${event.target.signupAddress.value} ${event.target.signupCity.value} ${event.target.singupState.value} ${event.target.signupZip.value}`,
         };
