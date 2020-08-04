@@ -10,7 +10,7 @@ passport.use(
         if (!user) {
             return done(null, false, { message: "Incorrect email." });
         }
-        if (!user.validPassword(password) {
+        if (!user.validPassword(password)) {
             return done (null, false, { message: "Incorrect password." });
         }
         return done(null, user);
@@ -26,6 +26,6 @@ passport.use(
           done(null, user)
         })
       })
-//  
+
 
 module.exports = passport;
