@@ -5,7 +5,7 @@ const LocalStrategy = require("passport-local").Strategy;
 
 passport.use(
   new LocalStrategy({ usernameField: "email" }, (email, password, done) => {
-    User.findOne({ email: email }, function (err, user) {
+   User.findOne({ email: email }, function (err, user) {
         if (err) { return done(err); }
         if (!user) {
             return done(null, false, { message: "Incorrect email." });
@@ -18,14 +18,14 @@ passport.use(
      }
   ));
 
-passport.serializeUser((user, done) => {
-    done(null, user.id);
-  });
-  
-  passport.deserializeUser((id, done) => {
-    User.findById(id, (err, user) => {
-      done(err, user);
-    });
-  });
+    passport.serializeUser((user, done) =>
+      done(null, user.id))
+    passport.deserializeUser((id, done) => {
+        User.findById(id, (err, user) => {
+          if(err) {return done(err)}
+          done(null, user)
+        })
+      })
+//  
 
 module.exports = passport;
