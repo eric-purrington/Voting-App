@@ -28,5 +28,9 @@ export default {
     // Get signed in user
     getUser: function (id) {
         return axios.get("/api/users/" + id);
+    },
+    
+    loginUser: function(user) {
+        return axios.post("/login", user);
     }
 }
