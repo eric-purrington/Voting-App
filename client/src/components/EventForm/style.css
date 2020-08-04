@@ -1,0 +1,22 @@
+.add-event-box {
+    border-radius: 4px;
+    color: rgb(158, 158, 158);
+}
+
+.add-event-btn {
+    background-color: #5A7EDE;
+    border-radius: 20px;
+    border: none;
+    padding: 1px 20px 1px 30px;
+    color: white;
+    letter-spacing: 1px;
+}
+
+.add-event-btn:hover {
+    background-color: rgb(58, 82, 148);
+    color: white;
+}
+
+.add-event-form {
+    margin-bottom: 35px;
+}
