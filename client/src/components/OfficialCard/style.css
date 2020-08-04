@@ -1,0 +1,24 @@
+#D {
+    background-color: blue;
+}
+
+#R {
+    background-color: red;
+}
+
+#N {
+    background-color: purple;
+}
+
+.officials-card{
+    border-radius: 50px;
+    margin: 20px;
+}
+
+.official-card-info, .uk-card h2 {
+    color: white !important;
+}
+
+.official-card-info {
+    font-size: 15px;
+}
