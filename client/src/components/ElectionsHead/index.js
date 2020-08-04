@@ -1,11 +1,12 @@
 import React from "react";
+import "./style.css";
 
 function ElectionsHead() {
     return (
         <tr>
-            <th>Name of Election</th>
-            <th>Date of Election</th>
-        </tr> 
+            <th className="uk-text-center elections-table-head">Upcoming Elections</th>
+            <th className="uk-text-center elections-table-head">Date</th>
+        </tr>
     )
 }
 
