@@ -39,7 +39,7 @@ function WhoPage() {
                     if (webDive.emails !== undefined) {
                         official.email = webDive.emails[0]; 
                     } else {
-                        official.email = "not available";
+                        official.email = "Not Available";
                     }
                     official.phone = webDive.phones[0];
                     modifiedResults.push(official);
@@ -51,7 +51,7 @@ function WhoPage() {
 
     function handleAddressChange(event) {
         event.preventDefault()
-        console.log(event.target.value)
+        console.log(event)
         setAddress(event.target.value);
         whoData(address);
     }

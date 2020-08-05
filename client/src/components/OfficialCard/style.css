@@ -1,13 +1,13 @@
 #D {
-    background-color: blue;
+    background-color: rgba(0, 0, 255, 0.637);
 }
 
 #R {
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.712);
 }
 
 #N {
-    background-color: purple;
+    background-color: rgba(128, 0, 128, 0.699);
 }
 
 .officials-card{
