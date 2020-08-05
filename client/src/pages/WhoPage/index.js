@@ -16,7 +16,7 @@ function WhoPage() {
     useEffect(() => {
         // loadUser();
         whoData(address);
-    });
+    }, []);
 
     // function loadUser() {
     //     // Need to figure out how to get user's id 
