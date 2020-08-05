@@ -6,7 +6,7 @@ import ContentContainer from "../../components/ContentContainer";
 import ContentTable from "../../components/ContentTable";
 import ElectionsHead from "../../components/ElectionsHead";
 import ElectionsBody from "../../components/ElectionsBody";
-import UserContext from "../../utils/userContext";
+// import UserContext from "../../utils/userContext";
 import API from "../../utils/API";
 import Footer from "../../components/Footer";
 import DashCalendar from "../../components/DashCalendar";

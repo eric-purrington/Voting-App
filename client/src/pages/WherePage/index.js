@@ -4,19 +4,19 @@ import Cover from "../../components/Cover";
 import image from "../../assets/images/where.jpg";
 import ContentContainer from "../../components/ContentContainer";
 import ZipSearchForm from "../../components/ZipSearchForm";
-import UserContext from "../../utils/userContext";
+// import UserContext from "../../utils/userContext";
 import API from "../../utils/API";
 import Footer from "../../components/Footer";
 
 
 function WherePage() {
-    const [address, setAddress] = useState("");
-    const [results, setResults] = useState([]);
+    const [address, setAddress] = useState("7101%20Roosevelt%20Way%20NE%20Seattle%20WA%2098115");
+    // const [results, setResults] = useState([]);
 
-    // useEffect(() => {
-    //     loadUser();
-    //     whereData(address);
-    // }, []);
+    useEffect(() => {
+        // loadUser();
+        whereData(address);
+    });
 
     // function loadUser() {
     //     // Need to figure out how to get user's id 
@@ -28,12 +28,13 @@ function WherePage() {
 
     function whereData(param) {
         API.getVoterInfo(param).then(res => {
-            console.log(res);
+            console.log(res.data);
             
         });
     }
 
     function handleAddressChange(event) {
+        event.preventDefault();
         setAddress(event.target.value);
         // whereData(address);
     }
@@ -44,7 +45,7 @@ function WherePage() {
                 {/* Need address for this page */}
                 <ZipSearchForm handleAddressChange={handleAddressChange} />
             </Cover>
-            <ContentContainer results={results}>
+            <ContentContainer>
 
             </ContentContainer>
             <Footer />
