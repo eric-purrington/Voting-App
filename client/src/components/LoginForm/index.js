@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./style.css";
 import LoginBtn from "../LoginBtn";
-import API from "../../utils/API";
+import UserAPI from "../../utils/UserAPI";
 
 
 function LoginForm(props) {
@@ -23,7 +23,7 @@ function LoginForm(props) {
                 </div>
             </div>
             <div className="uk-text-center">
-                <LoginBtn name="Login" handleClick={API.loginUser} email={email} password={password}/>
+                <LoginBtn name="Login" handleClick={UserAPI.loginUser} email={email} password={password}/>
             </div>
         </form>
     )
