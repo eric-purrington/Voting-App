@@ -15,9 +15,9 @@ function Footer() {
                 <a className="contributor" href="https://github.com/sabahsyed" target="_blank">Sabah Syed</a>
             </span>
             <div>
-                <a className="view-repo">
+                <a className="view-repo" href="https://github.com/eric-purrington/Voting-App">
                     View project repository
-                    <span uk-icon="icon: github" href="https://github.com/eric-purrington/Voting-App" className="contact-icon contact-link-icon" target="_blank"></span>
+                    <span uk-icon="icon: github" className="contact-icon contact-link-icon" target="_blank"></span>
                 </a>
             </div>
         </footer>
