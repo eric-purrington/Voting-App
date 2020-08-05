@@ -2,6 +2,8 @@
 
 Alyssa Hellrung, Joanna Preston, Eric Purrington, Sabah Syed
 
+![image](https://user-images.githubusercontent.com/57811605/89361054-18979780-d67f-11ea-8ab4-69cfa94b3dc1.png)
+
 ## Description
 
 A web app that provides users with information about when, where, and how to vote in their area and gives them access to contact information about their representatives.
@@ -59,9 +61,9 @@ Bcryptjs
 
 [Presentation Slides]()  
 
-## Deployed Application:
+## Deployed Application:  
 
-
+https://vote-goat.herokuapp.com/  
 
 ## GitHub Repo:
 
