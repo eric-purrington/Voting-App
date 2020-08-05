@@ -30,34 +30,34 @@ As a USER,
 I WANT a web application that allows me to easily find information about voting in my area
 So THAT I can be a well-informed citizen who participates in the democratic process.
 
-## Technologies Used
+## Technologies Used  
 
-Built in Visual Studio with  
-HTML  
-CSS  
-UIkit
-Javascript
-Node.js  
-Express  
-MongoDB
-Mongoose 
-React 
+Built in Visual Studio with    
+HTML    
+CSS    
+UIkit  
+Javascript  
+Node.js    
+Express    
+MongoDB  
+Mongoose   
+React   
 
-## Npm Packages
+## Npm Packages  
 
-Axios
-React-Calendar
-React-countdown-now
-Passport
-Bcryptjs
+Axios  
+React-Calendar  
+React-countdown-now  
+Passport  
+Bcryptjs  
 
-## How to Use
+## How to Use  
 
 
 
-## Link to Presentation
+## Link to Presentation  
 
-[Presentation Slides]()
+[Presentation Slides]()  
 
 ## Deployed Application:
 
@@ -69,5 +69,5 @@ https://github.com/eric-purrington/Voting-App
 
 ## Directions for Future Development
 
---Ability to save information to a user dashboard (with user information saved in database)
+--Ability to save information to a user dashboard (with user information saved in database)  
 --Email reminders about important registration and voting dates
