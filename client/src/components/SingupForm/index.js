@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./style.css";
 import LoginBtn from "../LoginBtn";
 import AddressInputForm from "../AddressInputForm";
