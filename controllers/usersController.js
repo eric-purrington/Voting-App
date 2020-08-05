@@ -32,6 +32,37 @@ module.exports = {
             .then(dbUser => dbUser.remove())
             .then(dbUser => res.json(dbUser))
             .catch(err => res.status(422).json(err));
+    },
+
+    // adds an event a user saves
+    addEvent: function (req, res) {
+        db.User
+            .findOneAndUpdate({ _id: req.params.id }, {
+                $push: {
+                    savedEvents: {
+                        eventName: req.body.eventName,
+                        eventDate: req.body.eventDate
+                    }
+                }
+            })
+            .then(dbUser => res.json(dbUser))
+            .catch(err => console.log(err));
+    },
+
+    // add an official a user saves
+    addOfficial: function (req, res) {
+        db.User
+            .findOneAndUpdate({ _id: req.params.id }, {
+                $push: {
+                    repDetails: {
+                        repName: req.body.repName,
+                        repEmail: req.body.repEmail,
+                        repPhone: req.body.repPhone,
+                        repTitle: req.body.repTitle
+                    }
+                }
+            })
+            .then(dbUser => res.json(dbUser))
+            .catch(err => console.log(err));
     }
 }
-

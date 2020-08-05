@@ -11,8 +11,7 @@ function SignupForm(props) {
         let newUser = {
             email: event.target.signupEmail.value,
             password: event.target.signupPassword.value,
-            zip: parseInt(event.target.signupZip.value),
-            pollingAddress:
+            homeAddress:
                 `${event.target.signupAddress.value} ${event.target.signupCity.value} ${event.target.singupState.value} ${event.target.signupZip.value}`,
         };
         console.log(newUser);
@@ -39,7 +38,7 @@ function SignupForm(props) {
             </div>
             <AddressInputForm />
             <div className="uk-text-center">
-                <LoginBtn name="Sign Up" />
+                <button className="uk-button uk-button-default login-btn">Sign Up</button>
             </div>
         </form>
     )

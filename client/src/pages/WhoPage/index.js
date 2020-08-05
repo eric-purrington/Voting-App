@@ -16,7 +16,7 @@ function WhoPage() {
     useEffect(() => {
         // loadUser();
         whoData(address);
-    });
+    }, []);
 
     // function loadUser() {
     //     // Need to figure out how to get user's id 
@@ -49,10 +49,9 @@ function WhoPage() {
         });
     }
 
-    function handleAddressChange(event) {
-        event.preventDefault()
-        console.log(event)
-        setAddress(event.target.value);
+    const handleAddressChange = (event) => {
+        event.preventDefault();
+        setAddress(event.target.zipcode.value);
         whoData(address);
     }
 
