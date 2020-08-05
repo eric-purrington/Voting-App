@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./style.css";
 import LoginBtn from "../LoginBtn";
 import AddressInputForm from "../AddressInputForm";
@@ -11,11 +11,11 @@ function SignupForm(props) {
         let newUser = {
             email: event.target.signupEmail.value,
             password: event.target.signupPassword.value,
-            zip: event.target.signupZip.value,
+            zip: parseInt(event.target.signupZip.value),
             pollingAddress:
                 `${event.target.signupAddress.value} ${event.target.signupCity.value} ${event.target.singupState.value} ${event.target.signupZip.value}`,
         };
-
+        console.log(newUser);
         UserAPI.addUser(newUser)
             .then(res => {
                 console.log(res);

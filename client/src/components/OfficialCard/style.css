@@ -1,24 +1,24 @@
 #D {
-    background-color: blue;
+    background-color: rgba(0, 0, 255, 0.637);
 }
 
 #R {
-    background-color: red;
+    background-color: rgba(255, 0, 0, 0.712);
 }
 
 #N {
-    background-color: purple;
+    background-color: rgba(128, 0, 128, 0.699);
 }
 
-.uk-card {
+.officials-card{
     border-radius: 50px;
     margin: 20px;
 }
 
-.uk-card p, .uk-card h2 {
+.official-card-info, .uk-card h2 {
     color: white !important;
 }
 
-.uk-card p {
+.official-card-info {
     font-size: 15px;
 }

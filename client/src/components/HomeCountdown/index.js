@@ -1,4 +1,3 @@
-
 import React from "react";
 import "./style.css";
 import Countdown from 'react-countdown';
@@ -20,7 +19,7 @@ function HomeCountdown(props) {
             <CountStyle>
                 <Countdown date={'2020-11-03T00:00:00'} className="countdown-timer" />
             </CountStyle>
-            <a href="https://vote.gov/" target="_blank" className="register-link">Register Here</a>
+            <a href="https://vote.gov/" target="_blank" rel="noopener noreferrer" className="register-link">Register Here</a>
         </div>
     )
 };
