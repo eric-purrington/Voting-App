@@ -9,10 +9,10 @@ export default {
     updateUser: function (userID) {
         return axios.put("/api/users/" + userID);
     },
-    
-    loginUser: function(user) {
+
+    loginUser: function (user) {
         return axios.post("/login", user);
-    }
+    },
 
     addUserEvent: function (userID, body) {
         return axios.put("/api/users/events/" + userID, body);
