@@ -52,3 +52,12 @@
     font-size: 13px !important;
     letter-spacing: 1px;
 }
+
+.addDel-icon {
+    padding-right: 10px;
+    color: gray;
+}
+
+.addDel-icon:hover {
+    color: rgb(66, 66, 66);
+}

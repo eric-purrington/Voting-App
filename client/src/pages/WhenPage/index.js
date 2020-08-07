@@ -15,6 +15,7 @@ import moment from "moment";
 
 function WhenPage() {
     const [results, setResults] = useState([]);
+    const [loggedIn, setLoggedIn] = useState(true);
 
     useEffect(() => {
         whenData();
@@ -39,7 +40,10 @@ function WhenPage() {
                 <div className="uk-child-width-1-2@l uk-text-center" uk-grid="true">
                     <div>
                         <div className="uk-card uk-card-default uk-card-body calendar-card">
-                            <DashCalendar elections={results} />
+                            <DashCalendar
+                                elections={results}
+                                icon={loggedIn ? "icon: plus-circle" : ""}
+                            />
                         </div>
                     </div>
                     <div>
