@@ -12,32 +12,33 @@ import AddressSearchForm from "../../components/AddressSearchForm";
 
 function WherePage() {
     const [address, setAddress] = useState("");
-    // const [results, setResults] = useState([]);
+    const [results, setResults] = useState([]);
 
     useEffect(() => {
         // loadUser();
         whereData(address);
-    });
-
-    // function loadUser() {
-    //     // Need to figure out how to get user's id 
-    //     API.getUser().then(user => {
-    //         let modifiedAddress = user.pollingAddress.replace(/,./g, "").replace(/ /g, "%20");
-    //         setAddress(modifiedAddress);
-    //     });
-    // }
+    },[]);
 
     function whereData(param) {
+        var modifiedResults = [];
         API.getVoterInfo(param).then(res => {
-            console.log(res.data);
-            
-        });
+            for(var i = 0; i < res.data.pollingLocations[i].length ; i++){
+                var address = {};
+                address.locationName = res.data.pollingLocations[i].locationName;
+                address.line1 = res.data.pollingLocations[i].line1;
+                address.line2 = res.data.pollingLocations[i].line2;
+                address.line3 = res.data.pollingLocations[i].line3;
+                address.city = res.data.pollingLocations[i].city;
+                address.state = res.data.pollingLocations[i].state;
+                address.zip = res.data.pollingLocations[i].zip;
+            }
+        })
     }
 
-    function handleAddressChange(event) {
+    const handleAddressChange = (event) => {
         event.preventDefault();
-        setAddress(event.target.value);
-        // whereData(address);
+        setAddress(event.target.address.value);
+        whereData(address);
     }
 
     return (
