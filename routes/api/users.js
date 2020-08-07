@@ -23,4 +23,9 @@ router
   .route("/events/:id")
   .put(usersController.addEvent);
 
+// Matches with "/api/users/places/:id"
+router
+  .route("/places/:id")
+  .put(usersController.addPollingSite);
+
 module.exports = router;

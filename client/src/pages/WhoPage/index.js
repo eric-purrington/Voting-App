@@ -14,14 +14,16 @@ function WhoPage() {
     const [results, setResults] = useState([]);
 
     useEffect(() => {
-        // loadUser();
+        // if (user) {
+        //     loadUser();
+        // }
         whoData(address);
     }, []);
 
     // function loadUser() {
     //     // Need to figure out how to get user's id 
-    //     API.getUser(id).then(user => {
-    //         let modifiedAddress = user.pollingAddress.replace(/,./g, "").replace(/ /g, "%20");
+    //     API.getSavedData(id).then(user => {
+    //         let modifiedAddress = user.homeAddress.replace(/,./g, "").replace(/ /g, "%20");
     //         setAddress(modifiedAddress);
     //     });
     // }

@@ -25,4 +25,10 @@ router.get("/getRepInfo", (req, res) => {
     .catch(err => console.log(err));
 });
 
+router.get("/getDistance", (req, res) => {
+    axios.get("https://maps.googleapis.com/maps/api/distancematrix/json?units=imperial&origins=" + req.query.location1 + "&destinations=" + req.query.location2 + "&key=" + APIKEY)
+    .then(response => res.send(response.data))
+    .catch(err => console.log(err));
+});
+
 module.exports = router;

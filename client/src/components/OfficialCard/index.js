@@ -5,9 +5,13 @@ import "./style.css";
 function OfficialCard(props) {
     //rough estimate of what this will look like
     // function handleOfficialSave() {
-    //     let userID = window.location.pathname.slice(3);
-    //     let body = {title: props.title, name: props.name, phone: props.phone, email: props.email}
-    //     UserAPI.saveRepInfo(userID, body);
+    //     if(user) {
+    //         let userID = window.location.pathname.slice(3);
+    //         let body = {title: props.title, name: props.name, phone: props.phone, email: props.email}
+    //         UserAPI.addOfficial(userID, body);
+    //     } else {
+    //         redirect to login?
+    //     }
     // }
 
     return (

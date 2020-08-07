@@ -40,8 +40,8 @@ module.exports = {
             .findOneAndUpdate({ _id: req.params.id }, {
                 $push: {
                     savedEvents: {
-                        eventName: req.body.eventName,
-                        eventDate: req.body.eventDate
+                        Name: req.body.Name,
+                        Date: req.body.Date
                     }
                 }
             })
@@ -55,10 +55,26 @@ module.exports = {
             .findOneAndUpdate({ _id: req.params.id }, {
                 $push: {
                     repDetails: {
-                        repName: req.body.repName,
-                        repEmail: req.body.repEmail,
-                        repPhone: req.body.repPhone,
-                        repTitle: req.body.repTitle
+                        Name: req.body.Name,
+                        Email: req.body.Email,
+                        Phone: req.body.Phone,
+                        Title: req.body.Title
+                    }
+                }
+            })
+            .then(dbUser => res.json(dbUser))
+            .catch(err => console.log(err));
+    },
+
+    // add a polling site
+    addPollingSite: function (req, res) {
+        db.User
+            .findOneAndUpdate({ _id: req.params.id }, {
+                $push: {
+                    pollingAddress: {
+                        Name: req.body.Name,
+                        Address: req.body.Address,
+                        Hours: req.body.Hours
                     }
                 }
             })

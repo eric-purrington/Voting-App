@@ -22,6 +22,10 @@ export default {
         return axios.put("/api/users/officials/" + userID, body);
     },
 
+    addPollingSite: function (userID, body) {
+        return axios.put("/api/users/places/" + userID, body);
+    },
+
     getSavedData: function (userID) {
         return axios.get("/api/users/" + userID);
     }
