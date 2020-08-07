@@ -25,7 +25,7 @@ const userSchema = new Schema({
     },
     Address: {
       type: String
-    }, 
+    },
     Hours: {
       type: String
     }
@@ -56,7 +56,7 @@ const userSchema = new Schema({
     Date: {
       type: String
     }
-  }],
+  }]
 
 });
 
