@@ -22,7 +22,7 @@ function WherePage() {
     function whereData(param) {
         var modifiedResults = [];
         API.getVoterInfo(param).then(res => {
-            for(var i = 0; i < res.data.pollingLocations[i].length ; i++){
+            for(var i = 0; i < res.data.pollingLocations.length ; i++){
                 var address = {};
                 address.locationName = res.data.pollingLocations[i].locationName;
                 address.line1 = res.data.pollingLocations[i].line1;
