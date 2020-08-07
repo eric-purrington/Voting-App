@@ -1,4 +1,5 @@
 import React from "react";
+import { withAuthenticationRequired } from "@auth0/auth0-react";
 import "./style.css";
 import Cover from "../../components/Cover";
 import image from "../../assets/images/dash.jpg";
@@ -8,6 +9,7 @@ import CoverCountdown from "../../components/CoverCountdown";
 import WhenCard from "../../components/WhenCard";
 import WhereCard from "../../components/WhereCard";
 import WhoCard from "../../components/WhoCard";
+import Loading from "../../components/Loading";
 
 function DashboardPage() {
     return (
@@ -25,4 +27,6 @@ function DashboardPage() {
     )
 };
 
-export default DashboardPage;
+export default withAuthenticationRequired(DashboardPage, {
+    onRedirecting: () => <Loading />,
+});
