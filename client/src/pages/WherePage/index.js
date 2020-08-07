@@ -10,7 +10,7 @@ import Footer from "../../components/Footer";
 
 
 function WherePage() {
-    const [address, setAddress] = useState("7101%20Roosevelt%20Way%20NE%20Seattle%20WA%2098115");
+    const [address, setAddress] = useState("9%20Longbow%20Ln%20Pinedale%20WY%2082941");
     // const [results, setResults] = useState([]);
 
     useEffect(() => {
