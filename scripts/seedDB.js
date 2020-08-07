@@ -12,22 +12,31 @@ const userSeed = [
     homeAddress: "98112",
     repDetails: [
       {
-        repName: "Official1",
-        repEmail: "official1@gmail.com",
-        repPhone: "555-555-5555",
-        repTitle: "Official1"
+        name: "Official1",
+        email: "official1@gmail.com",
+        phone: "555-555-5555",
+        title: "Official1",
+        party: "Democrat"
       },
       {
-        repName: "Official2",
-        repEmail: "official2@gmail.com",
-        repPhone: "555-555-5555",
-        repTitle: "Official2"
+        name: "Official2",
+        email: "official2@gmail.com",
+        phone: "555-555-5555",
+        title: "Official2",
+        party: "Republican"
+      },
+      {
+        name: "Official3",
+        email: "official3@gmail.com",
+        phone: "555-555-5555",
+        title: "Official3",
+        party: "N"
       }
     ],
     savedEvents: [
       {
-        eventName: "Watch Debate",
-        eventDate: "2020-10-31"
+        name: "Watch Debate",
+        date: "2020-10-31"
       }
     ]
   },
@@ -38,22 +47,26 @@ const userSeed = [
     homeAddress: "98112",
     repDetails: [
       {
-        repName: "Official1",
-        repEmail: "official1@gmail.com",
-        repPhone: "555-555-5555",
-        repTitle: "Official1"
+        name: "Official1",
+        email: "official1@gmail.com",
+        phone: "555-555-5555",
+        title: "Official1"
       },
       {
-        repName: "Official2",
-        repEmail: "official2@gmail.com",
-        repPhone: "555-555-5555",
-        repTitle: "Official2"
+        name: "Official2",
+        email: "official2@gmail.com",
+        phone: "555-555-5555",
+        title: "Official2"
       }
     ],
     savedEvents: [
       {
-        eventName: "Watch Debate",
-        eventDate: "2020-10-31"
+        name: "Watch Debate",
+        date: "8-31-2020"
+      },
+      {
+        name: "Turn in Ballot",
+        date: "8-3-2020"
       }
     ]
   }

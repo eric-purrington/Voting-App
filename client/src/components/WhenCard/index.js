@@ -7,43 +7,43 @@ import EventForm from "../../components/EventForm";
 import UserAPI from "../../utils/UserAPI";
 
 function WhenCard(props) {
-    const [results, setResults] = useState([]);
     const [savedEvents, setSavedEvents] = useState([]);
 
     useEffect(() => {
-        whenData();
-        // UserAPI.getSavedData("5f2c19947dca3008f9f679ec")
-        //     .then(res => setSavedEvents(res.data.savedEvents))
-        //     .catch(err => console.log(err));
+        // getSaved();
     }, []);
 
-    function whenData() {
-        API.getElections().then(res => {
-            let modifiedResults = res.data.elections.slice(1).map(election => ({
-                name: election.name,
-                electionDay: moment(election.electionDay).format("MM-DD-YYYY")
-            }))
-            setResults(modifiedResults);
-        });
-    }
+    const getSaved = () => {
+        // UserAPI.getSavedData("5f2cc3b1a4926a14441e3383")
+        //     .then(res => setSavedEvents(res.data.savedEvents))
+        //     .catch(err => console.log(err));
+    };
 
     const handleSubmitEvent = (event) => {
         event.preventDefault();
 
         let newEvent = {
-            eventName: event.target.name.value,
-            eventDate: event.target.date.value
+            name: event.target.name.value,
+            date: moment(event.target.date.value).format("MM-DD-YYYY")
         };
 
-        UserAPI.addUserEvent("5f2c19947dca3008f9f679ec", newEvent)
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
+        event.target.name.value = "";
+        event.target.date.value = "";
+
+        // UserAPI.addUserEvent("5f2cc3b1a4926a14441e3383", newEvent)
+        //     .then(() => {
+        //         getSaved();
+        //     })
+        //     .catch(err => console.log(err));
     };
 
     return (
         <div className="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@m uk-margin dash-card uk-text-center" uk-grid="true">
             <div className="uk-flex-last@s uk-card-media-right uk-cover-container">
-                <DashCalendar elections={results} />
+                <DashCalendar
+                    elections={savedEvents}
+                    icon="icon: minus-circle"
+                />
             </div>
             <div>
                 <div className="uk-card-body">

@@ -40,8 +40,8 @@ module.exports = {
             .findOneAndUpdate({ _id: req.params.id }, {
                 $push: {
                     savedEvents: {
-                        eventName: req.body.eventName,
-                        eventDate: req.body.eventDate
+                        name: req.body.name,
+                        date: req.body.date
                     }
                 }
             })

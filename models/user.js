@@ -20,34 +20,40 @@ const userSchema = new Schema({
   },
 
   pollingAddress: [{
-    placeName: {
+    name: {
       type: String
     },
-    placeAddress: {
+    address: {
+      type: String
+    },
+    hours: {
       type: String
     }
   }],
 
   repDetails: [{
-    repName: {
+    name: {
       type: String
     },
-    repEmail: {
+    email: {
       type: String
     },
-    repPhone: {
+    phone: {
       type: String
     },
-    repTitle: {
+    title: {
+      type: String
+    },
+    party: {
       type: String
     }
   }],
 
   savedEvents: [{
-    eventName: {
+    name: {
       type: String
     },
-    eventDate: {
+    date: {
       type: String
     }
   }],
