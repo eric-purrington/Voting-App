@@ -14,9 +14,8 @@ function DashCalendar(props) {
     const handleDayClick = (event) => {
         openDayCard(true);
         let date = moment(event).format("MM-DD-YYYY");
-        console.log(date);
         let elections = props.elections.filter(el => {
-            return el.electionDay === date;
+            return el.electionDay === date || el.date === date;
         });
 
         setActiveDay({ day: date, elections: elections });
@@ -33,7 +32,7 @@ function DashCalendar(props) {
                 onClickDay={handleDayClick}
                 tileClassName={({ date, view }) => {
                     for (let i = 0; i < props.elections.length; i++) {
-                        if (props.elections[i].electionDay === moment(date).format("MM-DD-YYYY")) {
+                        if (props.elections[i].electionDay === moment(date).format("MM-DD-YYYY") || props.elections[i].date === moment(date).format("MM-DD-YYYY")) {
                             return 'highlight';
                         }
                     }
@@ -46,8 +45,17 @@ function DashCalendar(props) {
                         <h3 className="alert-header">{moment(activeDay.day).format('MMMM Do, YYYY')}</h3>
                         {
                             activeDay.elections.length > 0 ? (
-                                activeDay.elections.map((el, index) => <div key={index}><p className="alert-election-name">{el.name}</p></div>)
-                            ) : (<p>There are no elections this day.</p>)
+                                activeDay.elections.map((el, index) => {
+                                    return (
+                                        <div key={index}>
+                                            <p className="alert-election-name">
+                                                <span className="addDel-icon" uk-icon={props.icon}></span>
+                                                {el.name}
+                                            </p>
+                                        </div>
+                                    )
+                                })
+                            ) : (<p>There are no events this day.</p>)
                         }
                     </div>
                 ) : ("")

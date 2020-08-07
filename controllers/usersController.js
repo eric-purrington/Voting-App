@@ -40,8 +40,8 @@ module.exports = {
             .findOneAndUpdate({ _id: req.params.id }, {
                 $push: {
                     savedEvents: {
-                        Name: req.body.Name,
-                        Date: req.body.Date
+                        name: req.body.name,
+                        date: req.body.date
                     }
                 }
             })
@@ -55,10 +55,10 @@ module.exports = {
             .findOneAndUpdate({ _id: req.params.id }, {
                 $push: {
                     repDetails: {
-                        Name: req.body.Name,
-                        Email: req.body.Email,
-                        Phone: req.body.Phone,
-                        Title: req.body.Title
+                        name: req.body.Name,
+                        email: req.body.Email,
+                        phone: req.body.Phone,
+                        title: req.body.Title
                     }
                 }
             })
@@ -72,9 +72,9 @@ module.exports = {
             .findOneAndUpdate({ _id: req.params.id }, {
                 $push: {
                     pollingAddress: {
-                        Name: req.body.Name,
-                        Address: req.body.Address,
-                        Hours: req.body.Hours
+                        name: req.body.Name,
+                        address: req.body.Address,
+                        hours: req.body.Hours
                     }
                 }
             })
