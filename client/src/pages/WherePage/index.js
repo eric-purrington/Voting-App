@@ -7,10 +7,11 @@ import ZipSearchForm from "../../components/ZipSearchForm";
 // import UserContext from "../../utils/userContext";
 import API from "../../utils/API";
 import Footer from "../../components/Footer";
-
+import AddressContainer from "../../components/AddressContainer";
+import AddressSearchForm from "../../components/AddressSearchForm";
 
 function WherePage() {
-    const [address, setAddress] = useState("9%20Longbow%20Ln%20Pinedale%20WY%2082941");
+    const [address, setAddress] = useState("");
     // const [results, setResults] = useState([]);
 
     useEffect(() => {
@@ -43,10 +44,12 @@ function WherePage() {
         <div>
             <Cover image={image} header={"WHERE"}>
                 {/* Need address for this page */}
-                <ZipSearchForm handleAddressChange={handleAddressChange} />
+                <AddressSearchForm handleAddressChange={handleAddressChange} />
             </Cover>
             <ContentContainer>
+                <AddressContainer>
 
+                </AddressContainer>
             </ContentContainer>
             <Footer />
         </div>
