@@ -64,5 +64,20 @@ module.exports = {
             })
             .then(dbUser => res.json(dbUser))
             .catch(err => console.log(err));
+    },
+
+    // add a polling site
+    addPollingSite: function (req, res) {
+        db.User
+            .findOneAndUpdate({ _id: req.params.id }, {
+                $push: {
+                    pollingAddress: {
+                        placeName: req.body.placeName,
+                        placeAddress: req.body.placeAddress
+                    }
+                }
+            })
+            .then(dbUser => res.json(dbUser))
+            .catch(err => console.log(err));
     }
 }
