@@ -7,10 +7,14 @@ function AddressCard(props) {
     return (
         <div className = "addressCardContainer">
             <div id={props.line1.slice(0, 3)} className="card">
-                <p>Location: {props.locationName}</p>
-                <p>Address: {props.line1}</p>                
-                <p> {props.city} {props.state} {props.zip}</p>
-            </div>
+            <div class="uk-animation-toggle" tabindex="0">
+                <div class="uk-animation-slide-left">
+                <h5>Location: {props.locationName}</h5>
+                <h6>Address: {props.line1}</h6>                
+                <h6> {props.city} {props.state} {props.zip}</h6>
+                </div>
+                </div>
+                </div>
         </div>
     )
 };

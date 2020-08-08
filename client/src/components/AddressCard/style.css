@@ -1,9 +1,6 @@
 .addressCardContainer{
-    margin:20px;
+    margin-top : 20px;
     color:white;
-    background-color: cadetblue;
-    font-family: 'Courier New', Courier, monospace;
-}
-.card{
-    margin-top :10px;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif !important;
 }

@@ -1,9 +1,10 @@
 .PollingInfoContainer{
-    margin:20px;
     color:white;
-    background-color: cadetblue;
-    font-family: 'Courier New', Courier, monospace;
+    /* background-color: cadetblue; */
+    text-align: left;
+    font-family: 'Montserrat', sans-serif !important;
 }
 .card{
-    margin-top :10px;
+    color:black;
+    font-family: 'Montserrat', sans-serif !important;
 }
