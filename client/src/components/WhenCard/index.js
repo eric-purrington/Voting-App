@@ -5,22 +5,33 @@ import moment from "moment";
 import DashCalendar from "../../components/DashCalendar";
 import EventForm from "../../components/EventForm";
 import UserAPI from "../../utils/UserAPI";
+import SavedEventsContext from "../../utils/SavedEventsContext";
 
 function WhenCard(props) {
-    const [savedEvents, setSavedEvents] = useState([]);
+    const [savedEvents, setSavedEvents] = useState({
+        events: [],
+        getSavedEvents: () => {
+            UserAPI.getSavedData("5f2cc3b1a4926a14441e3383")
+                .then(res => {
+                    console.log(res.data.savedEvents);
+                    setSavedEvents({ ...savedEvents, events: res.data.savedEvents })
+                })
+                .catch(err => console.log(err));
+        }
+    });
 
     useEffect(() => {
-        // getSaved();
+        getSaved();
     }, []);
 
-    // const getSaved = () => {
-    //     UserAPI.getSavedData("5f2cc3b1a4926a14441e3383")
-    //         .then(res => {
-    //             console.log(res.data.savedEvents);
-    //             setSavedEvents(res.data.savedEvents)
-    //         })
-    //         .catch(err => console.log(err));
-    // };
+    const getSaved = () => {
+        UserAPI.getSavedData("5f2cc3b1a4926a14441e3383")
+            .then(res => {
+                console.log(res.data.savedEvents);
+                setSavedEvents({ ...savedEvents, events: res.data.savedEvents })
+            })
+            .catch(err => console.log(err));
+    };
 
     const handleSubmitEvent = (event) => {
         event.preventDefault();
@@ -33,21 +44,23 @@ function WhenCard(props) {
         event.target.name.value = "";
         event.target.date.value = "";
 
-        // UserAPI.addUserEvent("5f2cc3b1a4926a14441e3383", newEvent)
-        //     .then(() => {
-        //         getSaved();
-        //     })
-        //     .catch(err => console.log(err));
+        UserAPI.addUserEvent("5f2cc3b1a4926a14441e3383", newEvent)
+            .then(() => {
+                getSaved();
+            })
+            .catch(err => console.log(err));
     };
 
     return (
         <div className="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@m uk-margin dash-card uk-text-center" uk-grid="true">
             <div className="uk-flex-last@s uk-card-media-right uk-cover-container">
-                <DashCalendar
-                    elections={savedEvents}
-                    icon="icon: minus-circle"
-                    addOrDel="delete"
-                />
+                <SavedEventsContext.Provider value={savedEvents}>
+                    <DashCalendar
+                        elections={savedEvents.events}
+                        icon="icon: minus-circle"
+                        addOrDel="delete"
+                    />
+                </SavedEventsContext.Provider>
             </div>
             <div>
                 <div className="uk-card-body">

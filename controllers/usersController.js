@@ -55,10 +55,10 @@ module.exports = {
             .findOneAndUpdate({ _id: req.params.id }, {
                 $push: {
                     repDetails: {
-                        name: req.body.Name,
-                        email: req.body.Email,
-                        phone: req.body.Phone,
-                        title: req.body.Title
+                        name: req.body.name,
+                        email: req.body.email,
+                        phone: req.body.phone,
+                        title: req.body.title
                     }
                 }
             })
@@ -72,13 +72,24 @@ module.exports = {
             .findOneAndUpdate({ _id: req.params.id }, {
                 $push: {
                     pollingAddress: {
-                        name: req.body.Name,
-                        address: req.body.Address,
-                        hours: req.body.Hours
+                        name: req.body.name,
+                        address: req.body.address,
+                        hours: req.body.hours
                     }
                 }
             })
             .then(dbUser => res.json(dbUser))
             .catch(err => console.log(err));
-    }
+    },
+
+    // deletes a users saved events
+    deleteEvent: function (req, res) {
+        db.User
+            .findOneAndUpdate({ _id: req.params.id },
+                { $pull: { savedEvents: { _id: req.body.id } } },
+                { new: true }
+            )
+            .then(dbUser => res.json(dbUser))
+            .catch(err => console.log(err));
+    },
 }

@@ -28,6 +28,10 @@ export default {
 
     getSavedData: function (userID) {
         return axios.get("/api/users/" + userID);
-    }
+    },
+
+    deleteUserEvent: function (userID, body) {
+        return axios.put("/api/users/events/delete/" + userID, body);
+    },
 
 };
