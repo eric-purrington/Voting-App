@@ -9,12 +9,11 @@ import ZipSearchForm from "../../components/ZipSearchForm";
 import API from "../../utils/API";
 import Footer from "../../components/Footer";
 import OfficialContainer from "../../components/OfficialContainer";
-//import AddressSearchForm from "../../components/AddressSearchForm";
+
 
 function WherePage() {
     const [address, setAddress] = useState("");
     const [addresses, setAddresses] = useState([]);
-    const [results, setResults] = useState([]);
 
 
     const handleAddressChange = (event) => {
@@ -57,15 +56,16 @@ function WherePage() {
             </Cover>
             <ContentContainer>
                 <form>
-                    <input
+                    <input class = ".uk-form-width-large"
                         name="Search"
                         value={address}
                         onChange={handleAddressChange}
                         placeholder="address"
                     />
-                    <button
-                        onClick={handleSubmit}
-                    />
+                    <div class="uk-button-group">
+                        <button class="uk-button uk-button-default" onClick={handleSubmit}> Search</button>
+                    </div>
+                    
                 </form>
             <OfficialContainer>
                 {addresses.map(addr =>
