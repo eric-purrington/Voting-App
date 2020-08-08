@@ -6,7 +6,12 @@ function OfficialCard(props) {
 
     function handleOfficialSave() {
         let userID = window.location.pathname.slice(3);
-        let body = {title: props.title, name: props.name, phone: props.phone, email: props.email}
+        let body = {
+            title: props.title, 
+            name: props.name, 
+            phone: props.phone, 
+            email: props.email,
+            party: props.party}
         UserAPI.addOfficial(userID, body);
     }
 
