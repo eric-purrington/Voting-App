@@ -56,12 +56,13 @@ function WherePage() {
             </Cover>
             <ContentContainer>
                 <form>
-                    <input class = ".uk-form-width-large"
-                        name="Search"
+                    {/* <input class = ".uk-form-width-large" */}
+                    <div class="uk-margin">
+                         <input class="uk-input uk-form-width-large" type="text" name="Search"
                         value={address}
                         onChange={handleAddressChange}
-                        placeholder="address"
-                    />
+                        placeholder="address" />
+                    </div>
                     <div class="uk-button-group">
                         <button class="uk-button uk-button-default" onClick={handleSubmit}> Search</button>
                     </div>
