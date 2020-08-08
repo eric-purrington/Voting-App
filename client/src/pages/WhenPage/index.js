@@ -43,6 +43,7 @@ function WhenPage() {
                             <DashCalendar
                                 elections={results}
                                 icon={loggedIn ? "icon: plus-circle" : ""}
+                                addOrDel="add"
                             />
                         </div>
                     </div>

@@ -7,11 +7,11 @@ function WhoCard(props) {
     const [savedOfficials, setSavedOfficials] = useState([]);
 
     useEffect(() => {
-        // UserAPI.getSavedData("5f2cc3b1a4926a14441e3383")
-        //     .then(res => {
-        //         setSavedOfficials(res.data.repDetails)
-        //     })
-        //     .catch(err => console.log(err));
+        UserAPI.getSavedData("5f2cc3b1a4926a14441e3383")
+            .then(res => {
+                setSavedOfficials(res.data.repDetails)
+            })
+            .catch(err => console.log(err));
     }, []);
 
     return (
