@@ -28,26 +28,26 @@ function DashCalendar(props) {
         openDayCard(false);
     }
 
-    const handleAddEvent = (index) => {
+    // const handleAddEvent = (index) => {
 
-        let newEvent = {
-            date: activeDay.day,
-            name: activeDay.elections[index].name
-        };
+    //     let newEvent = {
+    //         date: activeDay.day,
+    //         name: activeDay.elections[index].name
+    //     };
 
-        UserAPI.addUserEvent("5f2cc3b1a4926a14441e3383", newEvent)
-            .then(() => {
-                alert("Event saved to Dashboard!")
-            })
-            .catch(err => console.log(err));
-    };
+    //     UserAPI.addUserEvent("5f2cc3b1a4926a14441e3383", newEvent)
+    //         .then(() => {
+    //             alert("Event saved to Dashboard!")
+    //         })
+    //         .catch(err => console.log(err));
+    // };
 
     const handleIconClick = (index) => {
-        if (props.addOrDel === "add") {
-            handleAddEvent(index);
-        } else if (props.addOrDel === "delete") {
-            console.log("delete")
-        }
+        // if (props.addOrDel === "add") {
+        //     handleAddEvent(index);
+        // } else if (props.addOrDel === "delete") {
+        //     console.log("delete")
+        // }
     }
 
     return (

@@ -10,17 +10,17 @@ function WhenCard(props) {
     const [savedEvents, setSavedEvents] = useState([]);
 
     useEffect(() => {
-        getSaved();
+        // getSaved();
     }, []);
 
-    const getSaved = () => {
-        UserAPI.getSavedData("5f2cc3b1a4926a14441e3383")
-            .then(res => {
-                console.log(res.data.savedEvents);
-                setSavedEvents(res.data.savedEvents)
-            })
-            .catch(err => console.log(err));
-    };
+    // const getSaved = () => {
+    //     UserAPI.getSavedData("5f2cc3b1a4926a14441e3383")
+    //         .then(res => {
+    //             console.log(res.data.savedEvents);
+    //             setSavedEvents(res.data.savedEvents)
+    //         })
+    //         .catch(err => console.log(err));
+    // };
 
     const handleSubmitEvent = (event) => {
         event.preventDefault();
@@ -33,11 +33,11 @@ function WhenCard(props) {
         event.target.name.value = "";
         event.target.date.value = "";
 
-        UserAPI.addUserEvent("5f2cc3b1a4926a14441e3383", newEvent)
-            .then(() => {
-                getSaved();
-            })
-            .catch(err => console.log(err));
+        // UserAPI.addUserEvent("5f2cc3b1a4926a14441e3383", newEvent)
+        //     .then(() => {
+        //         getSaved();
+        //     })
+        //     .catch(err => console.log(err));
     };
 
     return (

@@ -22,7 +22,7 @@ function OfficialCard(props) {
                 <p className="uk-card-title official-card-info">Phone: {props.phone}</p>
                 <p className="uk-card-title official-card-info">Email: {props.email}</p>
                 {/* onClick={handleOfficialSave} here */}
-                <span>Save Official to Dash</span>
+                <span className="save-official">Save Official to Dash</span>
             </div>
         </div>
     )
