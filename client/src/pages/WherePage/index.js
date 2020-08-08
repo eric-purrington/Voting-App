@@ -1,56 +1,83 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 import Cover from "../../components/Cover";
 import image from "../../assets/images/where.jpg";
 import ContentContainer from "../../components/ContentContainer";
+import AddressCard from "../../components/AddressCard";
 import ZipSearchForm from "../../components/ZipSearchForm";
 // import UserContext from "../../utils/userContext";
 import API from "../../utils/API";
 import Footer from "../../components/Footer";
-import AddressContainer from "../../components/AddressContainer";
-import AddressSearchForm from "../../components/AddressSearchForm";
+import OfficialContainer from "../../components/OfficialContainer";
+//import AddressSearchForm from "../../components/AddressSearchForm";
 
 function WherePage() {
     const [address, setAddress] = useState("");
+    const [addresses, setAddresses] = useState([]);
     const [results, setResults] = useState([]);
 
-    useEffect(() => {
-        // loadUser();
+
+    const handleAddressChange = (event) => {
+        console.log(event.target.value);
+        setAddress(event.target.value);
+        //whereData(address);
+    }
+    function handleSubmit(event) {
+        event.preventDefault();
+        console.log("Submit button has been clicked");
         whereData(address);
-    },[]);
+    }
 
     function whereData(param) {
         var modifiedResults = [];
+        console.log("Inside WHEREDATA()");
+        console.log("param" + param);
         API.getVoterInfo(param).then(res => {
-            for(var i = 0; i < res.data.pollingLocations.length ; i++){
+            console.log("I am inside API getVoterInfo()");
+            console.log(res);
+            for (var i = 0; i < res.data.pollingLocations.length ; i++) {
                 var address = {};
-                address.locationName = res.data.pollingLocations[i].locationName;
-                address.line1 = res.data.pollingLocations[i].line1;
-                address.line2 = res.data.pollingLocations[i].line2;
-                address.line3 = res.data.pollingLocations[i].line3;
-                address.city = res.data.pollingLocations[i].city;
-                address.state = res.data.pollingLocations[i].state;
-                address.zip = res.data.pollingLocations[i].zip;
+                address.locationName = res.data.pollingLocations[i].address.locationName;
+                console.log(address.locationName);
+                address.line1 = res.data.pollingLocations[i].address.line1;
+                address.city = res.data.pollingLocations[i].address.city;
+                address.state = res.data.pollingLocations[i].address.state;
+                address.zip = res.data.pollingLocations[i].address.zip;
+                modifiedResults.push(address);
             }
+         setAddresses(modifiedResults);
+         console.log("Results after Loop ==>",modifiedResults);
         })
-    }
 
-    const handleAddressChange = (event) => {
-        event.preventDefault();
-        setAddress(event.target.address.value);
-        whereData(address);
     }
 
     return (
         <div>
             <Cover image={image} header={"WHERE"}>
-                {/* Need address for this page */}
-                <AddressSearchForm handleAddressChange={handleAddressChange} />
             </Cover>
             <ContentContainer>
-                <AddressContainer>
-
-                </AddressContainer>
+                <form>
+                    <input
+                        name="Search"
+                        value={address}
+                        onChange={handleAddressChange}
+                        placeholder="address"
+                    />
+                    <button
+                        onClick={handleSubmit}
+                    />
+                </form>
+            <OfficialContainer>
+                {addresses.map(addr =>
+                    <AddressCard
+                        key={addr.line1}
+                        locationName={addr.locationName}
+                        line1={addr.line1}
+                        city={addr.city}
+                        state={addr.state}
+                        zip={addr.zip} />
+                )}
+            </OfficialContainer>
             </ContentContainer>
             <Footer />
         </div>
@@ -58,3 +85,16 @@ function WherePage() {
 };
 
 export default WherePage;
+
+
+
+
+
+ // useEffect(() =>{
+    //     whereData(address);
+    // },[]);
+ // async function handleAddressChange(event) {
+    //     // console.log(“The input value==>“, event.target.value);
+    //     await setAddress(event.target.value);
+    //    //whereData(address);
+    // }
