@@ -3,7 +3,7 @@ import "./style.css";
 
 function ZipSearchForm(props) {
     return (
-        <form className="uk-form-horizontal" onSubmit={props.handleAddressChange}>
+        <form className="uk-form-horizontal" onSubmit={props.handleZipChange}>
             <label className="zip-form-label">Search By Zipcode</label>
             <div className="zip-input">
                 <div uk-form-custom="target: true">

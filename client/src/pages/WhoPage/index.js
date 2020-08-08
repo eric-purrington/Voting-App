@@ -10,23 +10,23 @@ import API from "../../utils/API";
 import Footer from "../../components/Footer";
 
 function WhoPage() {
+    const [loggedIn, setLoggedIn] = useState(false);
     const [address, setAddress] = useState("98115");
     const [results, setResults] = useState([]);
 
     useEffect(() => {
-        // if (user) {
-        //     loadUser();
-        // }
+        if (loggedIn) {
+            loadUser();
+        }
         whoData(address);
     }, []);
 
-    // function loadUser() {
-    //     // Need to figure out how to get user's id 
-    //     API.getSavedData(id).then(user => {
-    //         let modifiedAddress = user.homeAddress.replace(/,./g, "").replace(/ /g, "%20");
-    //         setAddress(modifiedAddress);
-    //     });
-    // }
+    function loadUser() {
+        API.getSavedData(userID).then(user => {
+            let modifiedAddress = user.homeAddress.replace(/,./g, "").replace(/ /g, "%20");
+            setAddress(modifiedAddress);
+        });
+    }
 
     function whoData(param) {
         var modifiedResults = [];
@@ -51,7 +51,7 @@ function WhoPage() {
         });
     }
 
-    const handleAddressChange = (event) => {
+    const handleZipChange = (event) => {
         event.preventDefault();
         setAddress(event.target.zipcode.value);
         whoData(address);
@@ -60,12 +60,13 @@ function WhoPage() {
     return (
         <div>
             <Cover image={image} header={"WHO"}>
-                <ZipSearchForm handleAddressChange={handleAddressChange} />
+                <ZipSearchForm handleZipChange={handleZipChange} />
             </Cover>
             <ContentContainer>
                 <OfficialContainer>
                     {results.map(official => 
-                        <OfficialCard 
+                        <OfficialCard
+                        loggedIn={loggedIn}
                         key={official.name} 
                         name={official.name} 
                         title={official.title}

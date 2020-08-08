@@ -3,16 +3,12 @@ import UserAPI from "../../utils/UserAPI"
 import "./style.css";
 
 function OfficialCard(props) {
-    //rough estimate of what this will look like
-    // function handleOfficialSave() {
-    //     if(user) {
-    //         let userID = window.location.pathname.slice(3);
-    //         let body = {title: props.title, name: props.name, phone: props.phone, email: props.email}
-    //         UserAPI.addOfficial(userID, body);
-    //     } else {
-    //         redirect to login?
-    //     }
-    // }
+
+    function handleOfficialSave() {
+        let userID = window.location.pathname.slice(3);
+        let body = {title: props.title, name: props.name, phone: props.phone, email: props.email}
+        UserAPI.addOfficial(userID, body);
+    }
 
     return (
         <div>
@@ -21,8 +17,7 @@ function OfficialCard(props) {
                 <p className="uk-card-title official-card-info">{props.name}</p>
                 <p className="uk-card-title official-card-info">Phone: {props.phone}</p>
                 <p className="uk-card-title official-card-info">Email: {props.email}</p>
-                {/* onClick={handleOfficialSave} here */}
-                <span className="save-official">Save Official to Dash</span>
+                {props.loggedIn ? <span onClick={handleOfficialSave} className="save-official">Save Official to Dash</span> : ""}
             </div>
         </div>
     )

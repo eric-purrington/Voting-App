@@ -3,18 +3,21 @@ import "./style.css";
 import Cover from "../../components/Cover";
 import image from "../../assets/images/where.jpg";
 import ContentContainer from "../../components/ContentContainer";
-import ZipSearchForm from "../../components/ZipSearchForm";
+import AddressSearchForm from "../../components/AddressSearchForm";
 // import UserContext from "../../utils/userContext";
 import API from "../../utils/API";
 import Footer from "../../components/Footer";
 
 
 function WherePage() {
+    const [loggedIn, setLoggedIn] = useState(false);
     const [address, setAddress] = useState("9%20Longbow%20Ln%20Pinedale%20WY%2082941");
     // const [results, setResults] = useState([]);
 
     useEffect(() => {
-        // loadUser();
+        if(loggedIn) {
+            loadUser();
+        }
         whereData(address);
     });
 
@@ -43,7 +46,7 @@ function WherePage() {
         <div>
             <Cover image={image} header={"WHERE"}>
                 {/* Need address for this page */}
-                <ZipSearchForm handleAddressChange={handleAddressChange} />
+                <AddressSearchForm handleAddressChange={handleAddressChange} />
             </Cover>
             <ContentContainer>
 
