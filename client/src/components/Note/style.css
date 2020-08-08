@@ -1,0 +1,15 @@
+
+.noteContainer{
+    
+    color: black !important;
+    height: 100px;
+    width: 800px;
+    border: solid .5px;
+}
+.noteAlert{
+    text-align: center;
+    margin :10px;
+}
+.h4{
+    text-align: center;
+}

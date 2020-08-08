@@ -5,13 +5,11 @@ import "./style.css";
 function AddressCard(props) {
 
     return (
-        <div>
-            <div id={props.line1.slice(0, 3)} className="uk-card uk-card-default uk-card-hover uk-card-body officials-card">
-                <p>Location Name:{props.locationName}</p>
+        <div className = "addressCardContainer">
+            <div id={props.line1.slice(0, 3)} className="card">
+                <p>Location: {props.locationName}</p>
                 <p>Address: {props.line1}</p>                
-                <p> {props.city}</p>
-                <p>State: {props.state}</p>
-                <p>Zip: {props.zip}</p>
+                <p> {props.city} {props.state} {props.zip}</p>
             </div>
         </div>
     )

@@ -9,7 +9,7 @@ import ZipSearchForm from "../../components/ZipSearchForm";
 import API from "../../utils/API";
 import Footer from "../../components/Footer";
 import OfficialContainer from "../../components/OfficialContainer";
-
+import Note from "../../components/Note"
 
 function WherePage() {
     const [address, setAddress] = useState("");
@@ -51,23 +51,22 @@ function WherePage() {
     }
 
     return (
-        <div>
+        <div className = "whereContainer">
             <Cover image={image} header={"WHERE"}>
             </Cover>
             <ContentContainer>
                 <form>
                     {/* <input class = ".uk-form-width-large" */}
                     <div class="uk-margin">
-                         <input class="uk-input uk-form-width-large" type="text" name="Search"
+                        Enter Address here: 
+                        <input class="uk-input uk-form-width-large" type="text" name="Search"
                         value={address}
                         onChange={handleAddressChange}
                         placeholder="address" />
+                        <button class="uk-button uk-button-default" onClick={handleSubmit}><span uk-icon="search"> </span></button>
                     </div>
-                    <div class="uk-button-group">
-                        <button class="uk-button uk-button-default" onClick={handleSubmit}> Search</button>
-                    </div>
-                    
                 </form>
+                <Note />
             <OfficialContainer>
                 {addresses.map(addr =>
                     <AddressCard
@@ -76,7 +75,8 @@ function WherePage() {
                         line1={addr.line1}
                         city={addr.city}
                         state={addr.state}
-                        zip={addr.zip} />
+                        zip={addr.zip}
+                         />
                 )}
             </OfficialContainer>
             </ContentContainer>
