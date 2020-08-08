@@ -7,7 +7,7 @@ import Footer from "../../components/Footer";
 import HomeCountdown from "../../components/HomeCountdown";
 
 function HomePage() {
-     return (
+    return (
         <div>
             <BackgroundImage image={homePic}>
                 <nav className="uk-navbar-container home-navbar" uk-navbar="true">

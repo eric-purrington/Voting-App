@@ -16,17 +16,17 @@ function WhoPage() {
 
     useEffect(() => {
         if (loggedIn) {
-            loadUser();
+            // loadUser();
         }
         whoData(address);
     }, []);
 
-    function loadUser() {
-        API.getSavedData(userID).then(user => {
-            let modifiedAddress = user.homeAddress.replace(/,./g, "").replace(/ /g, "%20");
-            setAddress(modifiedAddress);
-        });
-    }
+    // function loadUser() {
+    //     API.getSavedData(userID).then(user => {
+    //         let modifiedAddress = user.homeAddress.replace(/,./g, "").replace(/ /g, "%20");
+    //         setAddress(modifiedAddress);
+    //     });
+    // }
 
     function whoData(param) {
         var modifiedResults = [];

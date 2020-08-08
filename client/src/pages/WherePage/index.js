@@ -16,7 +16,7 @@ function WherePage() {
 
     useEffect(() => {
         if(loggedIn) {
-            loadUser();
+            // loadUser();
         }
         whereData(address);
     });
