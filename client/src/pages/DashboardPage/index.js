@@ -9,7 +9,7 @@ import CoverCountdown from "../../components/CoverCountdown";
 import WhenCard from "../../components/WhenCard";
 import WhereCard from "../../components/WhereCard";
 import WhoCard from "../../components/WhoCard";
-import Loading from "../../components/Loading";
+// import Loading from "../../components/Loading";
 
 function DashboardPage() {
     return (
