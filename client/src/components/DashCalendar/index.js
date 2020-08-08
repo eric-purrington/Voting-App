@@ -31,32 +31,32 @@ function DashCalendar(props) {
 
     const handleAddEvent = (index) => {
 
-        let newEvent = {
-            date: activeDay.day,
-            name: activeDay.elections[index].name
-        };
+        // let newEvent = {
+        //     date: activeDay.day,
+        //     name: activeDay.elections[index].name
+        // };
 
-        UserAPI.addUserEvent("5f2cc3b1a4926a14441e3383", newEvent)
-            .then(() => {
-                alert("Event saved to Dashboard!")
-            })
-            .catch(err => console.log(err));
+        // UserAPI.addUserEvent("5f2cc3b1a4926a14441e3383", newEvent)
+        //     .then(() => {
+        //         alert("Event saved to Dashboard!")
+        //     })
+        //     .catch(err => console.log(err));
     };
 
     const handleDeleteEvent = (index) => {
 
-        let deleteItem = activeDay.elections.filter(election => {
-            return activeDay.elections.indexOf(election) == index;
-        });
+        // let deleteItem = activeDay.elections.filter(election => {
+        //     return activeDay.elections.indexOf(election) == index;
+        // });
 
-        let deleteID = { id: deleteItem[0]._id };
+        // let deleteID = { id: deleteItem[0]._id };
 
-        UserAPI.deleteUserEvent("5f2cc3b1a4926a14441e3383", deleteID)
-            .then((res) => {
-                getSavedEvents();
-                setActiveDay({ day: activeDay.day, elections: res.data.savedEvents.filter(el => el.date === activeDay.day) });
-            })
-            .catch(err => console.log(err));
+        // UserAPI.deleteUserEvent("5f2cc3b1a4926a14441e3383", deleteID)
+        //     .then((res) => {
+        //         getSavedEvents();
+        //         setActiveDay({ day: activeDay.day, elections: res.data.savedEvents.filter(el => el.date === activeDay.day) });
+        //     })
+        //     .catch(err => console.log(err));
     };
 
     const handleIconClick = (index) => {
