@@ -13,11 +13,14 @@ function WhenCard(props) {
         // getSaved();
     }, []);
 
-    const getSaved = () => {
-        // UserAPI.getSavedData("5f2cc3b1a4926a14441e3383")
-        //     .then(res => setSavedEvents(res.data.savedEvents))
-        //     .catch(err => console.log(err));
-    };
+    // const getSaved = () => {
+    //     UserAPI.getSavedData("5f2cc3b1a4926a14441e3383")
+    //         .then(res => {
+    //             console.log(res.data.savedEvents);
+    //             setSavedEvents(res.data.savedEvents)
+    //         })
+    //         .catch(err => console.log(err));
+    // };
 
     const handleSubmitEvent = (event) => {
         event.preventDefault();
@@ -43,6 +46,7 @@ function WhenCard(props) {
                 <DashCalendar
                     elections={savedEvents}
                     icon="icon: minus-circle"
+                    addOrDel="delete"
                 />
             </div>
             <div>

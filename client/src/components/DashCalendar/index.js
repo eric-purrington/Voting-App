@@ -3,12 +3,14 @@ import "./style.css";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import moment from "moment";
+import UserAPI from "../../utils/UserAPI";
 
 function DashCalendar(props) {
     const [dayCard, openDayCard] = useState(false);
     const [activeDay, setActiveDay] = useState({
         day: "",
-        elections: []
+        elections: [],
+        addOrDel: props.addOrDel
     });
 
     const handleDayClick = (event) => {
@@ -24,6 +26,28 @@ function DashCalendar(props) {
 
     const handleCloseClick = () => {
         openDayCard(false);
+    }
+
+    // const handleAddEvent = (index) => {
+
+    //     let newEvent = {
+    //         date: activeDay.day,
+    //         name: activeDay.elections[index].name
+    //     };
+
+    //     UserAPI.addUserEvent("5f2cc3b1a4926a14441e3383", newEvent)
+    //         .then(() => {
+    //             alert("Event saved to Dashboard!")
+    //         })
+    //         .catch(err => console.log(err));
+    // };
+
+    const handleIconClick = (index) => {
+        // if (props.addOrDel === "add") {
+        //     handleAddEvent(index);
+        // } else if (props.addOrDel === "delete") {
+        //     console.log("delete")
+        // }
     }
 
     return (
@@ -49,7 +73,7 @@ function DashCalendar(props) {
                                     return (
                                         <div key={index}>
                                             <p className="alert-election-name">
-                                                <span className="addDel-icon" uk-icon={props.icon}></span>
+                                                <span onClick={() => handleIconClick(index)} className="addDel-icon" uk-icon={props.icon} id={index}></span>
                                                 {el.name}
                                             </p>
                                         </div>

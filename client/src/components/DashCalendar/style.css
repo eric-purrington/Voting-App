@@ -61,3 +61,8 @@
 .addDel-icon:hover {
     color: rgb(66, 66, 66);
 }
+
+.add-btn {
+    border: none;
+    background: none;
+}
