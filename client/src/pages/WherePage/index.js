@@ -10,11 +10,11 @@ import API from "../../utils/API";
 import Footer from "../../components/Footer";
 import OfficialContainer from "../../components/OfficialContainer";
 import Note from "../../components/Note"
-
+import PollingInfo from "../../components/PollingInfo";
 function WherePage() {
     const [address, setAddress] = useState("");
     const [addresses, setAddresses] = useState([]);
-
+    const [pollingInfo,setPollingInfo] = useState([]);
 
     const handleAddressChange = (event) => {
         console.log(event.target.value);
@@ -29,23 +29,37 @@ function WherePage() {
 
     function whereData(param) {
         var modifiedResults = [];
+        var pollingResults = [];
         console.log("Inside WHEREDATA()");
         console.log("param" + param);
         API.getVoterInfo(param).then(res => {
             console.log("I am inside API getVoterInfo()");
             console.log(res);
+            
             for (var i = 0; i < res.data.pollingLocations.length ; i++) {
+                for(var j=0;j< res.data.state.length ;j++){
                 var address = {};
+                var info = {};
+                info.name = res.data.state[i].electionAdministrationBody.name;
+                info.electionInfoUrl = res.data.state[i].electionAdministrationBody.electionInfoUrl;
+                info.ballotInfoUrl = res.data.state[i].electionAdministrationBody.ballotInfoUrl;
+                info.electionRegistrationUrl = res.data.state[i].electionAdministrationBody.electionRegistrationUrl;
+                info.electionRegistrationConfirmationUrl = res.data.state[i].electionAdministrationBody.electionRegistrationConfirmationUrl;
                 address.locationName = res.data.pollingLocations[i].address.locationName;
-                console.log(address.locationName);
                 address.line1 = res.data.pollingLocations[i].address.line1;
                 address.city = res.data.pollingLocations[i].address.city;
                 address.state = res.data.pollingLocations[i].address.state;
                 address.zip = res.data.pollingLocations[i].address.zip;
+                // address.ballotInfoUrl =  res.data.ballotInfoUrl;
+                // console.log("BallotInfoURL",res.data.ballotInfoUrl)
                 modifiedResults.push(address);
-            }
-         setAddresses(modifiedResults);
+                pollingResults.push(info);
+                setPollingInfo(pollingResults)
+                setAddresses(modifiedResults);
          console.log("Results after Loop ==>",modifiedResults);
+         console.log("polling info results ==>",pollingInfo)
+            }
+        }
         })
 
     }
@@ -57,7 +71,7 @@ function WherePage() {
             <ContentContainer>
                 <form>
                     {/* <input class = ".uk-form-width-large" */}
-                    <div class="uk-margin">
+                    <div className="uk-margin">
                         Enter Address here: 
                         <input class="uk-input uk-form-width-large" type="text" name="Search"
                         value={address}
@@ -77,6 +91,18 @@ function WherePage() {
                         state={addr.state}
                         zip={addr.zip}
                          />
+                )}
+                </OfficialContainer>
+                <OfficialContainer>
+                {pollingInfo.map(info =>
+                    <PollingInfo 
+                        key = {info.name}
+                        name = {info.name}
+                        electionInfoUrl = {info.electionInfoUrl}
+                        ballotInfoUrl = {info.ballotInfoUrl}
+                        electionRegistrationUrl = {info.electionRegistrationUrl}
+                        electionRegistrationConfirmationUrl = {info.electionRegistrationConfirmationUrl}
+                    />
                 )}
             </OfficialContainer>
             </ContentContainer>
