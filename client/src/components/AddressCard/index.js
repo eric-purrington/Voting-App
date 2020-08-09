@@ -1,7 +1,6 @@
 import React from "react";
 import UserAPI from "../../utils/UserAPI"
 import "./style.css";
-import PollingInfo from "../PollingInfo"
 function AddressCard(props) {
 
     return (
