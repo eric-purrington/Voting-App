@@ -69,11 +69,10 @@ function WherePage() {
             <Cover image={image} header={"WHERE"}>
             </Cover>
             <ContentContainer>
-                <form>
-                    {/* <input class = ".uk-form-width-large" */}
-                    <div className="uk-margin">
+                <form className = "form">
+                    <div className="uk-margin formInput">
                         Enter Address here: 
-                        <input class="uk-input uk-form-width-large" type="text" name="Search"
+                        <input class="uk-input uk-form-width-large input" type="text" name="Search"
                         value={address}
                         onChange={handleAddressChange}
                         placeholder="address" />

@@ -1,9 +1,9 @@
 
 .noteContainer{
-    background-color: ;
+    background-color: #EF9A9A;
     color: black !important;
     height: 100px;
-    width: 800px;
+    width: 750px;
     border: solid .5px;
 }
 .noteAlert{
@@ -11,5 +11,10 @@
     margin :10px;
 }
 .h4{
+    color: grey;
     text-align: center;
+    text-decoration: underline;
+}
+.uk-alert-warning{
+    width:750px;
 }
