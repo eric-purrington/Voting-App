@@ -5,7 +5,6 @@ import image from "../../assets/images/where.jpg";
 import ContentContainer from "../../components/ContentContainer";
 import AddressCard from "../../components/AddressCard";
 import ZipSearchForm from "../../components/ZipSearchForm";
-// import UserContext from "../../utils/userContext";
 import API from "../../utils/API";
 import Footer from "../../components/Footer";
 import OfficialContainer from "../../components/OfficialContainer";
@@ -19,7 +18,6 @@ function WherePage() {
     const handleAddressChange = (event) => {
         console.log(event.target.value);
         setAddress(event.target.value);
-        //whereData(address);
     }
     function handleSubmit(event) {
         event.preventDefault();
@@ -111,16 +109,3 @@ function WherePage() {
 };
 
 export default WherePage;
-
-
-
-
-
- // useEffect(() =>{
-    //     whereData(address);
-    // },[]);
- // async function handleAddressChange(event) {
-    //     // console.log(“The input value==>“, event.target.value);
-    //     await setAddress(event.target.value);
-    //    //whereData(address);
-    // }
