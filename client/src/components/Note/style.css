@@ -11,10 +11,12 @@
     margin :10px;
 }
 .h4{
-    color: grey;
     text-align: center;
     text-decoration: underline;
 }
 .uk-alert-warning{
-    width:750px;
+    background-color : #eca76a;
+}
+p{
+    color:grey ;
 }
