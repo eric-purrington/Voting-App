@@ -12,7 +12,7 @@ function SignupForm(props) {
             email: event.target.signupEmail.value,
             password: event.target.signupPassword.value,
             homeAddress:
-                `${event.target.signupAddress.value} ${event.target.signupCity.value} ${event.target.singupState.value} ${event.target.signupZip.value}`,
+                `${event.target.signupAddress.value} ${event.target.signupCity.value} ${event.target.singupState.value} ${event.target.signupZip.value}`
         };
         console.log(newUser);
         UserAPI.addUser(newUser)
