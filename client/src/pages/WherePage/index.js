@@ -3,29 +3,14 @@ import "./style.css";
 import Cover from "../../components/Cover";
 import image from "../../assets/images/where.jpg";
 import ContentContainer from "../../components/ContentContainer";
-<<<<<<< HEAD
-import AddressSearchForm from "../../components/AddressSearchForm";
-// import UserContext from "../../utils/userContext";
-=======
 import AddressCard from "../../components/AddressCard";
 import ZipSearchForm from "../../components/ZipSearchForm";
->>>>>>> cc9bf345fb08ab22a1f9c400ce3ac851b559fdbb
 import API from "../../utils/API";
 import Footer from "../../components/Footer";
 import OfficialContainer from "../../components/OfficialContainer";
 import Note from "../../components/Note"
 import PollingInfo from "../../components/PollingInfo";
 function WherePage() {
-<<<<<<< HEAD
-    const [loggedIn, setLoggedIn] = useState(false);
-    const [address, setAddress] = useState("9%20Longbow%20Ln%20Pinedale%20WY%2082941");
-    // const [results, setResults] = useState([]);
-
-    useEffect(() => {
-        if(loggedIn) {
-            // loadUser();
-        }
-=======
     const [address, setAddress] = useState("");
     const [addresses, setAddresses] = useState([]);
     const [pollingInfo, setPollingInfo] = useState([]);
@@ -35,7 +20,6 @@ function WherePage() {
     }
     function handleSubmit(event) {
         event.preventDefault();
->>>>>>> cc9bf345fb08ab22a1f9c400ce3ac851b559fdbb
         whereData(address);
     }
 
@@ -70,11 +54,6 @@ function WherePage() {
     return (
         <div className="whereContainer">
             <Cover image={image} header={"WHERE"}>
-<<<<<<< HEAD
-                {/* Need address for this page */}
-                <AddressSearchForm handleAddressChange={handleAddressChange} />
-=======
->>>>>>> cc9bf345fb08ab22a1f9c400ce3ac851b559fdbb
             </Cover>
             <ContentContainer>
                 <form className="form">
