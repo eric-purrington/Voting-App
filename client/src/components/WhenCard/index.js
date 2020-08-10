@@ -5,9 +5,20 @@ import moment from "moment";
 import DashCalendar from "../../components/DashCalendar";
 import EventForm from "../../components/EventForm";
 import UserAPI from "../../utils/UserAPI";
+import SavedEventsContext from "../../utils/SavedEventsContext";
 
 function WhenCard(props) {
-    const [savedEvents, setSavedEvents] = useState([]);
+    const [savedEvents, setSavedEvents] = useState({
+        events: [],
+        getSavedEvents: () => {
+            // UserAPI.getSavedData("5f2cc3b1a4926a14441e3383")
+            //     .then(res => {
+            //         console.log(res.data.savedEvents);
+            //         setSavedEvents({ ...savedEvents, events: res.data.savedEvents })
+            //     })
+            //     .catch(err => console.log(err));
+        }
+    });
 
     useEffect(() => {
         // getSaved();
@@ -15,7 +26,10 @@ function WhenCard(props) {
 
     const getSaved = () => {
         // UserAPI.getSavedData("5f2cc3b1a4926a14441e3383")
-        //     .then(res => setSavedEvents(res.data.savedEvents))
+        //     .then(res => {
+        //         console.log(res.data.savedEvents);
+        //         setSavedEvents({ ...savedEvents, events: res.data.savedEvents })
+        //     })
         //     .catch(err => console.log(err));
     };
 
@@ -40,10 +54,13 @@ function WhenCard(props) {
     return (
         <div className="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@m uk-margin dash-card uk-text-center" uk-grid="true">
             <div className="uk-flex-last@s uk-card-media-right uk-cover-container">
-                <DashCalendar
-                    elections={savedEvents}
-                    icon="icon: minus-circle"
-                />
+                <SavedEventsContext.Provider value={savedEvents}>
+                    <DashCalendar
+                        elections={savedEvents.events}
+                        icon="icon: minus-circle"
+                        addOrDel="delete"
+                    />
+                </SavedEventsContext.Provider>
             </div>
             <div>
                 <div className="uk-card-body">

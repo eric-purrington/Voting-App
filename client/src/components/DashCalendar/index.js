@@ -1,15 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./style.css";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import moment from "moment";
+import UserAPI from "../../utils/UserAPI";
+import SavedEventsContext from "../../utils/SavedEventsContext";
 
 function DashCalendar(props) {
     const [dayCard, openDayCard] = useState(false);
     const [activeDay, setActiveDay] = useState({
         day: "",
-        elections: []
+        elections: [],
+        addOrDel: props.addOrDel
     });
+    const { events, getSavedEvents } = useContext(SavedEventsContext);
 
     const handleDayClick = (event) => {
         openDayCard(true);
@@ -19,12 +23,45 @@ function DashCalendar(props) {
         });
 
         setActiveDay({ day: date, elections: elections });
-
     };
 
     const handleCloseClick = () => {
         openDayCard(false);
-    }
+    };
+
+    const handleAddEvent = (index) => {
+
+        // let newEvent = {
+        //     date: activeDay.day,
+        //     name: activeDay.elections[index].name
+        // };
+
+        // UserAPI.addUserEvent("5f2cc3b1a4926a14441e3383", newEvent)
+        //     .then(() => {
+        //         alert("Event saved to Dashboard!")
+        //     })
+        //     .catch(err => console.log(err));
+    };
+
+    const handleDeleteEvent = (index) => {
+
+        // let deleteItem = activeDay.elections.filter(election => {
+        //     return activeDay.elections.indexOf(election) == index;
+        // });
+
+        // let deleteID = { id: deleteItem[0]._id };
+
+        // UserAPI.deleteUserEvent("5f2cc3b1a4926a14441e3383", deleteID)
+        //     .then((res) => {
+        //         getSavedEvents();
+        //         setActiveDay({ day: activeDay.day, elections: res.data.savedEvents.filter(el => el.date === activeDay.day) });
+        //     })
+        //     .catch(err => console.log(err));
+    };
+
+    const handleIconClick = (index) => {
+        props.addOrDel === "add" ? handleAddEvent(index) : handleDeleteEvent(index);
+    };
 
     return (
         <div>
@@ -49,7 +86,9 @@ function DashCalendar(props) {
                                     return (
                                         <div key={index}>
                                             <p className="alert-election-name">
-                                                <span className="addDel-icon" uk-icon={props.icon}></span>
+                                                <span
+                                                    onClick={() => handleIconClick(index)} className="addDel-icon" uk-icon={props.icon} id={index} data-id={el._id}>
+                                                </span>
                                                 {el.name}
                                             </p>
                                         </div>

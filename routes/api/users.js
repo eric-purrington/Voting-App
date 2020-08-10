@@ -28,4 +28,9 @@ router
   .route("/places/:id")
   .put(usersController.addPollingSite);
 
+// Matches with "/api/users/events/delete/:id"
+router
+  .route("/events/delete/:id")
+  .put(usersController.deleteEvent);
+
 module.exports = router;
