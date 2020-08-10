@@ -1,0 +1,22 @@
+
+.noteContainer{
+    background-color: #EF9A9A;
+    color: black !important;
+    height: 100px;
+    width: 750px;
+    border: solid .5px;
+}
+.noteAlert{
+    text-align: center;
+    margin :10px;
+}
+.h4{
+    text-align: center;
+    text-decoration: underline;
+}
+.uk-alert-warning{
+    background-color : #eca76a;
+}
+p{
+    color:grey ;
+}
