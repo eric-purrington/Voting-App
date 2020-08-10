@@ -17,7 +17,7 @@ function SignupForm(props) {
         console.log(newUser);
         UserAPI.addUser(newUser)
             .then(res => {
-                console.log(res);
+                console.log(res.data);
             })
             .catch(err => console.log(err));
     };
