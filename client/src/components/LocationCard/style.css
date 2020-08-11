@@ -1,0 +1,7 @@
+.uk-card .locationName, .uk-card .locationAdd {
+    color: black !important;
+}
+
+.uk-card {
+    border-radius: 50px;
+}

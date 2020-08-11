@@ -27,14 +27,5 @@ export default {
                 location: location
             }
         });
-    },
-
-    // getDistance: function(location1, location2) {
-    //     return axios.get("/api/getDistance", {
-    //         params: {
-    //             location1: location1,
-    //             location2: location2
-    //         }
-    //     });
-    // }
+    }
 }
