@@ -6,13 +6,13 @@ import OfficialsTable from "../../components/OfficialsTable";
 function WhoCard(props) {
     const [savedOfficials, setSavedOfficials] = useState([]);
 
-    // useEffect(() => {
-    //     UserAPI.getSavedData("5f2cc3b1a4926a14441e3383")
-    //         .then(res => {
-    //             setSavedOfficials(res.data.repDetails)
-    //         })
-    //         .catch(err => console.log(err));
-    // }, []);
+    useEffect(() => {
+        UserAPI.getSavedData("5f2f20919f27003eb7fa09b1")
+            .then(res => {
+                setSavedOfficials(res.data.repDetails)
+            })
+            .catch(err => console.log(err));
+    }, []);
 
     return (
         <div className="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin dash-card" uk-grid="true">
