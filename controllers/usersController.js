@@ -15,12 +15,12 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     create: function (req, res) {
-        bcrypt.hash(req.body.password, 12, function(error, hash) {
+        bcrypt.hash(req.body.password, 12, function (error, hash) {
             db.User
-            .create({...req.body, password:hash})
-            .then(dbUser => res.json(dbUser.id))
-            .catch(err => console.log(err));
-          });
+                .create({ ...req.body, password: hash })
+                .then(dbUser => res.json(dbUser.id))
+                .catch(err => console.log(err));
+        });
     },
     update: function (req, res) {
         db.User
