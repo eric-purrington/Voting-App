@@ -61,7 +61,7 @@ function WhenCard(props) {
                 </SavedEventsContext.Provider>
             </div>
             <div>
-                <div className="uk-card-body">
+                <div className="uk-card-body dash-card-body">
                     <h3 className="uk-card-title dash-card-title when-card-title">When</h3>
                     <hr className="dash-hr" />
                     <p className="dash-card-subtitle">Important Dates to Remember.</p>

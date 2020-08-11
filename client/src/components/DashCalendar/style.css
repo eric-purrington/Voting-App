@@ -25,9 +25,9 @@
     color: black !important;
 }
 
-.react-calendar__navigation__label__labelText {
-    font-size: 1.15rem !important;
-}
+/* .react-calendar__navigation__label__labelText {
+    font-size: .6rem !important;
+} */
 
 .highlight {
     background-color: #d27977a8 !important;
@@ -65,4 +65,17 @@
 .add-btn {
     border: none;
     background: none;
+}
+
+
+/* @media only screen and (max-width: 460px) {
+    .react-calendar__navigation__label__labelText {
+        font-size: .5 !important;
+    }
+} */
+
+@media only screen and (min-width: 461px) {
+    .react-calendar__navigation__label__labelText {
+        font-size: 20px !important;
+    }
 }
