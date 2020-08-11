@@ -44,3 +44,12 @@
 .my-account-btn:hover, .my-account-btn:focus {
     border: 1px solid white;
 }
+
+.dropdown-login {
+    color: rgb(160, 160, 160) !important;
+}
+
+.dropdown-login:hover {
+    color: rgb(102, 101, 101) !important;
+    text-decoration: none !important;
+}

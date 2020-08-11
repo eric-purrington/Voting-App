@@ -3,6 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Logout from "../Logout";
 import "./style.css";
+import LoginBtn from "../LoginBtn";
 
 function MobileMenu(props) {
     return (
@@ -18,7 +19,7 @@ function MobileMenu(props) {
                     <li className="uk-nav-header">My Account</li>
                     <li><Link to="/dashboard" className="nav-item mobile-nav-item" style={{ color: props.color }}>Dashboard</Link></li>
                     <li><Link to="/signup" className="nav-item mobile-nav-item" style={{ color: props.color }}>Signup</Link></li>
-                    <li><Link to="/login" className="nav-item mobile-nav-item" style={{ color: props.color }}>Login</Link></li>
+                    <li><LoginBtn classes="nav-item mobile-nav-item" /></li>
                     <li><Logout /></li>
                 </ul>
             </div>
