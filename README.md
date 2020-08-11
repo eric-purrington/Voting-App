@@ -50,8 +50,7 @@ React
 Axios  
 React-Calendar  
 React-countdown-now  
-Passport  
-Bcryptjs  
+Auth0
 
 ## How to Use  
 
