@@ -33,4 +33,8 @@ router
   .route("/events/delete/:id")
   .put(usersController.deleteEvent);
 
+router
+  .route("/officials/delete/:id")
+  .put(usersController.deleteOfficial);
+
 module.exports = router;
