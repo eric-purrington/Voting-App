@@ -11,6 +11,7 @@ import OfficialContainer from "../../components/OfficialContainer";
 import Note from "../../components/Note";
 // import PollingInfo from "../../components/PollingInfo";
 import LocationCard from "../../components/LocationCard";
+import Distance from "../../utils/Distance";
 
 function WherePage() {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -21,11 +22,19 @@ function WherePage() {
     const [dropOffLocations, setDropOffLocations] = useState([]);
     const [earlyVoteSites, setEarlyVoteSites] = useState([]);
     const [dataCheck, setDataCheck] = useState(true);
+    const [votersLatLon, setVotersLatLon] = useState({})
+    var lat2 = 0;
+    var lon2 = 0;
+    var distanceBetween = 0;
 
     useEffect(() => {
         if (loggedIn) {
             // loadUser();
         }
+        API.getLatLon(address).then(res => {
+            setVotersLatLon(res.data.results[0].locations[0].latLng);
+            console.log(votersLatLon)
+        }).catch(err => console.log(err));
         whereData(address);
     }, []);
 
@@ -39,6 +48,13 @@ function WherePage() {
     const handleAddressChange = (event) => {
         event.preventDefault();
         setAddress(event.target.address.value.replace(/,.#/g, ""));
+        API.getLatLon(address).then(res => {
+            setVotersLatLon({
+                ...votersLatLon,
+                lat: res.data.results[0].locations[0].latLng.lat, 
+                lon: res.data.results[0].locations[0].latLng.lng
+            });
+        });
         whereData(address);
     }
 
@@ -86,6 +102,8 @@ function WherePage() {
                     var pollLoc = {};
                     pollLoc.name = pollDive[i].address.locationName;
                     pollLoc.address = `${pollDive[i].address.line1} ${pollDive[i].address.city}, ${pollDive[i].address.state} ${pollDive[i].address.zip}`;
+                    pollLoc.distance = findTheDistance(pollLoc.address);
+                    console.log(pollLoc.distance)
                     modifiedPollLocs.push(pollLoc);
                 }
                 setPollingLocations(modifiedPollLocs);
@@ -97,7 +115,8 @@ function WherePage() {
                         var dropLoc = {};
                         dropLoc.name = dropDive[i].address.locationName;
                         dropLoc.address = `${dropDive[i].address.line1} ${dropDive[i].address.city}, ${dropDive[i].address.state} ${dropDive[i].address.zip}`;
-                        modifiedDropLocs.push(pollLoc);
+                        dropLoc.distance = findTheDistance(dropLoc.address);
+                        modifiedDropLocs.push(dropLoc);
                     }
                 }
                 setDropOffLocations(modifiedDropLocs);
@@ -109,7 +128,8 @@ function WherePage() {
                         var earlyLoc = {};
                         earlyLoc.name = earlyDive[i].address.locationName;
                         earlyLoc.address = `${earlyDive[i].address.line1} ${earlyDive[i].address.city}, ${earlyDive[i].address.state} ${earlyDive[i].address.zip}`;
-                        modifiedEarlyLocs.push(pollLoc);
+                        earlyLoc.distance = findTheDistance(earlyLoc.address);
+                        modifiedEarlyLocs.push(earlyLoc);
                     }
                 }
                 setEarlyVoteSites(modifiedEarlyLocs);
@@ -119,6 +139,18 @@ function WherePage() {
             setDataCheck(false);
         }
     }
+
+    function findTheDistance(voteLocation) {
+        API.getLatLon(voteLocation).then(res => {
+            lat2 = res.data.results[0].locations[0].latLng.lat;
+            lon2 = res.data.results[0].locations[0].latLng.lng;
+            console.log(lat2, lon2)
+        });
+        distanceBetween = Distance.findDistanceBetween(votersLatLon.lat, votersLatLon.lon, lat2, lon2);
+        console.log(distanceBetween)
+        return distanceBetween;
+    }
+
 
     return (
         <div className="whereContainer">
@@ -169,6 +201,7 @@ function WherePage() {
                         key={loc.name}
                         name={loc.name}
                         address={loc.address}
+                        distance={loc.distance}
                         loggedIn={loggedIn}
                         />) : ""}
                 </OfficialContainer>

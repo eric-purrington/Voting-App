@@ -27,5 +27,13 @@ export default {
                 location: location
             }
         });
+    },
+
+    getLatLon: function(location) {
+        return axios.get("/api/getLatLon", {
+            params: {
+                location: location
+            }
+        })
     }
 }
