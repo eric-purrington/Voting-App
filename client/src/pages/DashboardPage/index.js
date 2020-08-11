@@ -27,8 +27,8 @@ function DashboardPage() {
     )
 };
 
-// export default DashboardPage;
+export default DashboardPage;
 
-export default withAuthenticationRequired(DashboardPage, {
-    onRedirecting: () => <Loading />,
-});
+// export default withAuthenticationRequired(DashboardPage, {
+//     onRedirecting: () => <Loading />,
+// });
