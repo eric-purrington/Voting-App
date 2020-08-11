@@ -13,7 +13,6 @@ function WhenCard(props) {
         getSavedEvents: () => {
             UserAPI.getSavedData("5f2f20919f27003eb7fa09b1")
                 .then(res => {
-                    console.log(res.data.savedEvents);
                     setSavedEvents({ ...savedEvents, events: res.data.savedEvents })
                 })
                 .catch(err => console.log(err));
@@ -27,7 +26,6 @@ function WhenCard(props) {
     const getSaved = () => {
         UserAPI.getSavedData("5f2f20919f27003eb7fa09b1")
             .then(res => {
-                console.log(res.data.savedEvents);
                 setSavedEvents({ ...savedEvents, events: res.data.savedEvents })
             })
             .catch(err => console.log(err));
