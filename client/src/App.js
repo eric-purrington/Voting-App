@@ -11,6 +11,7 @@ import WhoPage from "./pages/WhoPage";
 import MobileMenu from "./components/Navbar/MobileMenu";
 import AboutCanvas from "./components/AboutCanvas";
 import NoMatch from "./components/NoMatch";
+import Auth0ProviderWithHistory from "./auth0-provider-with-history";
 
 function App() {
   return (

@@ -15,12 +15,12 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     create: function (req, res) {
-        bcrypt.hash(req.body.password, 12, function(error, hash) {
+        bcrypt.hash(req.body.password, 12, function (error, hash) {
             db.User
-            .create({...req.body, password:hash})
-            .then(dbUser => res.json(dbUser.id))
-            .catch(err => console.log(err));
-          });
+                .create({ ...req.body, password: hash })
+                .then(dbUser => res.json(dbUser.id))
+                .catch(err => console.log(err));
+        });
     },
     update: function (req, res) {
         db.User
@@ -89,6 +89,17 @@ module.exports = {
         db.User
             .findOneAndUpdate({ _id: req.params.id },
                 { $pull: { savedEvents: { _id: req.body.id } } },
+                { new: true }
+            )
+            .then(dbUser => res.json(dbUser))
+            .catch(err => console.log(err));
+    },
+
+    // deletes a users saved officials
+    deleteOfficial: function (req, res) {
+        db.User
+            .findOneAndUpdate({ _id: req.params.id },
+                { $pull: { repDetails: { name: req.body.name } } },
                 { new: true }
             )
             .then(dbUser => res.json(dbUser))

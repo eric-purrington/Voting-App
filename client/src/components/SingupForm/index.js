@@ -18,6 +18,7 @@ function SignupForm(props) {
         UserAPI.addUser(newUser)
             .then(res => {
                 console.log(res.data);
+                window.location.href = "/";
             })
             .catch(err => console.log(err));
     };

@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./style.css";
 import BackgroundImage from "../../components/BackgroundImage";
 import homePic from "../../assets/images/homepage.jpg";
 import HomeHeader from "../../components/HomeHeader";
 import Footer from "../../components/Footer";
 import HomeCountdown from "../../components/HomeCountdown";
+import { useAuth0 } from '@auth0/auth0-react';
 
 function HomePage() {
+    const { user } = useAuth0();
+
+    useEffect(() => {
+        console.log(user);
+    }, []);
+
     return (
         <div>
             <BackgroundImage image={homePic}>

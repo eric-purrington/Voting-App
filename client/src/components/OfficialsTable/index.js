@@ -15,10 +15,10 @@ function OfficialsTable(props) {
             </thead>
             <tbody>
                 {
-                    props.officials.map(official => {
-                        return <tr>
+                    props.officials.map((official, index) => {
+                        return <tr key={index}>
                             <td className="delete-icon">
-                                <button className="delete-btn">
+                                <button className="delete-btn" onClick={() => props.handleDeleteOfficial(index)} id={official.name}>
                                     <span uk-icon="icon: minus-circle; ratio: 1"></span>
                                 </button>
                             </td>

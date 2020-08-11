@@ -5,7 +5,7 @@ import image from "../../assets/images/homepage.jpg";
 import LoginContainer from "../../components/LoginContainer";
 import SignupForm from "../../components/SingupForm";
 import Navbar from "../../components/Navbar";
-import { Link } from "react-router-dom";
+import LoginBtn from "../../components/LoginBtn";
 import Footer from "../../components/Footer";
 
 function SignupPage() {
@@ -17,7 +17,7 @@ function SignupPage() {
                     <SignupForm />
                     <div className="uk-text-center">
                         <p>Or login
-                        <Link to="/login" style={{ color: "#5A7EDE" }}> here</Link>
+                        <LoginBtn> here</LoginBtn>
                         </p>
                     </div>
                 </LoginContainer>
