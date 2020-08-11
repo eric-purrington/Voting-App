@@ -11,7 +11,7 @@ function AccountDropdown(props) {
             <ul className="uk-nav uk-dropdown-nav">
                 <li><Link className="drop-item" to="/dashboard">Dashboard</Link></li>
                 <li><Link className="drop-item" to="/signup">Signup</Link></li>
-                <LoginBtn classes="drop-item dropdown-login" />
+                <LoginBtn classes="drop-item dropdown-login">Login</LoginBtn>
                 <li><Link className="drop-item" to="/logout">Logout</Link></li>
             </ul>
         </div>

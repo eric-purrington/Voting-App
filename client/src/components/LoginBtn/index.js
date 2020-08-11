@@ -6,7 +6,7 @@ function LoginBtn(props) {
 
     const { loginWithRedirect } = useAuth0();
 
-    return <a className={props.classes} onClick={loginWithRedirect}>Log In</a>
+    return <a className={props.classes} onClick={loginWithRedirect}>{props.children}</a>
 };
 
 export default LoginBtn;

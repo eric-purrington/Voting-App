@@ -19,7 +19,7 @@ function MobileMenu(props) {
                     <li className="uk-nav-header">My Account</li>
                     <li><Link to="/dashboard" className="nav-item mobile-nav-item" style={{ color: props.color }}>Dashboard</Link></li>
                     <li><Link to="/signup" className="nav-item mobile-nav-item" style={{ color: props.color }}>Signup</Link></li>
-                    <li><LoginBtn classes="nav-item mobile-nav-item" /></li>
+                    <li><LoginBtn classes="nav-item mobile-nav-item">Login</LoginBtn></li>
                     <li><Logout /></li>
                 </ul>
             </div>
