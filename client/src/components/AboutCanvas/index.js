@@ -6,7 +6,7 @@ import "./style.css";
 function ContactCanvas() {
     return (
         <div id="about-canvas" uk-offcanvas="overlay: true">
-            <div className="uk-offcanvas-bar">
+            <div className="uk-offcanvas-bar uk-text-center">
                 <button className="uk-offcanvas-close" type="button" uk-close="true"></button>
                 <h3 id="contact-title">About</h3>
                 <p className="about-paragraph">

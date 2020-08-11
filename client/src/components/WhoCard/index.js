@@ -19,7 +19,6 @@ function WhoCard(props) {
     };
 
     const handleDeleteOfficial = (index) => {
-        console.log(index);
 
         let deleteItem = savedOfficials.filter(official => {
             return savedOfficials.indexOf(official) == index;
