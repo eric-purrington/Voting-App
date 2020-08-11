@@ -34,4 +34,8 @@ export default {
         return axios.put("/api/users/events/delete/" + userID, body);
     },
 
+    deleteUserOfficial: function (userID, body) {
+        return axios.put("/api/users/officials/delete/" + userID, body);
+    },
+
 };

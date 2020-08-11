@@ -94,4 +94,15 @@ module.exports = {
             .then(dbUser => res.json(dbUser))
             .catch(err => console.log(err));
     },
+
+    // deletes a users saved officials
+    deleteOfficial: function (req, res) {
+        db.User
+            .findOneAndUpdate({ _id: req.params.id },
+                { $pull: { repDetails: { name: req.body.name } } },
+                { new: true }
+            )
+            .then(dbUser => res.json(dbUser))
+            .catch(err => console.log(err));
+    },
 }
