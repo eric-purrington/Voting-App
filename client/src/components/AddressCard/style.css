@@ -1,0 +1,23 @@
+.addressCardContainer{
+    margin-top : 20px;
+    color:white;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif !important;
+    background-color: #3778C2;
+    border-radius:3px;
+    padding :0px;
+    height :200px;
+    padding : 15px;
+}
+.uk-card-title{
+    text-align: center;
+    color:white;
+    font-weight: bolder;
+}
+p{
+    text-align: center;
+    color: white;
+}
+.address-title{
+    text-decoration: underline;
+}

@@ -34,3 +34,13 @@
     letter-spacing: 1px;
     font-size: 14px;
 }
+
+@media only screen and (max-width: 460px) {
+    .dash-card-body {
+        padding: 0px;
+    }
+
+    .dash-card-subtitle {
+        font-size: 12px;
+    }
+}

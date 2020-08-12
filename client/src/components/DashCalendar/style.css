@@ -25,9 +25,9 @@
     color: black !important;
 }
 
-.react-calendar__navigation__label__labelText {
-    font-size: 1.15rem !important;
-}
+/* .react-calendar__navigation__label__labelText {
+    font-size: .6rem !important;
+} */
 
 .highlight {
     background-color: #d27977a8 !important;
@@ -51,4 +51,31 @@
     text-transform: uppercase;
     font-size: 13px !important;
     letter-spacing: 1px;
+}
+
+.addDel-icon {
+    padding-right: 10px;
+    color: gray;
+}
+
+.addDel-icon:hover {
+    color: rgb(66, 66, 66);
+}
+
+.add-btn {
+    border: none;
+    background: none;
+}
+
+
+/* @media only screen and (max-width: 460px) {
+    .react-calendar__navigation__label__labelText {
+        font-size: .5 !important;
+    }
+} */
+
+@media only screen and (min-width: 461px) {
+    .react-calendar__navigation__label__labelText {
+        font-size: 20px !important;
+    }
 }

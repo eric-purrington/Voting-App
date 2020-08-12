@@ -1,6 +1,7 @@
 import React from 'react';
 import './index.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Loading from "./components/Loading";
 import HomePage from "./pages/HomePage";
 import DashboardPage from "./pages/DashboardPage";
 import LoginPage from "./pages/LoginPage";
@@ -11,10 +12,21 @@ import WhoPage from "./pages/WhoPage";
 import MobileMenu from "./components/Navbar/MobileMenu";
 import AboutCanvas from "./components/AboutCanvas";
 import NoMatch from "./components/NoMatch";
+import { useAuth0 } from "@auth0/auth0-react";
+import history from "./utils/history";
+
 
 function App() {
+  const { isLoading, error } = useAuth0;
+
+  if (error) {
+    return <div>Oops... {error.message}</div>
+  }
+  if (isLoading) {
+    return <Loading />
+  }
   return (
-    < Router >
+    < Router history={history}>
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/dashboard" component={DashboardPage} />

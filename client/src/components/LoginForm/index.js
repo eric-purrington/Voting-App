@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./style.css";
 import LoginBtn from "../LoginBtn";
-import API from "../../utils/API";
+import UserAPI from "../../utils/UserAPI";
 
 
 function LoginForm(props) {
@@ -9,21 +9,21 @@ function LoginForm(props) {
     const [password, setPassword] = useState("");
 
     return (
-        <form class="uk-form-stacked uk-margin-large">
-            <div class="uk-margin">
-                <label class="uk-form-label" for="form-horizontal-text">Email</label>
-                <div class="uk-form-controls">
-                    <input class="uk-input" id="form-horizontal-text" type="text" value={email} onChange={ (e) => setEmail(e.value) }/>
+        <form className="uk-form-stacked uk-margin-large">
+            <div className="uk-margin">
+                <label className="uk-form-label" for="form-horizontal-text">Email</label>
+                <div className="uk-form-controls">
+                    <input className="uk-input" id="form-horizontal-text" type="text" value={email} onChange={ (e) => setEmail(e.value) }/>
                 </div>
             </div>
-            <div class="uk-margin">
-                <label class="uk-form-label" for="form-horizontal-text">Password</label>
-                <div class="uk-form-controls">
-                    <input class="uk-input" id="form-horizontal-text" type="text" value={password} onChange={ (e) => setPassword(e.value) }/>
+            <div className="uk-margin">
+                <label className="uk-form-label" for="form-horizontal-text">Password</label>
+                <div className="uk-form-controls">
+                    <input className="uk-input" id="form-horizontal-text" type="text" value={password} onChange={ (e) => setPassword(e.value) }/>
                 </div>
             </div>
             <div className="uk-text-center">
-                <LoginBtn name="Login" handleClick={API.loginUser} email={email} password={password}/>
+                <LoginBtn name="Login" handleClick={UserAPI.loginUser} email={email} password={password}/>
             </div>
         </form>
     )

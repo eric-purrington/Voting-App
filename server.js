@@ -1,11 +1,7 @@
 const express = require("express");
-const session = require("express-session");
-const bodyParser = require("body-parser");
 const path = require("path");
 const mongoose = require("mongoose");
 const routes = require("./routes");
-const passport = require("passport");
-const auth = require("./routes/auth");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -21,21 +17,17 @@ if (process.env.NODE_ENV === "production") {
 // Add routes, both API and view
 app.use(routes);
 
-app.use(session({ secret: "keyboard cat" })); 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(passport.initialize());
-app.use(passport.session());
-
-
-app.use("/api/auth", auth);
 app.get("*", function (req, res) {
   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/votegoat",
-  { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true }
+  process.env.MONGODB_URI || "mongodb://"+process.env.dbUser+":"+process.env.dbPassword+"@ds141950.mlab.com:41950/heroku_tktjc2j0",
+
+  // "mongodb://localhost/votegoat"
+
+  { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false }
 );
 
 app.listen(PORT, function () {

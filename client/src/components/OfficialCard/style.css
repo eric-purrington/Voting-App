@@ -22,3 +22,11 @@
 .official-card-info {
     font-size: 15px;
 }
+
+.save-official {
+    color: #000000;
+}
+
+span:hover {
+    cursor: pointer;
+}

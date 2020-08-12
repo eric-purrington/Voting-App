@@ -1,7 +1,9 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from "react";
 import { Link } from "react-router-dom";
+import Logout from "../Logout";
 import "./style.css";
+import LoginBtn from "../LoginBtn";
 
 function MobileMenu(props) {
     return (
@@ -16,9 +18,9 @@ function MobileMenu(props) {
                     <li><Link to="/who" className="nav-item mobile-nav-item" style={{ color: props.color }}>Who</Link></li>
                     <li className="uk-nav-header">My Account</li>
                     <li><Link to="/dashboard" className="nav-item mobile-nav-item" style={{ color: props.color }}>Dashboard</Link></li>
-                    <li><Link to="/signup" className="nav-item mobile-nav-item" style={{ color: props.color }}>Signup</Link></li>
-                    <li><Link to="/login" className="nav-item mobile-nav-item" style={{ color: props.color }}>Login</Link></li>
-                    <li><Link to="/logout" className="nav-item mobile-nav-item" style={{ color: props.color }}>Logout</Link></li>
+                    <li><LoginBtn classes="nav-item mobile-nav-item">Signup</LoginBtn></li>
+                    <li><LoginBtn classes="nav-item mobile-nav-item">Login</LoginBtn></li>
+                    <li><Logout classes="nav-item mobile-nav-item" /></li>
                 </ul>
             </div>
         </div>

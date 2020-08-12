@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import "./style.css";
 import Cover from "../../components/Cover";
 import image from "../../assets/images/who.jpg";
@@ -13,15 +14,20 @@ function WhoPage() {
     const [address, setAddress] = useState("98115");
     const [results, setResults] = useState([]);
 
+    const { user } = useAuth0();
+        console.log(user);
+
     useEffect(() => {
-        // loadUser();
+        // if (user) {
+        //     loadUser();
+        // }
         whoData(address);
-    });
+    }, []);
 
     // function loadUser() {
     //     // Need to figure out how to get user's id 
-    //     API.getUser(id).then(user => {
-    //         let modifiedAddress = user.pollingAddress.replace(/,./g, "").replace(/ /g, "%20");
+    //     API.getSavedData(id).then(user => {
+    //         let modifiedAddress = user.homeAddress.replace(/,./g, "").replace(/ /g, "%20");
     //         setAddress(modifiedAddress);
     //     });
     // }
@@ -49,10 +55,9 @@ function WhoPage() {
         });
     }
 
-    function handleAddressChange(event) {
-        event.preventDefault()
-        console.log(event)
-        setAddress(event.target.value);
+    const handleAddressChange = (event) => {
+        event.preventDefault();
+        setAddress(event.target.zipcode.value);
         whoData(address);
     }
 

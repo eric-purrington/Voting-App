@@ -1,5 +1,5 @@
-
 const db = require("../models");
+const bcrypt = require("bcryptjs");
 
 module.exports = {
     findAll: function (req, res) {
@@ -15,10 +15,12 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     create: function (req, res) {
-        db.User
-            .create(req.body)
-            .then(dbUser => res.json(dbUser))
-            .catch(err => console.log(err));
+        // bcrypt.hash(req.body.password, 12, function (error, hash) {
+            db.User
+                .create({ ...req.body, userId: req.params.userId })
+                .then(dbUser => res.json(dbUser.id))
+                .catch(err => res.json(err));
+        // )};
     },
     update: function (req, res) {
         db.User
@@ -32,6 +34,75 @@ module.exports = {
             .then(dbUser => dbUser.remove())
             .then(dbUser => res.json(dbUser))
             .catch(err => res.status(422).json(err));
-    }
-}
+    },
 
+    // adds an event a user saves
+    addEvent: function (req, res) {
+        db.User
+            .findOneAndUpdate({ _id: req.params.id }, {
+                $push: {
+                    savedEvents: {
+                        name: req.body.name,
+                        date: req.body.date
+                    }
+                }
+            })
+            .then(dbUser => res.json(dbUser))
+            .catch(err => console.log(err));
+    },
+
+    // add an official a user saves
+    addOfficial: function (req, res) {
+        db.User
+            .findOneAndUpdate({ _id: req.params.id }, {
+                $push: {
+                    repDetails: {
+                        name: req.body.name,
+                        email: req.body.email,
+                        phone: req.body.phone,
+                        title: req.body.title
+                    }
+                }
+            })
+            .then(dbUser => res.json(dbUser))
+            .catch(err => console.log(err));
+    },
+
+    // add a polling site
+    addPollingSite: function (req, res) {
+        db.User
+            .findOneAndUpdate({ _id: req.params.id }, {
+                $push: {
+                    pollingAddress: {
+                        name: req.body.name,
+                        address: req.body.address,
+                        hours: req.body.hours
+                    }
+                }
+            })
+            .then(dbUser => res.json(dbUser))
+            .catch(err => console.log(err));
+    },
+
+    // deletes a users saved events
+    deleteEvent: function (req, res) {
+        db.User
+            .findOneAndUpdate({ _id: req.params.id },
+                { $pull: { savedEvents: { _id: req.body.id } } },
+                { new: true }
+            )
+            .then(dbUser => res.json(dbUser))
+            .catch(err => console.log(err));
+    },
+
+    // deletes a users saved officials
+    deleteOfficial: function (req, res) {
+        db.User
+            .findOneAndUpdate({ _id: req.params.id },
+                { $pull: { repDetails: { name: req.body.name } } },
+                { new: true }
+            )
+            .then(dbUser => res.json(dbUser))
+            .catch(err => console.log(err));
+    },
+}
