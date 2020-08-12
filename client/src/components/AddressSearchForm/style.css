@@ -1,0 +1,36 @@
+.zip-form-label {
+    color: white;
+    text-transform: uppercase;
+    font-weight: 100;
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+
+.zip-input {
+    margin-top: 10px;
+}
+
+.zip-input-box {
+    border: none;
+    border-radius: 3px;
+}
+
+.zip-search-btn {
+    color: white;
+    margin-left: 10px;
+    border-radius: 30px;
+    padding: 3px 8px 3px 8px;
+    border: 1px solid white;
+}
+
+.zip-search-btn:hover {
+    background-color: #d27977;
+    color:white;
+    border: none;
+}
+
+@media only screen and (max-width: 460px) {
+    .zip-input {
+        margin-top: 0px;
+    }
+}
