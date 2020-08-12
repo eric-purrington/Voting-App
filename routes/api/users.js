@@ -1,9 +1,11 @@
 const router = require("express").Router();
 const usersController = require("../../controllers/usersController");
+// const checkJWT = require("../../client/auth/checkjwt");
 
 // Matches with "/api/users"
-router.route("/")
-  .get(usersController.findAll)
+router.route("/:id")
+// router.route("/:id", checkJWT)
+  // .get(usersController.findAll)
   .post(usersController.create);
 
 // Matches with "/api/users/:id"

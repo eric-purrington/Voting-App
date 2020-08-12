@@ -43,15 +43,14 @@ Node.js
 Express    
 MongoDB  
 Mongoose   
-React   
+React  
+Auth0     
 
 ## Npm Packages  
 
 Axios  
 React-Calendar  
-React-countdown-now  
-Passport  
-Bcryptjs  
+React-countdown-now 
 
 ## How to Use  
 
@@ -59,7 +58,7 @@ Bcryptjs
 
 ## Link to Presentation  
 
-[Presentation Slides]()  
+[Presentation Slides](https://docs.google.com/presentation/d/1dlZHA3vzadiruMZRbysk-JjpTdYnFAogLtp9jg1xuaY/edit#slide=id.p)  
 
 ## Deployed Application:  
 
@@ -71,5 +70,4 @@ https://github.com/eric-purrington/Voting-App
 
 ## Directions for Future Development
 
---Ability to save information to a user dashboard (with user information saved in database)  
 --Email reminders about important registration and voting dates

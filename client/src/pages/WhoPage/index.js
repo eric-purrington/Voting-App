@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import "./style.css";
 import Cover from "../../components/Cover";
 import image from "../../assets/images/who.jpg";
@@ -13,6 +14,9 @@ function WhoPage() {
     const [loggedIn, setLoggedIn] = useState(false);
     const [address, setAddress] = useState("98115");
     const [results, setResults] = useState([]);
+
+    const { user } = useAuth0();
+        console.log(user);
 
     useEffect(() => {
         if (loggedIn) {
