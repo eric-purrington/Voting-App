@@ -7,7 +7,6 @@ function LocationCard(props) {
     const {user} = useAuth0();
 
     function handleLocationSave() {
-        
         let body = {
             name: props.name, 
             address: props.address,
