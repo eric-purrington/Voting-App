@@ -63,11 +63,11 @@ function WherePage() {
                 <form className="form">
                     <div className="uk-margin formInput">
                         Enter Address here:
-                        <input class="uk-input uk-form-width-large input" type="text" name="Search"
+                        <input className="uk-input uk-form-width-large input" type="text" name="Search"
                             value={address}
                             onChange={handleAddressChange}
                             placeholder="address" />
-                        <button class="uk-button uk-button-default" onClick={handleSubmit}><span uk-icon="search"> </span></button>
+                        <button className="uk-button uk-button-default" onClick={handleSubmit}><span uk-icon="search"> </span></button>
                     </div>
                 </form>
                 <Note />
