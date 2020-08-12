@@ -1,5 +1,5 @@
 import React from "react";
-import { withAuthenticationRequired } from "@auth0/auth0-react";
+import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import "./style.css";
 import Cover from "../../components/Cover";
 import image from "../../assets/images/dash.jpg";
@@ -12,6 +12,9 @@ import WhoCard from "../../components/WhoCard";
 import Loading from "../../components/Loading";
 
 function DashboardPage() {
+    const { user } = useAuth0();
+    console.log(user);
+
     return (
         <div>
             <Cover image={image} header={"DASHBOARD"}>
@@ -27,8 +30,8 @@ function DashboardPage() {
     )
 };
 
-export default DashboardPage;
+// export default DashboardPage;
 
-// export default withAuthenticationRequired(DashboardPage, {
-//     onRedirecting: () => <Loading />,
-// });
+export default withAuthenticationRequired(DashboardPage, {
+    onRedirecting: () => <Loading />,
+});
