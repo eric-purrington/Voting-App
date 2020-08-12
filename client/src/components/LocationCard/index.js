@@ -8,7 +8,8 @@ function LocationCard(props) {
         let userID = window.location.pathname.slice(3);
         let body = {
             name: props.name, 
-            address: props.address}
+            address: props.address,
+            distance: props.distance}
         UserAPI.addOfficial(userID, body);
     }
 
@@ -16,7 +17,7 @@ function LocationCard(props) {
         <div className="uk-card uk-card-hover uk-card-body">
             <h2 className="uk-card-title locationName">{props.name}</h2>
             <p className="locationAdd">{props.address}</p>
-            <p className="locationAdd">{props.distance}</p>
+            <p className="locationAdd">approx. {props.distance} miles</p>
             {props.loggedIn ? <span onClick={handleLocationSave} className="save-location">Save Location to Dash</span> : ""}
         </div>
     )

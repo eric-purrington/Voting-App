@@ -5,7 +5,7 @@ export default {
     // Get all live upcoming elections
     // Doesn't req zip or address
     getElections: function() {
-        return axios.get("/api/getElections");
+        return axios.get("/api/getElections").catch(error => console.log(error));
     },
 
     // Get voters info (elections they can vote in and ballot drop off location's address and name)
@@ -16,7 +16,7 @@ export default {
             params: {
                 location: location
             }
-        });
+        }).catch(error => console.log(error));
     },
     
     // Get all reps for voter
@@ -26,7 +26,7 @@ export default {
             params: {
                 location: location
             }
-        });
+        }).catch(error => console.log(error));
     },
 
     getLatLon: function(location) {
@@ -34,6 +34,6 @@ export default {
             params: {
                 location: location
             }
-        })
+        }).catch(error => console.log(error));
     }
 }

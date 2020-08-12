@@ -43,7 +43,11 @@ function WhoPage() {
                     } else {
                         official.email = "Not Available";
                     }
-                    official.phone = webDive.phones[0];
+                    if (webDive.phones !== undefined) {
+                        official.phone = webDive.phones[0]; 
+                    } else {
+                        official.phone = "Not Available";
+                    }
                     modifiedResults.push(official);
                 }
             }

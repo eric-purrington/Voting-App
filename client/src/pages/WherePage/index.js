@@ -16,141 +16,71 @@ import Distance from "../../utils/Distance";
 function WherePage() {
     const [loggedIn, setLoggedIn] = useState(false);
     const [address, setAddress] = useState("5016 Foxen Ct Cheyenne, WY 82001");
-    // const [addresses, setAddresses] = useState([]);
-    // const [pollingInfo, setPollingInfo] = useState([]);
     const [pollingLocations, setPollingLocations] = useState([]);
     const [dropOffLocations, setDropOffLocations] = useState([]);
     const [earlyVoteSites, setEarlyVoteSites] = useState([]);
     const [dataCheck, setDataCheck] = useState(true);
-    const [votersLatLon, setVotersLatLon] = useState({})
-    var lat2 = 0;
-    var lon2 = 0;
-    var distanceBetween = 0;
 
     useEffect(() => {
-        if (loggedIn) {
-            // loadUser();
+        function getVotersLatLon() {
+            return API.getLatLon(address).then(res => res.data.results[0].locations[0].latLng);
         }
-        API.getLatLon(address).then(res => {
-            setVotersLatLon(res.data.results[0].locations[0].latLng);
-            console.log(votersLatLon)
-        }).catch(err => console.log(err));
-        whereData(address);
+        let latlon = getVotersLatLon().then(res => whereData(address, res));
     }, []);
 
-    // function loadUser() {
-    //     API.getSavedData(userID).then(user => {
-    //         let modifiedAddress = user.homeAddress.replace(/,.#/g, "");
-    //         setAddress(modifiedAddress);
-    //     });
-    // }
-
-    const handleAddressChange = (event) => {
+    const handleAddressChange = async (event) => {
         event.preventDefault();
-        setAddress(event.target.address.value.replace(/,.#/g, ""));
-        API.getLatLon(address).then(res => {
-            setVotersLatLon({
-                ...votersLatLon,
-                lat: res.data.results[0].locations[0].latLng.lat, 
-                lon: res.data.results[0].locations[0].latLng.lng
-            });
-        });
-        whereData(address);
+        let newVoterAddress = event.target.address.value.replace(/,.#/g, "")
+        setAddress(newVoterAddress);
+        await API.getLatLon(newVoterAddress).then(res => whereData(address, res.data.results[0].locations[0].latLng));
     }
 
-    // function handleSubmit(event) {
-    //     event.preventDefault();
-    //     whereData(address);
-    // }
+    async function locationData(webdive, json) {
+        var modifiedLocs = [];
+        for (let i = 0; i < webdive.length; i++) {
+            var location = {};
+            location.name = webdive[i].address.locationName
+            location.address = `${webdive[i].address.line1} ${webdive[i].address.city}, ${webdive[i].address.state} ${webdive[i].address.zip}`;
+            const locLatLon = await API.getLatLon(location.address).then(res => res.data.results[0].locations[0]);
+            if (locLatLon.geocodeQuality == "COUNTRY") {
+                location.distance = 4.1;
+            } else {
+                location.distance = Distance.findDistanceBetween(json.lat, json.lng, locLatLon.latLng.lat, locLatLon.latLng.lng);
+            }
+            modifiedLocs.push(location);
+        }
+        return modifiedLocs;
+    }
 
-    // function whereData(param) {
-    //     var modifiedResults = [];
-    //     var pollingResults = [];
-    //     API.getVoterInfo(param).then(res => {
-    //         console.log(res)
-    //         for (var i = 0; i < res.data.pollingLocations.length; i++) {
-    //             for (var j = 0; j < res.data.state.length; j++) {
-    //                 var address = {};
-    //                 var info = {};
-    //                 info.name = res.data.state[i].electionAdministrationBody.name;
-    //                 info.electionInfoUrl = res.data.state[i].electionAdministrationBody.electionInfoUrl;
-    //                 info.ballotInfoUrl = res.data.state[i].electionAdministrationBody.ballotInfoUrl;
-    //                 info.electionRegistrationUrl = res.data.state[i].electionAdministrationBody.electionRegistrationUrl;
-    //                 info.electionRegistrationConfirmationUrl = res.data.state[i].electionAdministrationBody.electionRegistrationConfirmationUrl;
-    //                 address.locationName = res.data.pollingLocations[i].address.locationName;
-    //                 address.line1 = res.data.pollingLocations[i].address.line1;
-    //                 address.city = res.data.pollingLocations[i].address.city;
-    //                 address.state = res.data.pollingLocations[i].address.state;
-    //                 address.zip = res.data.pollingLocations[i].address.zip;
-    //                 modifiedResults.push(address);
-    //                 pollingResults.push(info);
-    //                 setPollingInfo(pollingResults)
-    //                 setAddresses(modifiedResults);
-    //             }
-    //         }
-    //     });
-    // }
-
-    function whereData(param) {
-        var modifiedPollLocs = [];
-        var modifiedDropLocs = [];
-        var modifiedEarlyLocs = [];
+    function whereData(param, json) {
         API.getVoterInfo(param).then(res => {
-            if (res.data.pollingLocations !== null) {
+            console.log(res)
+            if (res.data.pollingLocations) {
                 let pollDive = res.data.pollingLocations;
-                for (var i = 0; i < pollDive.length; i++) {
-                    var pollLoc = {};
-                    pollLoc.name = pollDive[i].address.locationName;
-                    pollLoc.address = `${pollDive[i].address.line1} ${pollDive[i].address.city}, ${pollDive[i].address.state} ${pollDive[i].address.zip}`;
-                    pollLoc.distance = findTheDistance(pollLoc.address);
-                    console.log(pollLoc.distance)
-                    modifiedPollLocs.push(pollLoc);
-                }
-                setPollingLocations(modifiedPollLocs);
+                locationData(pollDive, json).then(res => setPollingLocations(res))
             }
             if (res.data.dropOffLocations) {
-                for (var i = 0; i < res.data.dropOffLocations.length; i++) {
-                    let dropDive = res.data.dropOffLocations;
-                    for (var i = 0; i < dropDive.length; i++) {
-                        var dropLoc = {};
-                        dropLoc.name = dropDive[i].address.locationName;
-                        dropLoc.address = `${dropDive[i].address.line1} ${dropDive[i].address.city}, ${dropDive[i].address.state} ${dropDive[i].address.zip}`;
-                        dropLoc.distance = findTheDistance(dropLoc.address);
-                        modifiedDropLocs.push(dropLoc);
-                    }
-                }
-                setDropOffLocations(modifiedDropLocs);
+                let dropDive = res.data.dropOffLocations;
+                locationData(dropDive, json).then(res => setDropOffLocations(res))
             }
             if (res.data.earlyVoteSites) {
-                for (var i = 0; i < res.data.earlyVoteSites.length; i++) {
-                    let earlyDive = res.data.earlyVoteSites;
-                    for (var i = 0; i < earlyDive.length; i++) {
-                        var earlyLoc = {};
-                        earlyLoc.name = earlyDive[i].address.locationName;
-                        earlyLoc.address = `${earlyDive[i].address.line1} ${earlyDive[i].address.city}, ${earlyDive[i].address.state} ${earlyDive[i].address.zip}`;
-                        earlyLoc.distance = findTheDistance(earlyLoc.address);
-                        modifiedEarlyLocs.push(earlyLoc);
-                    }
-                }
-                setEarlyVoteSites(modifiedEarlyLocs);
+                let earlyDive = res.data.earlyVoteSites;
+                locationData(earlyDive, json).then(res => setEarlyVoteSites(res))
             }
-        })
+            if (res === undefined) {
+                setDataCheck(false);
+                setPollingLocations({});
+                setDropOffLocations({});
+                setEarlyVoteSites({});
+            }
+        }).catch(error => {
+            setDataCheck(false);
+            console.log(error);
+        });
         if (pollingLocations === [] && dropOffLocations === [] && earlyVoteSites === []) {
             setDataCheck(false);
         }
     }
-
-    function findTheDistance(voteLocation) {
-        API.getLatLon(voteLocation).then(res => {
-            lat2 = res.data.results[0].locations[0].latLng.lat;
-            lon2 = res.data.results[0].locations[0].latLng.lng;
-            console.log(lat2, lon2)
-        });
-        distanceBetween = Distance.findDistanceBetween(votersLatLon.lat, votersLatLon.lon, lat2, lon2);
-        console.log(distanceBetween)
-        return distanceBetween;
-    }
-
 
     return (
         <div className="whereContainer">
@@ -158,41 +88,6 @@ function WherePage() {
                 <AddressSearchForm handleAddressChange={handleAddressChange} />
             </Cover>
             <ContentContainer>
-                {/* <form className="form">
-                    <div className="uk-margin formInput">
-                        Enter Address here:
-                        <input class="uk-input uk-form-width-large input" type="text" name="Search"
-                            value={address}
-                            onChange={handleAddressChange}
-                            placeholder="address" />
-                        <button class="uk-button uk-button-default" onClick={handleSubmit}><span uk-icon="search"> </span></button>
-                    </div>
-                </form>
-                <Note />
-                <OfficialContainer>
-                    {addresses.map(addr =>
-                        <AddressCard
-                            key={addr.line1}
-                            locationName={addr.locationName}
-                            line1={addr.line1}
-                            city={addr.city}
-                            state={addr.state}
-                            zip={addr.zip}
-                        />
-                    )}
-                </OfficialContainer>
-                <OfficialContainer>
-                    {pollingInfo.map(info =>
-                        <PollingInfo
-                            key={info.name}
-                            name={info.name}
-                            electionInfoUrl={info.electionInfoUrl}
-                            ballotInfoUrl={info.ballotInfoUrl}
-                            electionRegistrationUrl={info.electionRegistrationUrl}
-                            electionRegistrationConfirmationUrl={info.electionRegistrationConfirmationUrl}
-                        />
-                    )}
-                </OfficialContainer> */}
                 {dataCheck ? "" : <Note />}
                 {pollingLocations[0] ? <h1>Polling Locations</h1> : ""}
                 <OfficialContainer>
@@ -212,6 +107,7 @@ function WherePage() {
                         key={loc.name}
                         name={loc.name}
                         address={loc.address}
+                        distance={loc.distance}
                         loggedIn={loggedIn}
                         />) : ""}
                 </OfficialContainer>
@@ -222,6 +118,7 @@ function WherePage() {
                         key={loc.name}
                         name={loc.name}
                         address={loc.address}
+                        distance={loc.distance}
                         loggedIn={loggedIn}
                         />) : ""}
                 </OfficialContainer>
