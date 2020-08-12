@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import "./style.css";
 import Cover from "../../components/Cover";
 import image from "../../assets/images/where.jpg";
@@ -14,6 +15,9 @@ function WherePage() {
     const [address, setAddress] = useState("");
     const [addresses, setAddresses] = useState([]);
     const [pollingInfo, setPollingInfo] = useState([]);
+
+    const { user } = useAuth0();
+        console.log(user);
 
     const handleAddressChange = (event) => {
         setAddress(event.target.value);

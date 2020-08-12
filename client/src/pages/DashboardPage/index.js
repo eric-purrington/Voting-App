@@ -13,6 +13,7 @@ import Loading from "../../components/Loading";
 
 function DashboardPage() {
     const { user } = useAuth0();
+    console.log(user);
 
     return (
         <div>

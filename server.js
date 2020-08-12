@@ -23,9 +23,9 @@ app.get("*", function (req, res) {
 
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/votegoat",
-  
-  // "mongodb://"+process.env.dbUser+":"+process.env.dbPassword+"@ds141950.mlab.com:41950/heroku_tktjc2j0",
+  process.env.MONGODB_URI || "mongodb://"+process.env.dbUser+":"+process.env.dbPassword+"@ds141950.mlab.com:41950/heroku_tktjc2j0",
+
+  // "mongodb://localhost/votegoat"
 
   { useUnifiedTopology: true, useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false }
 );
