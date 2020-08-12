@@ -17,13 +17,13 @@ import UserAPI from "../../utils/UserAPI";
 
 function WhenPage() {
     const [results, setResults] = useState([]);
-    const [loggedIn, setLoggedIn] = useState(true);
+    const [loggedIn, setLoggedIn] = useState(false);
 
     const { user } = useAuth0();
-        console.log(user);
 
     useEffect(() => {
         whenData();
+        user !== undefined ? setLoggedIn(true) : setLoggedIn(false);
     }, []);
 
     function whenData() {
