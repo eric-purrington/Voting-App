@@ -8,7 +8,7 @@ function EventForm(props) {
                 <input className="uk-input uk-form-width-medium add-event-box" type="text" placeholder="Event" name="name" />
             </div>
 
-            <div class="uk-margin">
+            <div className="uk-margin">
                 <input type="date" id="start" name="event-date"
                     min="2020-01-01" max="2022-12-31"
                     className="uk-input uk-form-width-medium add-event-box"

@@ -13,6 +13,7 @@ import Footer from "../../components/Footer";
 import DashCalendar from "../../components/DashCalendar";
 import CoverCountdown from "../../components/CoverCountdown";
 import moment from "moment";
+import UserAPI from "../../utils/UserAPI";
 
 function WhenPage() {
     const [results, setResults] = useState([]);
@@ -35,30 +36,45 @@ function WhenPage() {
         });
     }
 
+    const handleAddEvent = (index) => {
+
+        let addItem = results.filter(election => {
+            return results.indexOf(election) == index;
+        });
+
+        UserAPI.addUserEvent("5f2f20919f27003eb7fa09b1", addItem[0])
+            .then(() => {
+                alert("Event saved to Dashboard!")
+            })
+            .catch(err => console.log(err));
+    };
+
     return (
         <div>
             <Cover image={image} header={"WHEN"}>
                 <CoverCountdown />
             </Cover>
             <ContentContainer>
-                <div className="uk-child-width-1-2@l uk-text-center" uk-grid="true">
-                    <div>
-                        <div className="uk-card uk-card-default uk-card-body calendar-card">
-                            <DashCalendar
-                                elections={results}
-                                icon={loggedIn ? "icon: plus-circle" : ""}
-                                addOrDel="add"
-                            />
+                <div className="when-container">
+                    <div className="uk-child-width-1 uk-text-center" uk-grid="true">
+                        <div>
+                            <div className="uk-card uk-card-default uk-card-body calendar-card">
+                                <DashCalendar
+                                    elections={results}
+                                    icon={loggedIn ? "icon: plus-circle" : ""}
+                                    addOrDel="add"
+                                />
+                            </div>
                         </div>
-                    </div>
-                    <div>
-                        <div className="uk-card uk-card-default uk-card-body calendar-card">
-                            <ContentTable>
-                                <ElectionsHead />
-                                {results.map(election =>
-                                    <ElectionsBody key={election.name} electionName={election.name} electionDay={election.electionDay} />
-                                )}
-                            </ContentTable>
+                        <div>
+                            <div className="uk-card uk-card-default uk-card-body calendar-card">
+                                <ContentTable>
+                                    <ElectionsHead />
+                                    {results.map((election, index) =>
+                                        <ElectionsBody key={election.name} electionName={election.name} electionDay={election.electionDay} index={index} handleAddEvent={handleAddEvent} icon={loggedIn ? "icon: plus-circle" : ""} />
+                                    )}
+                                </ContentTable>
+                            </div>
                         </div>
                     </div>
                 </div>

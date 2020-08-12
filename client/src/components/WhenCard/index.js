@@ -13,7 +13,6 @@ function WhenCard(props) {
         getSavedEvents: () => {
             UserAPI.getSavedData("5f2f20919f27003eb7fa09b1")
                 .then(res => {
-                    console.log(res.data.savedEvents);
                     setSavedEvents({ ...savedEvents, events: res.data.savedEvents })
                 })
                 .catch(err => console.log(err));
@@ -27,7 +26,6 @@ function WhenCard(props) {
     const getSaved = () => {
         UserAPI.getSavedData("5f2f20919f27003eb7fa09b1")
             .then(res => {
-                console.log(res.data.savedEvents);
                 setSavedEvents({ ...savedEvents, events: res.data.savedEvents })
             })
             .catch(err => console.log(err));
@@ -63,7 +61,7 @@ function WhenCard(props) {
                 </SavedEventsContext.Provider>
             </div>
             <div>
-                <div className="uk-card-body">
+                <div className="uk-card-body dash-card-body">
                     <h3 className="uk-card-title dash-card-title when-card-title">When</h3>
                     <hr className="dash-hr" />
                     <p className="dash-card-subtitle">Important Dates to Remember.</p>

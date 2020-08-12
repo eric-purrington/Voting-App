@@ -8,12 +8,12 @@ function AddressCard(props) {
             <div className="addressCardContainer">
                 <div class="uk-animation-toggle" tabindex="0">
                     <div class="uk-animation-fade">
-                        <h3 class="uk-card-title">Address</h3>
+                        <h3 class="uk-card-title address-title">Address</h3>
                         <div id={props.line1.slice(0, 3)} className="card">
-                            <h5>Location Name: 
+                            <h5>Location Name:
                                 {props.locationName}
                             </h5>
-                            <h5>Address: 
+                            <h5>Address:
                                 {props.line1},{props.city} ,{props.state}, {props.zip}
                             </h5>
                         </div>
