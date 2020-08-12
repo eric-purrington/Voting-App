@@ -39,7 +39,7 @@ function DashCalendar(props) {
         };
 
         UserAPI.addUserEvent(user.email, newEvent)
-            .then(() => alert("Event Saved to Dashboard!"))
+            .then(() => ("Event Saved to Dashboard!"))
             .catch(err => console.log(err));
     };
 
@@ -51,7 +51,7 @@ function DashCalendar(props) {
 
         let deleteID = { id: deleteItem[0]._id };
 
-        UserAPI.deleteUserEvent("5f2f20919f27003eb7fa09b1", deleteID)
+        UserAPI.deleteUserEvent(user.email, deleteID)
             .then((res) => {
                 getSavedEvents();
                 setActiveDay({ day: activeDay.day, elections: res.data.savedEvents.filter(el => el.date === activeDay.day) });
