@@ -94,6 +94,7 @@ function WherePage() {
                 <AddressSearchForm handleAddressChange={handleAddressChange} />
             </Cover>
             <ContentContainer>
+
                 {dataCheck ? "" : <Note />}
                 {pollingLocations[0] ? <h1>Polling Locations</h1> : ""}
                 <OfficialContainer>
@@ -107,6 +108,7 @@ function WherePage() {
                         />) : ""}
                 </OfficialContainer>
                 {dropOffLocations[0] ? <h1>Ballot Drop Off Locations</h1> : ""}
+
                 <OfficialContainer>
                     {dropOffLocations[0] ? dropOffLocations.map(loc => 
                         <LocationCard
