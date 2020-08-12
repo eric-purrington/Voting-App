@@ -39,7 +39,7 @@ function DashCalendar(props) {
         };
 
         UserAPI.addUserEvent(user.email, newEvent)
-            .then(() => ("Event Saved to Dashboard!"))
+            .then(() => alert("Event Saved to Dashboard!"))
             .catch(err => console.log(err));
     };
 
