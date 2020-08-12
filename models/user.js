@@ -20,9 +20,6 @@ const userSchema = new Schema({
     },
     address: {
       type: String
-    },
-    hours: {
-      type: String
     }
   }],
 

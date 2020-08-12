@@ -1,22 +1,25 @@
-
-.noteContainer{
-    background-color: #EF9A9A;
-    color: black !important;
+/* .noteContainer {
+    background-color: rgba(255, 0, 0, 0.712);
+    color: white !important;
     height: 100px;
     width: 750px;
     border: solid .5px;
 }
-.noteAlert{
+.noteAlert {
     text-align: center;
     margin :10px;
 }
-.h4{
+.h4 {
     text-align: center;
     text-decoration: underline;
+} */
+.uk-alert-warning {
+    background-color: rgba(255, 0, 0, 0.712);
+    padding: 20px;
+    color: white !important;
+    font-size: large;
+    border-radius: 15px;
 }
-.uk-alert-warning{
-    background-color : #eca76a;
-}
-p{
-    color:grey ;
-}
+/* p {
+    color: white !important;
+} */
