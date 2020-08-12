@@ -19,18 +19,9 @@ function WhoPage() {
         console.log(user);
 
     useEffect(() => {
-        if (loggedIn) {
-            // loadUser();
-        }
+        user !== undefined ? setLoggedIn(true) : setLoggedIn(false);
         whoData(address);
     }, []);
-
-    // function loadUser() {
-    //     API.getSavedData(userID).then(user => {
-    //         let modifiedAddress = user.homeAddress.replace(/,./g, "").replace(/ /g, "%20");
-    //         setAddress(modifiedAddress);
-    //     });
-    // }
 
     function whoData(param) {
         var modifiedResults = [];
