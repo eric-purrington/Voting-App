@@ -5,7 +5,12 @@ import "./style.css";
 function LogoutButton(props) {
   const { logout } = useAuth0();
 
-  return <a className={props.classes} onClick={() => logout()}>Log Out</a>;
+  const logoutWithRedirect = () =>
+    logout({
+      returnTo: window.location.origin,
+    });
+
+  return <a className={props.classes} onClick={() => logoutWithRedirect()}>Log Out</a>;
 
 };
 
