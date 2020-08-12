@@ -22,9 +22,11 @@ function WherePage() {
     const [earlyVoteSites, setEarlyVoteSites] = useState([]);
     const [dataCheck, setDataCheck] = useState(true);
     const { user } = useAuth0();
-    console.log(user);
 
     useEffect(() => {
+        if(user !== null){
+            setLoggedIn(true);
+        }
         function getVotersLatLon() {
             return API.getLatLon(address).then(res => res.data.results[0].locations[0].latLng);
         }
@@ -58,6 +60,7 @@ function WherePage() {
     function whereData(param, json) {
         API.getVoterInfo(param).then(res => {
             console.log(res)
+            setDataCheck(true);
             if (res.data.pollingLocations) {
                 let pollDive = res.data.pollingLocations;
                 locationData(pollDive, json).then(res => setPollingLocations(res))
@@ -70,7 +73,7 @@ function WherePage() {
                 let earlyDive = res.data.earlyVoteSites;
                 locationData(earlyDive, json).then(res => setEarlyVoteSites(res))
             }
-            if (res === undefined) {
+            if (res.data === "") {
                 setDataCheck(false);
                 setPollingLocations({});
                 setDropOffLocations({});
@@ -94,7 +97,7 @@ function WherePage() {
                 {dataCheck ? "" : <Note />}
                 {pollingLocations[0] ? <h1>Polling Locations</h1> : ""}
                 <OfficialContainer>
-                    {pollingLocations ? pollingLocations.map(loc => 
+                    {pollingLocations[0] ? pollingLocations.map(loc => 
                         <LocationCard
                         key={loc.name}
                         name={loc.name}

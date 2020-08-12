@@ -16,7 +16,7 @@ router.get("/getElections", (req, res) => {
 router.get("/getVoterInfo", (req, res) => {
     axios.get(BASEURL + "/voterinfo?key=" + GAPIKEY + "&address=" + req.query.location)
     .then(response => res.send(response.data))
-    .catch(err => res.json(err));
+    .catch(err => res.send(err.data));
 });
 
 // Should match /api/getRepInfo
