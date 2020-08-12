@@ -37,7 +37,7 @@ function WherePage() {
         event.preventDefault();
         let newVoterAddress = event.target.address.value.replace(/,.#/g, "")
         setAddress(newVoterAddress);
-        await API.getLatLon(newVoterAddress).then(res => whereData(address, res.data.results[0].locations[0].latLng));
+        await API.getLatLon(newVoterAddress).then(res => whereData(newVoterAddress, res.data.results[0].locations[0].latLng));
     }
 
     async function locationData(webdive, json) {
