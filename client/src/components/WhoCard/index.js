@@ -11,11 +11,11 @@ function WhoCard(props) {
     }, []);
 
     const getOfficials = () => {
-        UserAPI.getSavedData("5f2f20919f27003eb7fa09b1")
-            .then(res => {
-                setSavedOfficials(res.data.repDetails)
-            })
-            .catch(err => console.log(err));
+        // UserAPI.getSavedData("5f2f20919f27003eb7fa09b1")
+        //     .then(res => {
+        //         setSavedOfficials(res.data.repDetails)
+        //     })
+        //     .catch(err => console.log(err));
     };
 
     const handleDeleteOfficial = (index) => {
