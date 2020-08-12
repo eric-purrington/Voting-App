@@ -12,8 +12,8 @@ const audience = process.env.REACT_APP_YOUR_AUDIENCE;
 const onRedirectCallback = (appState) => {
   history.push(
     appState && appState.returnTo
-    ? appState.returnTo
-    : window.location.pathname,
+      ? appState.returnTo
+      : window.location.pathname,
     "/dashboard"
   );
 };
@@ -26,7 +26,7 @@ ReactDOM.render(
     redirectUri={window.location.origin}
     onRedirectCallback={onRedirectCallback}
     scope="read:current_user update:current_user_metadata"
-    >
+  >
     <App />
   </Auth0Provider>,
 

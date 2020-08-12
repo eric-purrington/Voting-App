@@ -4,96 +4,131 @@ import "./style.css";
 import Cover from "../../components/Cover";
 import image from "../../assets/images/where.jpg";
 import ContentContainer from "../../components/ContentContainer";
-import AddressCard from "../../components/AddressCard";
-import ZipSearchForm from "../../components/ZipSearchForm";
+// import AddressCard from "../../components/AddressCard";
+import AddressSearchForm from "../../components/AddressSearchForm";
 import API from "../../utils/API";
 import Footer from "../../components/Footer";
 import OfficialContainer from "../../components/OfficialContainer";
-import Note from "../../components/Note"
-import PollingInfo from "../../components/PollingInfo";
+import Note from "../../components/Note";
+// import PollingInfo from "../../components/PollingInfo";
+import LocationCard from "../../components/LocationCard";
+import Distance from "../../utils/Distance";
+
 function WherePage() {
-    const [address, setAddress] = useState("");
-    const [addresses, setAddresses] = useState([]);
-    const [pollingInfo, setPollingInfo] = useState([]);
-
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [address, setAddress] = useState("5016 Foxen Ct Cheyenne, WY 82001");
+    const [pollingLocations, setPollingLocations] = useState([]);
+    const [dropOffLocations, setDropOffLocations] = useState([]);
+    const [earlyVoteSites, setEarlyVoteSites] = useState([]);
+    const [dataCheck, setDataCheck] = useState(true);
     const { user } = useAuth0();
-        console.log(user);
 
-    const handleAddressChange = (event) => {
-        setAddress(event.target.value);
-    }
-    function handleSubmit(event) {
+    useEffect(() => {
+        if(user !== null){
+            setLoggedIn(true);
+        }
+        function getVotersLatLon() {
+            return API.getLatLon(address).then(res => res.data.results[0].locations[0].latLng);
+        }
+        let latlon = getVotersLatLon().then(res => whereData(address, res));
+    }, []);
+
+    const handleAddressChange = async (event) => {
         event.preventDefault();
-        whereData(address);
+        let newVoterAddress = event.target.address.value.replace(/,.#/g, "")
+        setAddress(newVoterAddress);
+        await API.getLatLon(newVoterAddress).then(res => whereData(address, res.data.results[0].locations[0].latLng));
     }
 
-    function whereData(param) {
-        var modifiedResults = [];
-        var pollingResults = [];
-        API.getVoterInfo(param).then(res => {
-            for (var i = 0; i < res.data.pollingLocations.length; i++) {
-                for (var j = 0; j < res.data.state.length; j++) {
-                    var address = {};
-                    var info = {};
-                    info.name = res.data.state[i].electionAdministrationBody.name;
-                    info.electionInfoUrl = res.data.state[i].electionAdministrationBody.electionInfoUrl;
-                    info.ballotInfoUrl = res.data.state[i].electionAdministrationBody.ballotInfoUrl;
-                    info.electionRegistrationUrl = res.data.state[i].electionAdministrationBody.electionRegistrationUrl;
-                    info.electionRegistrationConfirmationUrl = res.data.state[i].electionAdministrationBody.electionRegistrationConfirmationUrl;
-                    address.locationName = res.data.pollingLocations[i].address.locationName;
-                    address.line1 = res.data.pollingLocations[i].address.line1;
-                    address.city = res.data.pollingLocations[i].address.city;
-                    address.state = res.data.pollingLocations[i].address.state;
-                    address.zip = res.data.pollingLocations[i].address.zip;
-                    modifiedResults.push(address);
-                    pollingResults.push(info);
-                    setPollingInfo(pollingResults)
-                    setAddresses(modifiedResults);
-                }
+    async function locationData(webdive, json) {
+        var modifiedLocs = [];
+        for (let i = 0; i < webdive.length; i++) {
+            var location = {};
+            location.name = webdive[i].address.locationName
+            location.address = `${webdive[i].address.line1} ${webdive[i].address.city}, ${webdive[i].address.state} ${webdive[i].address.zip}`;
+            const locLatLon = await API.getLatLon(location.address).then(res => res.data.results[0].locations[0]);
+            if (locLatLon.geocodeQuality == "COUNTRY") {
+                location.distance = 4.1;
+            } else {
+                location.distance = Distance.findDistanceBetween(json.lat, json.lng, locLatLon.latLng.lat, locLatLon.latLng.lng);
             }
-        })
+            modifiedLocs.push(location);
+        }
+        return modifiedLocs;
+    }
 
+    function whereData(param, json) {
+        API.getVoterInfo(param).then(res => {
+            console.log(res)
+            setDataCheck(true);
+            if (res.data.pollingLocations) {
+                let pollDive = res.data.pollingLocations;
+                locationData(pollDive, json).then(res => setPollingLocations(res))
+            }
+            if (res.data.dropOffLocations) {
+                let dropDive = res.data.dropOffLocations;
+                locationData(dropDive, json).then(res => setDropOffLocations(res))
+            }
+            if (res.data.earlyVoteSites) {
+                let earlyDive = res.data.earlyVoteSites;
+                locationData(earlyDive, json).then(res => setEarlyVoteSites(res))
+            }
+            if (res.data === "") {
+                setDataCheck(false);
+                setPollingLocations({});
+                setDropOffLocations({});
+                setEarlyVoteSites({});
+            }
+        }).catch(error => {
+            setDataCheck(false);
+            console.log(error);
+        });
+        if (pollingLocations === [] && dropOffLocations === [] && earlyVoteSites === []) {
+            setDataCheck(false);
+        }
     }
 
     return (
         <div className="whereContainer">
             <Cover image={image} header={"WHERE"}>
+                <AddressSearchForm handleAddressChange={handleAddressChange} />
             </Cover>
             <ContentContainer>
-                <form className="form">
-                    <div className="uk-margin formInput">
-                        Enter Address here:
-                        <input className="uk-input uk-form-width-large input" type="text" name="Search"
-                            value={address}
-                            onChange={handleAddressChange}
-                            placeholder="address" />
-                        <button className="uk-button uk-button-default" onClick={handleSubmit}><span uk-icon="search"> </span></button>
-                    </div>
-                </form>
-                <Note />
+
+                {dataCheck ? "" : <Note />}
+                {pollingLocations[0] ? <h1>Polling Locations</h1> : ""}
                 <OfficialContainer>
-                    {addresses.map(addr =>
-                        <AddressCard
-                            key={addr.line1}
-                            locationName={addr.locationName}
-                            line1={addr.line1}
-                            city={addr.city}
-                            state={addr.state}
-                            zip={addr.zip}
-                        />
-                    )}
+                    {pollingLocations[0] ? pollingLocations.map(loc => 
+                        <LocationCard
+                        key={loc.name}
+                        name={loc.name}
+                        address={loc.address}
+                        distance={loc.distance}
+                        loggedIn={loggedIn}
+                        />) : ""}
                 </OfficialContainer>
+                {dropOffLocations[0] ? <h1>Ballot Drop Off Locations</h1> : ""}
+
                 <OfficialContainer>
-                    {pollingInfo.map(info =>
-                        <PollingInfo
-                            key={info.name}
-                            name={info.name}
-                            electionInfoUrl={info.electionInfoUrl}
-                            ballotInfoUrl={info.ballotInfoUrl}
-                            electionRegistrationUrl={info.electionRegistrationUrl}
-                            electionRegistrationConfirmationUrl={info.electionRegistrationConfirmationUrl}
-                        />
-                    )}
+                    {dropOffLocations[0] ? dropOffLocations.map(loc => 
+                        <LocationCard
+                        key={loc.name}
+                        name={loc.name}
+                        address={loc.address}
+                        distance={loc.distance}
+                        loggedIn={loggedIn}
+                        />) : ""}
+                </OfficialContainer>
+                {earlyVoteSites[0] ? <h1>Early Vote Sites</h1> : ""}
+                <OfficialContainer>
+                    {earlyVoteSites[0] ? earlyVoteSites.map(loc => 
+                        <LocationCard
+                        key={loc.name}
+                        name={loc.name}
+                        address={loc.address}
+                        distance={loc.distance}
+                        loggedIn={loggedIn}
+                        />) : ""}
                 </OfficialContainer>
             </ContentContainer>
             <Footer />
