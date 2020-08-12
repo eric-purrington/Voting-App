@@ -16,7 +16,6 @@ function WhoPage() {
     const [results, setResults] = useState([]);
 
     const { user } = useAuth0();
-        console.log(user);
 
     useEffect(() => {
         user !== undefined ? setLoggedIn(true) : setLoggedIn(false);

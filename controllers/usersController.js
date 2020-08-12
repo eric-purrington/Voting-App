@@ -60,7 +60,8 @@ module.exports = {
                         name: req.body.name,
                         email: req.body.email,
                         phone: req.body.phone,
-                        title: req.body.title
+                        title: req.body.title,
+                        party: req.body.party
                     }
                 }
             })
@@ -76,7 +77,7 @@ module.exports = {
                     pollingAddress: {
                         name: req.body.name,
                         address: req.body.address,
-                        hours: req.body.hours
+                        distance: req.body.distance
                     }
                 }
             })

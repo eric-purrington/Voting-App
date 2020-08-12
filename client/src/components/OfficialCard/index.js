@@ -1,18 +1,19 @@
 import React from "react";
-import UserAPI from "../../utils/UserAPI"
+import UserAPI from "../../utils/UserAPI";
+import { useAuth0 } from "@auth0/auth0-react";
 import "./style.css";
 
 function OfficialCard(props) {
+    const {user} = useAuth0();
 
     function handleOfficialSave() {
-        let userID = window.location.pathname.slice(3);
         let body = {
             title: props.title, 
             name: props.name, 
             phone: props.phone, 
             email: props.email,
             party: props.party}
-        UserAPI.addOfficial(userID, body);
+        UserAPI.addOfficial(user.email, body);
     }
 
     return (
