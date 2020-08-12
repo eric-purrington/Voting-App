@@ -5,7 +5,7 @@ import "./style.css";
 function LogoutButton(props) {
   const { logout } = useAuth0();
 
-  return <button className="logout-btn" onClick={() => logout()}>Log Out</button>;
+  return <a className={props.classes} onClick={() => logout()}>Log Out</a>;
 
 };
 
