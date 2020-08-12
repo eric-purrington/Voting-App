@@ -2,20 +2,22 @@ import React, { useState, useEffect } from "react";
 import "./style.css";
 import UserAPI from "../../utils/UserAPI";
 import OfficialsTable from "../../components/OfficialsTable";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function WhoCard(props) {
     const [savedOfficials, setSavedOfficials] = useState([]);
+    const { user } = useAuth0();
 
     useEffect(() => {
         getOfficials();
     }, []);
 
     const getOfficials = () => {
-        UserAPI.getSavedData("5f2f20919f27003eb7fa09b1")
-            .then(res => {
-                setSavedOfficials(res.data.repDetails)
-            })
-            .catch(err => console.log(err));
+        // UserAPI.getSavedData(user.email)
+        //     .then(res => {
+        //         setSavedOfficials(res.data.repDetails)
+        //     })
+        //     .catch(err => console.log(err));
     };
 
     const handleDeleteOfficial = (index) => {

@@ -6,12 +6,15 @@ import DashCalendar from "../../components/DashCalendar";
 import EventForm from "../../components/EventForm";
 import UserAPI from "../../utils/UserAPI";
 import SavedEventsContext from "../../utils/SavedEventsContext";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function WhenCard(props) {
+    const { user } = useAuth0();
+
     const [savedEvents, setSavedEvents] = useState({
         events: [],
         getSavedEvents: () => {
-            UserAPI.getSavedData("5f2f20919f27003eb7fa09b1")
+            UserAPI.getSavedData(user.email)
                 .then(res => {
                     setSavedEvents({ ...savedEvents, events: res.data.savedEvents })
                 })
@@ -24,7 +27,7 @@ function WhenCard(props) {
     }, []);
 
     const getSaved = () => {
-        UserAPI.getSavedData("5f2f20919f27003eb7fa09b1")
+        UserAPI.getSavedData(user.email)
             .then(res => {
                 setSavedEvents({ ...savedEvents, events: res.data.savedEvents })
             })
@@ -42,10 +45,8 @@ function WhenCard(props) {
         event.target.name.value = "";
         event.target.date.value = "";
 
-        UserAPI.addUserEvent("5f2f20919f27003eb7fa09b1", newEvent)
-            .then(() => {
-                getSaved();
-            })
+        UserAPI.addUserEvent(user.email, newEvent)
+            .then(() => getSaved())
             .catch(err => console.log(err));
     };
 
