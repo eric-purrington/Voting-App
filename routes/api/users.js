@@ -35,4 +35,8 @@ router
   .route("/officials/delete/:email")
   .put(usersController.deleteOfficial);
 
+router
+  .route("/places/delete/:email")
+  .put(usersController.deletePlace);
+
 module.exports = router;

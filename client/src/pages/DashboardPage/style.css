@@ -14,7 +14,7 @@
 
 .dash-card {
     min-height: 400px;
-    border-radius: 10px;
+    border-radius: 10px !important;
     padding: 35px;
     margin-bottom: 75px;
 }
@@ -34,6 +34,18 @@
     letter-spacing: 1px;
     font-size: 14px;
 }
+
+/* .outside-div {
+    position: relative;
+}
+
+.inside-div {
+    position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: auto !important;
+  margin-right: auto !important;
+} */
 
 @media only screen and (max-width: 460px) {
     .dash-card-body {

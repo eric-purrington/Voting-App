@@ -13,11 +13,11 @@ function WhoCard(props) {
     }, []);
 
     const getOfficials = () => {
-        // UserAPI.getSavedData(user.email)
-        //     .then(res => {
-        //         setSavedOfficials(res.data.repDetails)
-        //     })
-        //     .catch(err => console.log(err));
+        UserAPI.getSavedData(user.email)
+            .then(res => {
+                setSavedOfficials(res.data.repDetails)
+            })
+            .catch(err => console.log(err));
     };
 
     const handleDeleteOfficial = (index) => {
@@ -28,7 +28,7 @@ function WhoCard(props) {
 
         let deleteName = { name: deleteItem[0].name };
 
-        UserAPI.deleteUserOfficial("5f2f20919f27003eb7fa09b1", deleteName)
+        UserAPI.deleteUserOfficial(user.email, deleteName)
             .then(() => getOfficials())
             .catch(err => console.log(err));
     };
@@ -37,11 +37,13 @@ function WhoCard(props) {
         <div>
             {
                 savedOfficials.length > 0 ? (
-                    <div className="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin dash-card" uk-grid="true">
-                        <div className="uk-flex-last@s uk-card-media-right uk-cover-container">
-                            <OfficialsTable officials={savedOfficials} handleDeleteOfficial={handleDeleteOfficial} />
+                    <div className="uk-card uk-card-default uk-grid-collapse uk-margin dash-card uk-text-center" uk-grid="true">
+                        <div className="uk-flex-last@s uk-card-media-right uk-cover-container uk-width-3-5@m outside-div">
+                            <div className="inside-div">
+                                <OfficialsTable officials={savedOfficials} handleDeleteOfficial={handleDeleteOfficial} />
+                            </div>
                         </div>
-                        <div>
+                        <div className="uk-width-2-5@m">
                             <div className="uk-card-body uk-text-center dash-card-body">
                                 <h3 className="uk-card-title dash-card-title">Who</h3>
                                 <hr className="dash-hr" />
