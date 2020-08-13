@@ -39,9 +39,7 @@ function WhoCard(props) {
                 savedOfficials.length > 0 ? (
                     <div className="uk-card uk-card-default uk-grid-collapse uk-margin dash-card uk-text-center" uk-grid="true">
                         <div className="uk-flex-last@s uk-card-media-right uk-cover-container uk-width-3-5@m outside-div">
-                            <div className="inside-div">
-                                <OfficialsTable officials={savedOfficials} handleDeleteOfficial={handleDeleteOfficial} />
-                            </div>
+                            <OfficialsTable officials={savedOfficials} handleDeleteOfficial={handleDeleteOfficial} />
                         </div>
                         <div className="uk-width-2-5@m">
                             <div className="uk-card-body uk-text-center dash-card-body">

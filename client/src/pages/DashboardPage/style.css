@@ -9,7 +9,6 @@
     text-transform: uppercase;
     color: #2c3e50 !important;
     font-size: 38px;
-    padding-top: 60px;
 }
 
 .dash-card {
@@ -35,18 +34,6 @@
     font-size: 14px;
 }
 
-/* .outside-div {
-    position: relative;
-}
-
-.inside-div {
-    position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  margin-left: auto !important;
-  margin-right: auto !important;
-} */
-
 @media only screen and (max-width: 460px) {
     .dash-card-body {
         padding: 0px;
@@ -55,4 +42,22 @@
     .dash-card-subtitle {
         font-size: 12px;
     }
+}
+
+@media only screen and (min-width: 960px) {
+    .outside-div {
+        display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+    .dash-card-title {
+        padding-top: 60px;
+    }
+
+    .dash-card {
+        padding: 50px;
+    }  
+
+
 }
