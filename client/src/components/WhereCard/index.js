@@ -35,7 +35,7 @@ function WhereCard(props) {
             {
                 savedPlaces.length > 0 ? (
                     <div className="uk-card uk-card-default uk-grid-collapse uk-margin dash-card uk-text-center" uk-grid="true">
-                        <div className="uk-card-media-left uk-cover-container uk-width-3-5@m">
+                        <div className="uk-card-media-left uk-cover-container uk-width-3-5@m outside-div">
                             <WhereTable places={savedPlaces} handleDeleteClick={handleDeleteClick} />
                         </div>
                         <div className="uk-width-2-5@m">
