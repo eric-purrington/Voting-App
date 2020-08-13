@@ -35,6 +35,18 @@
     font-size: 14px;
 }
 
+/* .outside-div {
+    position: relative;
+}
+
+.inside-div {
+    position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-left: auto !important;
+  margin-right: auto !important;
+} */
+
 @media only screen and (max-width: 460px) {
     .dash-card-body {
         padding: 0px;

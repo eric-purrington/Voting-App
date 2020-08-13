@@ -49,19 +49,19 @@ const userSeed = [
     pollingAddress: [
       {
         "name": "Storey Gym",
-        "address": "2810 House Avenue Cheyenne, WY 82001",
+        "address": "2810 House Avenue Cheyenne, WY 82001"
       },
       {
         "name": "North Christian Church",
-        "address": "2015 Tranquility Road Cheyenne, WY 82009",
+        "address": "2015 Tranquility Road Cheyenne, WY 82009"
       },
       {
         "name": "Laramie Co Comm College",
-        "address": "1400 East College Drive Cheyenne, WY 82007",
+        "address": "1400 East College Drive Cheyenne, WY 82007"
       },
       {
         "name": "Event Center At Archer",
-        "address": "3801 Archer Parkway Cheyenne, WY 82007",
+        "address": "3801 Archer Parkway Cheyenne, WY 82007"
       }
     ]
   },
