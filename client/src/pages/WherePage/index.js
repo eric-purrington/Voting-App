@@ -24,7 +24,7 @@ function WherePage() {
     const { user } = useAuth0();
 
     useEffect(() => {
-        user !== undefined ? setLoggedIn(true) : setLoggedIn(false);
+        user === undefined || user === false ? setLoggedIn(false) : setLoggedIn(true);
         function getVotersLatLon() {
             return API.getLatLon(address).then(res => res.data.results[0].locations[0].latLng);
         }

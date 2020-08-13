@@ -18,7 +18,7 @@ function WhoPage() {
     const { user } = useAuth0();
 
     useEffect(() => {
-        user !== undefined ? setLoggedIn(true) : setLoggedIn(false);
+        user === undefined || user === false ? setLoggedIn(false) : setLoggedIn(true);
         whoData(address);
     }, []);
 

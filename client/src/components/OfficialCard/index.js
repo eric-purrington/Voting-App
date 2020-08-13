@@ -13,17 +13,17 @@ function OfficialCard(props) {
             phone: props.phone, 
             email: props.email,
             party: props.party}
-        UserAPI.addOfficial(user.email, body);
+        UserAPI.addOfficial(user.email, body).then(res => console.log("official saved"));
     }
 
     return (
         <div>
             <div id={props.party.slice(0, 1)} className="uk-card uk-card-default uk-card-hover uk-card-body officials-card">
+                {props.loggedIn === true ? <span class="addBtn" onClick={handleOfficialSave} uk-icon="icon: plus-circle"></span> : ""}
                 <h2 className="uk-card-title">{props.title}</h2>
                 <p className="uk-card-title official-card-info">{props.name}</p>
                 <p className="uk-card-title official-card-info">Phone: {props.phone}</p>
                 <p className="uk-card-title official-card-info">Email: {props.email}</p>
-                {props.loggedIn ? <span onClick={handleOfficialSave} className="save-official">Save Official to Dash</span> : ""}
             </div>
         </div>
     )

@@ -11,15 +11,16 @@ function LocationCard(props) {
             name: props.name, 
             address: props.address,
             distance: props.distance}
-        UserAPI.addPollingSite(user.email, body);
+        UserAPI.addPollingSite(user.email, body).then(res => console.log("location saved"));
     }
 
     return (
         <div className="uk-card uk-card-hover uk-card-body">
+            {props.loggedIn === true ? <span onClick={handleLocationSave} uk-icon="icon: plus-circle"></span> : ""}
             <h2 className="uk-card-title locationName">{props.name}</h2>
             <p className="locationAdd">{props.address}</p>
             <p className="locationAdd">approx. {props.distance} miles</p>
-            {props.loggedIn ? <span onClick={handleLocationSave} className="save-location">Save Location to Dash</span> : ""}
+            
         </div>
     )
 }
