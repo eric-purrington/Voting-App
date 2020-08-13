@@ -52,7 +52,7 @@ function WhenCard(props) {
 
     return (
         <div className="uk-card uk-card-default uk-grid-collapse uk-margin dash-card uk-text-center" uk-grid="true">
-            <div className="uk-flex-last@s uk-card-media-right uk-cover-container uk-width-3-5@m">
+            <div className="uk-flex-last@s uk-card-media-right uk-cover-container uk-width-1-2@m">
                 <SavedEventsContext.Provider value={savedEvents}>
                     <DashCalendar
                         elections={savedEvents.events}
@@ -61,7 +61,7 @@ function WhenCard(props) {
                     />
                 </SavedEventsContext.Provider>
             </div>
-            <div className="uk-width-2-5@m">
+            <div className="uk-width-1-2@m">
                 <div className="uk-card-body dash-card-body">
                     <h3 className="uk-card-title dash-card-title when-card-title">When</h3>
                     <hr className="dash-hr" />
