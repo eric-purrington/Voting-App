@@ -38,8 +38,12 @@ export default {
         return axios.put("/api/users/events/delete/" + email, body);
     },
 
-    deleteUserOfficial: function (userID, body) {
-        return axios.put("/api/users/officials/delete/" + userID, body);
+    deleteUserOfficial: function (email, body) {
+        return axios.put("/api/users/officials/delete/" + email, body);
+    },
+
+    deleteUserPlace: function (email, body) {
+        return axios.put("/api/users/places/delete/" + email, body);
     },
 
 };

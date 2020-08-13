@@ -13,11 +13,11 @@ function WhoCard(props) {
     }, []);
 
     const getOfficials = () => {
-        // UserAPI.getSavedData(user.email)
-        //     .then(res => {
-        //         setSavedOfficials(res.data.repDetails)
-        //     })
-        //     .catch(err => console.log(err));
+        UserAPI.getSavedData(user.email)
+            .then(res => {
+                setSavedOfficials(res.data.repDetails)
+            })
+            .catch(err => console.log(err));
     };
 
     const handleDeleteOfficial = (index) => {
@@ -28,7 +28,7 @@ function WhoCard(props) {
 
         let deleteName = { name: deleteItem[0].name };
 
-        UserAPI.deleteUserOfficial("5f2f20919f27003eb7fa09b1", deleteName)
+        UserAPI.deleteUserOfficial(user.email, deleteName)
             .then(() => getOfficials())
             .catch(err => console.log(err));
     };

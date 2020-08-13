@@ -104,4 +104,14 @@ module.exports = {
             .then(dbUser => res.json(dbUser))
             .catch(err => console.log(err));
     },
+
+    deletePlace: function (req, res) {
+        db.User
+            .findOneAndUpdate({ email: req.params.email },
+                { $pull: { pollingAddress: { name: req.body.name } } },
+                { new: true }
+            )
+            .then(dbUser => res.json(dbUser))
+            .catch(err => console.log(err));
+    },
 }
