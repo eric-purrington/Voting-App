@@ -94,7 +94,6 @@ function WherePage() {
                 <AddressSearchForm handleAddressChange={handleAddressChange} />
             </Cover>
             <ContentContainer>
-
                 {dataCheck ? "" : <Note />}
                 {pollingLocations[0] ? <h1>Polling Locations</h1> : ""}
                 <OfficialContainer>
