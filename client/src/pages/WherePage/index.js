@@ -4,13 +4,11 @@ import "./style.css";
 import Cover from "../../components/Cover";
 import image from "../../assets/images/where.jpg";
 import ContentContainer from "../../components/ContentContainer";
-// import AddressCard from "../../components/AddressCard";
 import AddressSearchForm from "../../components/AddressSearchForm";
 import API from "../../utils/API";
 import Footer from "../../components/Footer";
 import OfficialContainer from "../../components/OfficialContainer";
 import Note from "../../components/Note";
-// import PollingInfo from "../../components/PollingInfo";
 import LocationCard from "../../components/LocationCard";
 import Distance from "../../utils/Distance";
 import ShowingResults from "../../components/ShowingResults";
@@ -21,6 +19,7 @@ function WherePage() {
     const [pollingLocations, setPollingLocations] = useState([]);
     const [dropOffLocations, setDropOffLocations] = useState([]);
     const [earlyVoteSites, setEarlyVoteSites] = useState([]);
+    const [electionName, setElectionName] = useState("");
     const [dataCheck, setDataCheck] = useState(true);
     const { user } = useAuth0();
 
@@ -58,6 +57,7 @@ function WherePage() {
 
     function whereData(param, json) {
         API.getVoterInfo(param).then(res => {
+            setElectionName(res.data.election.name);
             setDataCheck(true);
             if (res.data.pollingLocations) {
                 let pollDive = res.data.pollingLocations;
@@ -73,9 +73,9 @@ function WherePage() {
             }
             if (res.data === "") {
                 setDataCheck(false);
-                setPollingLocations({});
-                setDropOffLocations({});
-                setEarlyVoteSites({});
+                setPollingLocations([]);
+                setDropOffLocations([]);
+                setEarlyVoteSites([]);
             }
         }).catch(error => {
             setDataCheck(false);
@@ -94,13 +94,13 @@ function WherePage() {
             <ShowingResults text="Showing locations near" address={address} />
             <ContentContainer>
                 {dataCheck ? "" : <Note />}
-                {pollingLocations[0] ? (
+                {pollingLocations[0] && dataCheck ? (
                     <div className="uk-text-center polling-title">
                         <h1>Polling Locations</h1>
                     </div>
                 ) : ""}
                 <OfficialContainer>
-                    {pollingLocations[0] ? pollingLocations.map(loc =>
+                    {pollingLocations[0]  && dataCheck ? pollingLocations.map(loc =>
                         <LocationCard
                             key={loc.name}
                             name={loc.name}
@@ -109,10 +109,13 @@ function WherePage() {
                             loggedIn={loggedIn}
                         />) : ""}
                 </OfficialContainer>
-                {dropOffLocations[0] ? <h1>Ballot Drop Off Locations</h1> : ""}
-
+                {dropOffLocations[0] && dataCheck ? (
+                    <div className="uk-text-center polling-title">
+                        <h1>Ballot Drop Off Locations</h1>
+                    </div>
+                ) : ""}
                 <OfficialContainer>
-                    {dropOffLocations[0] ? dropOffLocations.map(loc =>
+                    {dropOffLocations[0] && dataCheck ? dropOffLocations.map(loc =>
                         <LocationCard
                             key={loc.name}
                             name={loc.name}
@@ -121,9 +124,13 @@ function WherePage() {
                             loggedIn={loggedIn}
                         />) : ""}
                 </OfficialContainer>
-                {earlyVoteSites[0] ? <h1>Early Vote Sites</h1> : ""}
+                {earlyVoteSites[0] && dataCheck ? (
+                    <div className="uk-text-center polling-title">
+                        <h1>Early Vote Sites</h1>
+                    </div>
+                ) : ""}
                 <OfficialContainer>
-                    {earlyVoteSites[0] ? earlyVoteSites.map(loc =>
+                    {earlyVoteSites[0] && dataCheck ? earlyVoteSites.map(loc =>
                         <LocationCard
                             key={loc.name}
                             name={loc.name}
