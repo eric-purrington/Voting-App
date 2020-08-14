@@ -5,8 +5,10 @@ import 'react-calendar/dist/Calendar.css';
 import moment from "moment";
 import UserAPI from "../../utils/UserAPI";
 import SavedEventsContext from "../../utils/SavedEventsContext";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function DashCalendar(props) {
+    const { user } = useAuth0();
     const [dayCard, openDayCard] = useState(false);
     const [activeDay, setActiveDay] = useState({
         day: "",
@@ -36,10 +38,8 @@ function DashCalendar(props) {
             name: activeDay.elections[index].name
         };
 
-        UserAPI.addUserEvent("5f2f20919f27003eb7fa09b1", newEvent)
-            .then(() => {
-                alert("Event saved to Dashboard!")
-            })
+        UserAPI.addUserEvent(user.email, newEvent)
+            .then(() => alert("Event Saved to Dashboard!"))
             .catch(err => console.log(err));
     };
 
@@ -51,7 +51,7 @@ function DashCalendar(props) {
 
         let deleteID = { id: deleteItem[0]._id };
 
-        UserAPI.deleteUserEvent("5f2f20919f27003eb7fa09b1", deleteID)
+        UserAPI.deleteUserEvent(user.email, deleteID)
             .then((res) => {
                 getSavedEvents();
                 setActiveDay({ day: activeDay.day, elections: res.data.savedEvents.filter(el => el.date === activeDay.day) });

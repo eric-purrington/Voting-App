@@ -1,11 +1,12 @@
 const db = require("../models");
-const bcrypt = require("bcryptjs");
 
 module.exports = {
-    findAll: function (req, res) {
+    findOne: function (req, res) {
         db.User
-            .find(req.query)
-            .then(dbUser => res.json(dbUser))
+            .findOne({ email: req.params.email })
+            .then(dbUser => {
+                res.json(dbUser)
+            })
             .catch(err => res.status(422).json(err));
     },
     findById: function (req, res) {
@@ -15,12 +16,10 @@ module.exports = {
             .catch(err => res.status(422).json(err));
     },
     create: function (req, res) {
-        // bcrypt.hash(req.body.password, 12, function (error, hash) {
-            db.User
-                .create({ ...req.body, userId: req.params.userId })
-                .then(dbUser => res.json(dbUser.id))
-                .catch(err => res.json(err));
-        // )};
+        db.User
+            .create(req.body)
+            .then(dbUser => res.json(dbUser.id))
+            .catch(err => res.json(err));
     },
     update: function (req, res) {
         db.User
@@ -39,11 +38,11 @@ module.exports = {
     // adds an event a user saves
     addEvent: function (req, res) {
         db.User
-            .findOneAndUpdate({ _id: req.params.id }, {
+            .findOneAndUpdate({ email: req.params.email }, {
                 $push: {
                     savedEvents: {
                         name: req.body.name,
-                        date: req.body.date
+                        date: req.body.electionDay || req.body.date
                     }
                 }
             })
@@ -54,13 +53,14 @@ module.exports = {
     // add an official a user saves
     addOfficial: function (req, res) {
         db.User
-            .findOneAndUpdate({ _id: req.params.id }, {
+            .findOneAndUpdate({ email: req.params.email }, {
                 $push: {
                     repDetails: {
                         name: req.body.name,
                         email: req.body.email,
                         phone: req.body.phone,
-                        title: req.body.title
+                        title: req.body.title,
+                        party: req.body.party
                     }
                 }
             })
@@ -71,12 +71,12 @@ module.exports = {
     // add a polling site
     addPollingSite: function (req, res) {
         db.User
-            .findOneAndUpdate({ _id: req.params.id }, {
+            .findOneAndUpdate({ email: req.params.email }, {
                 $push: {
                     pollingAddress: {
                         name: req.body.name,
                         address: req.body.address,
-                        hours: req.body.hours
+                        distance: req.body.distance
                     }
                 }
             })
@@ -87,7 +87,7 @@ module.exports = {
     // deletes a users saved events
     deleteEvent: function (req, res) {
         db.User
-            .findOneAndUpdate({ _id: req.params.id },
+            .findOneAndUpdate({ email: req.params.email },
                 { $pull: { savedEvents: { _id: req.body.id } } },
                 { new: true }
             )
@@ -98,8 +98,18 @@ module.exports = {
     // deletes a users saved officials
     deleteOfficial: function (req, res) {
         db.User
-            .findOneAndUpdate({ _id: req.params.id },
+            .findOneAndUpdate({ email: req.params.email },
                 { $pull: { repDetails: { name: req.body.name } } },
+                { new: true }
+            )
+            .then(dbUser => res.json(dbUser))
+            .catch(err => console.log(err));
+    },
+
+    deletePlace: function (req, res) {
+        db.User
+            .findOneAndUpdate({ email: req.params.email },
+                { $pull: { pollingAddress: { name: req.body.name } } },
                 { new: true }
             )
             .then(dbUser => res.json(dbUser))

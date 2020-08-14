@@ -9,12 +9,11 @@
     text-transform: uppercase;
     color: #2c3e50 !important;
     font-size: 38px;
-    padding-top: 60px;
 }
 
 .dash-card {
     min-height: 400px;
-    border-radius: 10px;
+    border-radius: 10px !important;
     padding: 35px;
     margin-bottom: 75px;
 }
@@ -43,4 +42,22 @@
     .dash-card-subtitle {
         font-size: 12px;
     }
+}
+
+@media only screen and (min-width: 960px) {
+    .outside-div {
+        display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+    .dash-card-title {
+        padding-top: 60px;
+    }
+
+    .dash-card {
+        padding: 50px;
+    }  
+
+
 }

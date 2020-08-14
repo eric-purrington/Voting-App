@@ -9,17 +9,15 @@ const userSchema = new Schema({
     unique: true
   },
 
-  homeAddress: {
-    type: String,
-    required: true
-  },
-
   pollingAddress: [{
     name: {
       type: String
     },
     address: {
       type: String
+    },
+    distance: {
+      type: Number
     }
   }],
 
