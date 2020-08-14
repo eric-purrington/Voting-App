@@ -15,13 +15,13 @@ function WhereTable(props) {
                 {
                     props.places.map((place, index) => {
                         return <tr key={index}>
-                            <td className="delete-icon">
+                            <td className="delete-icon where-td">
                                 <button className="delete-btn" onClick={() => props.handleDeleteClick(index)} id={place.name}>
                                     <span uk-icon="icon: minus-circle; ratio: 1"></span>
                                 </button>
                             </td>
-                            <td className="uk-text-center uk-text-middle">{place.name}</td>
-                            <td className="uk-text-center uk-text-middle">{place.address}</td>
+                            <td className="uk-text-center uk-text-middle where-td">{place.name}</td>
+                            <td className="uk-text-center uk-text-middle where-td">{place.address}</td>
                         </tr>
                     })
                 }

@@ -1,6 +1,5 @@
 .officials-table {
     font-size: .8rem;
-    /* margin-top: 10%; */
 }
 
 .officials-table-head {
@@ -17,4 +16,8 @@
 
 .delete-btn:hover {
     color: #995756 !important;
+}
+
+.officials-td {
+    padding: 5px 12px !important;
 }

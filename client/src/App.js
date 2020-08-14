@@ -4,8 +4,6 @@ import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Loading from "./components/Loading";
 import HomePage from "./pages/HomePage";
 import DashboardPage from "./pages/DashboardPage";
-import LoginPage from "./pages/LoginPage";
-import SignupPage from "./pages/SignupPage";
 import WhenPage from "./pages/WhenPage";
 import WherePage from "./pages/WherePage";
 import WhoPage from "./pages/WhoPage";
@@ -29,8 +27,6 @@ function App() {
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/dashboard" component={DashboardPage} />
-        <Route exact path="/login" component={LoginPage} />
-        <Route exact path="/signup" component={SignupPage} />
         <Route exact path="/where" component={WherePage} />
         <Route exact path="/when" component={WhenPage} />
         <Route exact path="/who" component={WhoPage} />
