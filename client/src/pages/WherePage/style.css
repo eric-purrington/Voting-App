@@ -1,6 +1,3 @@
-.form{
-
-}
 .formInput{
     font-weight: bolder;
 }
@@ -14,5 +11,7 @@
 }
 
 .polling-title {
-    color: #2c3e50
+    color: #2c3e50;
+    margin-top: 20px;
+    margin-bottom: 50px;
 }

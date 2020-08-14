@@ -98,7 +98,7 @@ function WherePage() {
                     </div>
                 ) : ""}
                 <OfficialContainer>
-                    {pollingLocations[0]  && dataCheck ? pollingLocations.map(loc =>
+                    {pollingLocations[0] && dataCheck ? pollingLocations.map(loc =>
                         <LocationCard
                             key={loc.name}
                             name={loc.name}

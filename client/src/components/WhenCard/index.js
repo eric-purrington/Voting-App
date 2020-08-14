@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "./style.css";
-import API from "../../utils/API";
 import moment from "moment";
 import DashCalendar from "../../components/DashCalendar";
 import EventForm from "../../components/EventForm";
@@ -51,25 +50,27 @@ function WhenCard(props) {
     };
 
     return (
-        <div className="uk-card uk-card-default uk-grid-collapse uk-margin dash-card uk-text-center when-card" uk-grid="true">
-            <div className="uk-flex-last@s uk-card-media-right uk-cover-container uk-width-1-2@m">
-                <SavedEventsContext.Provider value={savedEvents}>
+        <SavedEventsContext.Provider value={savedEvents}>
+            <div className="uk-card uk-card-default uk-grid-collapse uk-margin dash-card uk-text-center when-card" uk-grid="true">
+                <div className="uk-flex-last@s uk-card-media-right uk-cover-container uk-width-1-2@m">
+
                     <DashCalendar
                         elections={savedEvents.events}
                         icon="icon: minus-circle"
                         addOrDel="delete"
                     />
-                </SavedEventsContext.Provider>
-            </div>
-            <div className="uk-width-1-2@m">
-                <div className="uk-card-body dash-card-body">
-                    <h3 className="uk-card-title dash-card-title when-card-title">When</h3>
-                    <hr className="dash-hr" />
-                    <p className="dash-card-subtitle">Important Dates to Remember.</p>
-                    <EventForm handleSubmitEvent={handleSubmitEvent} />
+
+                </div>
+                <div className="uk-width-1-2@m">
+                    <div className="uk-card-body dash-card-body">
+                        <h3 className="uk-card-title dash-card-title when-card-title">When</h3>
+                        <hr className="dash-hr" />
+                        <p className="dash-card-subtitle">Important Dates to Remember.</p>
+                        <EventForm handleSubmitEvent={handleSubmitEvent} />
+                    </div>
                 </div>
             </div>
-        </div>
+        </SavedEventsContext.Provider >
     )
 };
 
