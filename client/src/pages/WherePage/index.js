@@ -20,6 +20,7 @@ function WherePage() {
     const [pollingLocations, setPollingLocations] = useState([]);
     const [dropOffLocations, setDropOffLocations] = useState([]);
     const [earlyVoteSites, setEarlyVoteSites] = useState([]);
+    const [electionName, setElectionName] = useState("");
     const [dataCheck, setDataCheck] = useState(true);
     const { user } = useAuth0();
 
@@ -57,6 +58,8 @@ function WherePage() {
 
     function whereData(param, json) {
         API.getVoterInfo(param).then(res => {
+            console.log(res.data)
+            setElectionName(res.data.election.name);
             setDataCheck(true);
             if (res.data.pollingLocations) {
                 let pollDive = res.data.pollingLocations;
@@ -70,11 +73,11 @@ function WherePage() {
                 let earlyDive = res.data.earlyVoteSites;
                 locationData(earlyDive, json).then(res => setEarlyVoteSites(res))
             }
-            if (res.data === "") {
+            if (res.data === null) {
                 setDataCheck(false);
-                setPollingLocations({});
-                setDropOffLocations({});
-                setEarlyVoteSites({});
+                setPollingLocations([]);
+                setDropOffLocations([]);
+                setEarlyVoteSites([]);
             }
         }).catch(error => {
             setDataCheck(false);
@@ -93,9 +96,10 @@ function WherePage() {
             <ContentContainer>
 
                 {dataCheck ? "" : <Note />}
-                {pollingLocations[0] ? <h1>Polling Locations</h1> : ""}
+                {dataCheck ? <h1>Upcoming Election: {electionName}</h1> : ""}
+                {pollingLocations[0] || dataCheck ? <h1>Polling Locations</h1> : ""}
                 <OfficialContainer>
-                    {pollingLocations[0] ? pollingLocations.map(loc =>
+                    {pollingLocations[0] || dataCheck ? pollingLocations.map(loc =>
                         <LocationCard
                             key={loc.name}
                             name={loc.name}
