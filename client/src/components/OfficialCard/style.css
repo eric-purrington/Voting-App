@@ -31,6 +31,12 @@ span:hover {
     cursor: pointer;
 }
 
-.addBtn {
-    color: white;
+.addOfficial {
+    background-color: white;
+    color: rgba(0, 0, 255, 0.637);
+}
+
+.addOfficial:hover {
+    background-color: white;
+    color: rgba(0, 0, 255, 0.637);
 }

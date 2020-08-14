@@ -5,3 +5,7 @@
 .uk-card {
     border-radius: 50px;
 }
+
+.addLocation {
+    width: 35% !important;
+}
