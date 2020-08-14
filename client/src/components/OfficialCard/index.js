@@ -23,7 +23,7 @@ function OfficialCard(props) {
                 <p className="uk-card-title official-card-info">{props.name}</p>
                 <p className="uk-card-title official-card-info">Phone: {props.phone}</p>
                 <p className="uk-card-title official-card-info">Email: {props.email}</p>
-                {props.loggedIn === true ? <button className="uk-button uk-button-default uk-card-hover add-event-btn addOfficial" onClick={handleOfficialSave}>Add <span uk-icon="icon: plus; ratio: .75"></span></button> : ""}
+                {props.loggedIn === true ? <button className="uk-button uk-button-default uk-card-hover add-event-btn addOfficial" onClick={handleOfficialSave} uk-toggle="target: #officialModal">Add <span uk-icon="icon: plus; ratio: .75"></span></button> : ""}
             </div>
         </div>
     )

@@ -1,4 +1,4 @@
-import React, { useEffect, setState } from 'react';
+import React from 'react';
 import './index.css';
 import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Loading from "./components/Loading";
@@ -14,7 +14,6 @@ import AboutCanvas from "./components/AboutCanvas";
 import NoMatch from "./components/NoMatch";
 import { useAuth0 } from "@auth0/auth0-react";
 import history from "./utils/history";
-import UserAPI from "./utils/UserAPI";
 
 function App() {
   const { isLoading, error } = useAuth0();

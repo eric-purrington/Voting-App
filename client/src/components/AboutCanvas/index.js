@@ -1,5 +1,3 @@
-/* eslint-disable react/jsx-no-target-blank */
-/* eslint-disable jsx-a11y/anchor-has-content */
 import React from "react";
 import "./style.css";
 import VoteLove from "../../assets/images/VoteLove.jpg";

@@ -8,4 +8,5 @@
 
 .addLocation {
     width: 35% !important;
+    z-index: 99;
 }

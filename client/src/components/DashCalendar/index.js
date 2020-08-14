@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./style.css";
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
@@ -39,7 +39,6 @@ function DashCalendar(props) {
         };
 
         UserAPI.addUserEvent(user.email, newEvent)
-            .then(() => alert("Event Saved to Dashboard!"))
             .catch(err => console.log(err));
     };
 
@@ -86,9 +85,19 @@ function DashCalendar(props) {
                                     return (
                                         <div key={index}>
                                             <p className="alert-election-name">
-                                                <span
-                                                    onClick={() => handleIconClick(index)} className="addDel-icon" uk-icon={props.icon} id={index} data-id={el._id}>
-                                                </span>
+                                                {
+                                                    props.addOrDel === "add" ? (
+                                                        <span
+                                                            onClick={() => handleIconClick(index)} uk-toggle={
+                                                                props.addOrDel === "add" ? "target: #add-event-modal" : ""
+                                                            } className="addDel-icon" uk-icon={props.icon} id={index} data-id={el._id}>
+                                                        </span>
+                                                    ) : (
+                                                            <span
+                                                                onClick={() => handleIconClick(index)} className="addDel-icon" uk-icon={props.icon} id={index} data-id={el._id}>
+                                                            </span>
+                                                        )
+                                                }
                                                 {el.name}
                                             </p>
                                         </div>
