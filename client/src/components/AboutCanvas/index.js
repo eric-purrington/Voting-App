@@ -3,12 +3,14 @@
 import React from "react";
 import "./style.css";
 import VoteLove from "../../assets/images/VoteLove.jpg";
+import Sam from "../../assets/images/Sam.png";
 
 function ContactCanvas() {
     return (
         <div id="about-canvas" uk-offcanvas="overlay: true">
             <div className="uk-offcanvas-bar uk-text-center">
                 <button className="uk-offcanvas-close" type="button" uk-close="true"></button>
+                <img className="uk-thumbnail" src={Sam} alt="Sam" />
                 <h3 id="contact-title">About</h3>
                 <div className="about-paragraph">
                     <p>Vote Goat was developed by Alyssa Hellrung, Joanna Preston, Eric Purrington, and Sabah Syed as a capstone project for the University of Washington's Full Stack Web Development Boot Camp in Summer of 2020.</p>
