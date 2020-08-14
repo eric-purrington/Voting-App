@@ -6,7 +6,7 @@ function ElectionsBody(props) {
         <tr>
             <td>
                 <span
-                    onClick={() => props.handleAddEvent(props.index)} className="addDel-icon" uk-icon={props.icon}>
+                    onClick={() => props.handleAddEvent(props.index)} className="addDel-icon" uk-icon={props.icon} uk-toggle="target: #add-event-modal">
                 </span>
             </td>
             <td className="elections-table-item">{props.electionName}</td>
