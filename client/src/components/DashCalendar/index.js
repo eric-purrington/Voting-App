@@ -85,9 +85,19 @@ function DashCalendar(props) {
                                     return (
                                         <div key={index}>
                                             <p className="alert-election-name">
-                                                <span
-                                                    onClick={() => handleIconClick(index)} uk-toggle="target: #add-event-modal" className="addDel-icon" uk-icon={props.icon} id={index} data-id={el._id}>
-                                                </span>
+                                                {
+                                                    props.addOrDel === "add" ? (
+                                                        <span
+                                                            onClick={() => handleIconClick(index)} uk-toggle={
+                                                                props.addOrDel === "add" ? "target: #add-event-modal" : ""
+                                                            } className="addDel-icon" uk-icon={props.icon} id={index} data-id={el._id}>
+                                                        </span>
+                                                    ) : (
+                                                            <span
+                                                                onClick={() => handleIconClick(index)} className="addDel-icon" uk-icon={props.icon} id={index} data-id={el._id}>
+                                                            </span>
+                                                        )
+                                                }
                                                 {el.name}
                                             </p>
                                         </div>
