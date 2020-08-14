@@ -19,7 +19,6 @@ function WherePage() {
     const [pollingLocations, setPollingLocations] = useState([]);
     const [dropOffLocations, setDropOffLocations] = useState([]);
     const [earlyVoteSites, setEarlyVoteSites] = useState([]);
-    const [electionName, setElectionName] = useState("");
     const [dataCheck, setDataCheck] = useState(true);
     const { user } = useAuth0();
 
@@ -57,7 +56,6 @@ function WherePage() {
 
     function whereData(param, json) {
         API.getVoterInfo(param).then(res => {
-            setElectionName(res.data.election.name);
             setDataCheck(true);
             if (res.data.pollingLocations) {
                 let pollDive = res.data.pollingLocations;
@@ -141,6 +139,12 @@ function WherePage() {
                 </OfficialContainer>
             </ContentContainer>
             <Footer />
+            <div id="locationModal" className="uk-flex-top" uk-modal="true">
+                <div className="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+                    <button className="uk-modal-close-default" type="button" uk-close="true"></button>
+                    <p>Location added to your dashboard!</p>
+                </div>
+            </div>
         </div>
     )
 };

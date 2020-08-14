@@ -19,7 +19,7 @@ function LocationCard(props) {
             <h2 className="uk-card-title locationName">{props.name}</h2>
             <p className="locationAdd">{props.address}</p>
             <p className="locationAdd">approx. {props.distance} miles</p>
-            {props.loggedIn === true ? <button className="uk-button uk-button-default add-event-btn addLocation" onClick={handleLocationSave}>Add <span uk-icon="icon: plus; ratio: .75"></span></button> : ""}
+            {props.loggedIn === true ? <button className="uk-button uk-button-default add-event-btn addLocation" onClick={handleLocationSave} uk-toggle="target: #locationModal">Add <span uk-icon="icon: plus; ratio: .75"></span></button> : ""}
         </div>
     )
 }
