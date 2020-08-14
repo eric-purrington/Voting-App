@@ -17,6 +17,10 @@ function DashCalendar(props) {
     });
     const { events, getSavedEvents } = useContext(SavedEventsContext);
 
+    useEffect(() => {
+        setActiveDay({ day: activeDay.day, elections: props.elections.filter(el => el.electionDay === activeDay.day || el.date === activeDay.day) })
+    }, [props.elections]);
+
     const handleDayClick = (event) => {
         openDayCard(true);
         let date = moment(event).format("MM-DD-YYYY");
@@ -85,9 +89,19 @@ function DashCalendar(props) {
                                     return (
                                         <div key={index}>
                                             <p className="alert-election-name">
-                                                <span
-                                                    onClick={() => handleIconClick(index)} uk-toggle="target: #add-event-modal" className="addDel-icon" uk-icon={props.icon} id={index} data-id={el._id}>
-                                                </span>
+                                                {
+                                                    props.addOrDel === "add" ? (
+                                                        <span
+                                                            onClick={() => handleIconClick(index)} uk-toggle={
+                                                                props.addOrDel === "add" ? "target: #add-event-modal" : ""
+                                                            } className="addDel-icon" uk-icon={props.icon} id={index} data-id={el._id}>
+                                                        </span>
+                                                    ) : (
+                                                            <span
+                                                                onClick={() => handleIconClick(index)} className="addDel-icon" uk-icon={props.icon} id={index} data-id={el._id}>
+                                                            </span>
+                                                        )
+                                                }
                                                 {el.name}
                                             </p>
                                         </div>

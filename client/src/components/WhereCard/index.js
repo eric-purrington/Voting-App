@@ -23,9 +23,9 @@ function WhereCard(props) {
             return savedPlaces.indexOf(place) == index;
         });
 
-        let deleteName = { name: deleteItem[0].name };
+        let deleteID = { _id: deleteItem[0]._id };
 
-        UserAPI.deleteUserPlace(user.email, deleteName)
+        UserAPI.deleteUserPlace(user.email, deleteID)
             .then(() => getPlaces())
             .catch(err => console.log(err));
     };

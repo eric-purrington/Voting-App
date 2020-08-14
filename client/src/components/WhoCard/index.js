@@ -26,9 +26,9 @@ function WhoCard(props) {
             return savedOfficials.indexOf(official) == index;
         });
 
-        let deleteName = { name: deleteItem[0].name };
+        let deleteID = { _id: deleteItem[0]._id };
 
-        UserAPI.deleteUserOfficial(user.email, deleteName)
+        UserAPI.deleteUserOfficial(user.email, deleteID)
             .then(() => getOfficials())
             .catch(err => console.log(err));
     };

@@ -17,15 +17,15 @@ function OfficialsTable(props) {
                 {
                     props.officials.map((official, index) => {
                         return <tr key={index}>
-                            <td className="delete-icon">
+                            <td className="delete-icon officials-td">
                                 <button className="delete-btn" onClick={() => props.handleDeleteOfficial(index)} id={official.name}>
                                     <span uk-icon="icon: minus-circle; ratio: 1"></span>
                                 </button>
                             </td>
-                            <td className="uk-text-center uk-text-middle">{official.name}</td>
-                            <td className="uk-text-center uk-text-middle">{official.title}</td>
-                            <td className="uk-text-center uk-text-middle">{official.phone}</td>
-                            <td className="uk-text-center uk-text-middle">{official.email}</td>
+                            <td className="uk-text-center uk-text-middle officials-td">{official.name}</td>
+                            <td className="uk-text-center uk-text-middle officials-td">{official.title}</td>
+                            <td className="uk-text-center uk-text-middle officials-td">{official.phone}</td>
+                            <td className="uk-text-center uk-text-middle officials-td">{official.email}</td>
                         </tr>
                     })
                 }
