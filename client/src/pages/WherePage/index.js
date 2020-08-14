@@ -11,6 +11,7 @@ import OfficialContainer from "../../components/OfficialContainer";
 import Note from "../../components/Note";
 import LocationCard from "../../components/LocationCard";
 import Distance from "../../utils/Distance";
+import ShowingResults from "../../components/ShowingResults";
 
 function WherePage() {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -88,9 +89,14 @@ function WherePage() {
             <Cover image={image} header={"WHERE"}>
                 <AddressSearchForm handleAddressChange={handleAddressChange} />
             </Cover>
+            <ShowingResults text="Showing locations near" address={address} />
             <ContentContainer>
                 {dataCheck ? "" : <Note />}
-                {pollingLocations[0] ? <h1>Polling Locations</h1> : ""}
+                {pollingLocations[0] ? (
+                    <div className="uk-text-center polling-title">
+                        <h1>Polling Locations</h1>
+                    </div>
+                ) : ""}
                 <OfficialContainer>
                     {pollingLocations[0] ? pollingLocations.map(loc =>
                         <LocationCard
