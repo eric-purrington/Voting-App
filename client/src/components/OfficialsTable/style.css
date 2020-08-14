@@ -19,5 +19,9 @@
 }
 
 .officials-td {
-    padding: 5px 12px !important;
+    padding: 5px !important;
+}
+
+.delete-icon-td {
+    padding-right: 0px !important;
 }
