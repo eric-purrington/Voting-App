@@ -53,7 +53,7 @@ function WhoPage() {
     const handleZipChange = (event) => {
         event.preventDefault();
         setAddress(event.target.zipcode.value);
-        whoData(address);
+        whoData(event.target.zipcode.value);
     }
 
     return (
