@@ -24,9 +24,7 @@ function WherePage() {
     const { user } = useAuth0();
 
     useEffect(() => {
-        if (user !== null) {
-            setLoggedIn(true);
-        }
+        user === undefined || user === false ? setLoggedIn(false) : setLoggedIn(true);
         function getVotersLatLon() {
             return API.getLatLon(address).then(res => res.data.results[0].locations[0].latLng);
         }
@@ -59,7 +57,6 @@ function WherePage() {
 
     function whereData(param, json) {
         API.getVoterInfo(param).then(res => {
-            console.log(res)
             setDataCheck(true);
             if (res.data.pollingLocations) {
                 let pollDive = res.data.pollingLocations;
