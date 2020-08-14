@@ -13,7 +13,7 @@ function OfficialCard(props) {
             phone: props.phone, 
             email: props.email,
             party: props.party}
-        UserAPI.addOfficial(user.email, body).then(res => console.log("official saved"));
+        UserAPI.addOfficial(user.email, body).then(res => console.log("official saved", res));
     }
 
     return (

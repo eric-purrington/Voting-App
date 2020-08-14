@@ -22,12 +22,12 @@ export default {
         return axios.put("/api/users/events/" + email, body);
     },
 
-    addOfficial: function (userID, body) {
-        return axios.put("/api/users/officials/" + userID, body);
+    addOfficial: function (email, body) {
+        return axios.put("/api/users/officials/" + email, body);
     },
 
-    addPollingSite: function (userID, body) {
-        return axios.put("/api/users/places/" + userID, body);
+    addPollingSite: function (email, body) {
+        return axios.put("/api/users/places/" + email, body);
     },
 
     getSavedData: function (email) {
