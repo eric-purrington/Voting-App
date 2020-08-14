@@ -4,13 +4,11 @@ import "./style.css";
 import Cover from "../../components/Cover";
 import image from "../../assets/images/where.jpg";
 import ContentContainer from "../../components/ContentContainer";
-// import AddressCard from "../../components/AddressCard";
 import AddressSearchForm from "../../components/AddressSearchForm";
 import API from "../../utils/API";
 import Footer from "../../components/Footer";
 import OfficialContainer from "../../components/OfficialContainer";
 import Note from "../../components/Note";
-// import PollingInfo from "../../components/PollingInfo";
 import LocationCard from "../../components/LocationCard";
 import Distance from "../../utils/Distance";
 
