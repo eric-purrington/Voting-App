@@ -99,7 +99,7 @@ module.exports = {
     deleteOfficial: function (req, res) {
         db.User
             .findOneAndUpdate({ email: req.params.email },
-                { $pull: { repDetails: { name: req.body.name } } },
+                { $pull: { repDetails: { _id: req.body._id } } },
                 { new: true }
             )
             .then(dbUser => res.json(dbUser))
@@ -109,7 +109,7 @@ module.exports = {
     deletePlace: function (req, res) {
         db.User
             .findOneAndUpdate({ email: req.params.email },
-                { $pull: { pollingAddress: { name: req.body.name } } },
+                { $pull: { pollingAddress: { _id: req.body._id } } },
                 { new: true }
             )
             .then(dbUser => res.json(dbUser))
