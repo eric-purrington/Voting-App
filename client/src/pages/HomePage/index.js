@@ -10,21 +10,13 @@ import UserAPI from "../../utils/UserAPI";
 
 function HomePage() {
     const { user } = useAuth0();
-    console.log(user);
 
     useEffect(() => {
         UserAPI.findUser(user.email)
             .then(res => {
-                console.log(res.data);
                 if (res.data === null || res.data.length === 0) {
                     UserAPI.addUser({ email: user.email })
-                        .then(res => {
-                            console.log("new user created")
-                            console.log(res);
-                        })
                         .catch(err => console.log(err));
-                } else {
-                    console.log("user already exists")
                 }
             })
             .catch(err => console.log(err));

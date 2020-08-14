@@ -12,9 +12,6 @@ import WhoCard from "../../components/WhoCard";
 import Loading from "../../components/Loading";
 
 function DashboardPage() {
-    const { user } = useAuth0();
-    console.log(user);
-
     return (
         <div>
             <Cover image={image} header={"DASHBOARD"}>
