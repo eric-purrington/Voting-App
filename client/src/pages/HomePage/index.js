@@ -15,12 +15,16 @@ function HomePage() {
     useEffect(() => {
         UserAPI.findUser(user.email)
             .then(res => {
-                if (res.data.length === 0) {
+                console.log(res.data);
+                if (res.data === null || res.data.length === 0) {
                     UserAPI.addUser({ email: user.email })
                         .then(res => {
+                            console.log("new user created")
                             console.log(res);
                         })
                         .catch(err => console.log(err));
+                } else {
+                    console.log("user already exists")
                 }
             })
             .catch(err => console.log(err));
