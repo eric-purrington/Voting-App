@@ -84,4 +84,4 @@ https://github.com/eric-purrington/Voting-App
 
 --Email reminders about important registration and voting dates  
 --Maps that show where polling places and ballot drop-off boxes are located   
---A "Where" page that shows users the current contests and candidates in their area.
+--A "What" page that shows users the current contests and candidates in their area.
