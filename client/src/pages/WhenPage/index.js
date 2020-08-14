@@ -23,7 +23,7 @@ function WhenPage() {
 
     useEffect(() => {
         whenData();
-        user !== undefined ? setLoggedIn(true) : setLoggedIn(false);
+        user === undefined || user === false ? setLoggedIn(false) : setLoggedIn(true);
     }, []);
 
     function whenData() {
@@ -42,7 +42,7 @@ function WhenPage() {
             return results.indexOf(election) == index;
         });
 
-        UserAPI.addUserEvent("5f2f20919f27003eb7fa09b1", addItem[0])
+        UserAPI.addUserEvent(user.email, addItem[0])
             .then(() => {
                 alert("Event saved to Dashboard!")
             })
@@ -61,7 +61,7 @@ function WhenPage() {
                             <div className="uk-card uk-card-default uk-card-body calendar-card">
                                 <DashCalendar
                                     elections={results}
-                                    icon={loggedIn ? "icon: plus-circle" : ""}
+                                    icon={loggedIn === true ? "icon: plus-circle" : ""}
                                     addOrDel="add"
                                 />
                             </div>

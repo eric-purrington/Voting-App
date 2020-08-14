@@ -24,7 +24,7 @@ function WherePage() {
     const { user } = useAuth0();
 
     useEffect(() => {
-        if(user !== null){
+        if (user !== null) {
             setLoggedIn(true);
         }
         function getVotersLatLon() {
@@ -98,36 +98,36 @@ function WherePage() {
                 {dataCheck ? "" : <Note />}
                 {pollingLocations[0] ? <h1>Polling Locations</h1> : ""}
                 <OfficialContainer>
-                    {pollingLocations[0] ? pollingLocations.map(loc => 
+                    {pollingLocations[0] ? pollingLocations.map(loc =>
                         <LocationCard
-                        key={loc.name}
-                        name={loc.name}
-                        address={loc.address}
-                        distance={loc.distance}
-                        loggedIn={loggedIn}
+                            key={loc.name}
+                            name={loc.name}
+                            address={loc.address}
+                            distance={loc.distance}
+                            loggedIn={loggedIn}
                         />) : ""}
                 </OfficialContainer>
                 {dropOffLocations[0] ? <h1>Ballot Drop Off Locations</h1> : ""}
 
                 <OfficialContainer>
-                    {dropOffLocations[0] ? dropOffLocations.map(loc => 
+                    {dropOffLocations[0] ? dropOffLocations.map(loc =>
                         <LocationCard
-                        key={loc.name}
-                        name={loc.name}
-                        address={loc.address}
-                        distance={loc.distance}
-                        loggedIn={loggedIn}
+                            key={loc.name}
+                            name={loc.name}
+                            address={loc.address}
+                            distance={loc.distance}
+                            loggedIn={loggedIn}
                         />) : ""}
                 </OfficialContainer>
                 {earlyVoteSites[0] ? <h1>Early Vote Sites</h1> : ""}
                 <OfficialContainer>
-                    {earlyVoteSites[0] ? earlyVoteSites.map(loc => 
+                    {earlyVoteSites[0] ? earlyVoteSites.map(loc =>
                         <LocationCard
-                        key={loc.name}
-                        name={loc.name}
-                        address={loc.address}
-                        distance={loc.distance}
-                        loggedIn={loggedIn}
+                            key={loc.name}
+                            name={loc.name}
+                            address={loc.address}
+                            distance={loc.distance}
+                            loggedIn={loggedIn}
                         />) : ""}
                 </OfficialContainer>
             </ContentContainer>

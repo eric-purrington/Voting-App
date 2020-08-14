@@ -6,6 +6,10 @@ export default {
         return axios.post("/api/users/", user);
     },
 
+    findUser: function (email) {
+        return axios.get("/api/users/" + email)
+    },
+
     updateUser: function (userID) {
         return axios.put("/api/users/" + userID);
     },
@@ -14,8 +18,8 @@ export default {
         return axios.post("/login", user);
     },
 
-    addUserEvent: function (userID, body) {
-        return axios.put("/api/users/events/" + userID, body);
+    addUserEvent: function (email, body) {
+        return axios.put("/api/users/events/" + email, body);
     },
 
     addOfficial: function (userID, body) {
@@ -26,16 +30,20 @@ export default {
         return axios.put("/api/users/places/" + userID, body);
     },
 
-    getSavedData: function (userID) {
-        return axios.get("/api/users/" + userID);
+    getSavedData: function (email) {
+        return axios.get("/api/users/" + email);
     },
 
-    deleteUserEvent: function (userID, body) {
-        return axios.put("/api/users/events/delete/" + userID, body);
+    deleteUserEvent: function (email, body) {
+        return axios.put("/api/users/events/delete/" + email, body);
     },
 
-    deleteUserOfficial: function (userID, body) {
-        return axios.put("/api/users/officials/delete/" + userID, body);
+    deleteUserOfficial: function (email, body) {
+        return axios.put("/api/users/officials/delete/" + email, body);
+    },
+
+    deleteUserPlace: function (email, body) {
+        return axios.put("/api/users/places/delete/" + email, body);
     },
 
 };

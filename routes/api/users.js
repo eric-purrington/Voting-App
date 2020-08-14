@@ -3,40 +3,40 @@ const usersController = require("../../controllers/usersController");
 // const checkJWT = require("../../client/auth/checkjwt");
 
 // Matches with "/api/users"
-router.route("/:id")
-// router.route("/:id", checkJWT)
-  // .get(usersController.findAll)
+router.route("/")
   .post(usersController.create);
 
-// Matches with "/api/users/:id"
+// Matches with "/api/users/:email"
 router
-  .route("/:id")
-  .get(usersController.findById)
-  .put(usersController.update)
-  .delete(usersController.remove);
+  .route("/:email")
+  .get(usersController.findOne);
 
 // Matches with "/api/users/officials/:id"
 router
-  .route("/officials/:id")
+  .route("/officials/:email")
   .put(usersController.addOfficial);
 
 // Matches with "/api/users/events/:id"
 router
-  .route("/events/:id")
+  .route("/events/:email")
   .put(usersController.addEvent);
 
 // Matches with "/api/users/places/:id"
 router
-  .route("/places/:id")
+  .route("/places/:email")
   .put(usersController.addPollingSite);
 
 // Matches with "/api/users/events/delete/:id"
 router
-  .route("/events/delete/:id")
+  .route("/events/delete/:email")
   .put(usersController.deleteEvent);
 
 router
-  .route("/officials/delete/:id")
+  .route("/officials/delete/:email")
   .put(usersController.deleteOfficial);
+
+router
+  .route("/places/delete/:email")
+  .put(usersController.deletePlace);
 
 module.exports = router;

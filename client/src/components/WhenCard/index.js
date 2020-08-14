@@ -6,12 +6,15 @@ import DashCalendar from "../../components/DashCalendar";
 import EventForm from "../../components/EventForm";
 import UserAPI from "../../utils/UserAPI";
 import SavedEventsContext from "../../utils/SavedEventsContext";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function WhenCard(props) {
+    const { user } = useAuth0();
+
     const [savedEvents, setSavedEvents] = useState({
         events: [],
         getSavedEvents: () => {
-            UserAPI.getSavedData("5f2f20919f27003eb7fa09b1")
+            UserAPI.getSavedData(user.email)
                 .then(res => {
                     setSavedEvents({ ...savedEvents, events: res.data.savedEvents })
                 })
@@ -24,7 +27,7 @@ function WhenCard(props) {
     }, []);
 
     const getSaved = () => {
-        UserAPI.getSavedData("5f2f20919f27003eb7fa09b1")
+        UserAPI.getSavedData(user.email)
             .then(res => {
                 setSavedEvents({ ...savedEvents, events: res.data.savedEvents })
             })
@@ -42,16 +45,14 @@ function WhenCard(props) {
         event.target.name.value = "";
         event.target.date.value = "";
 
-        UserAPI.addUserEvent("5f2f20919f27003eb7fa09b1", newEvent)
-            .then(() => {
-                getSaved();
-            })
+        UserAPI.addUserEvent(user.email, newEvent)
+            .then(() => getSaved())
             .catch(err => console.log(err));
     };
 
     return (
-        <div className="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@m uk-margin dash-card uk-text-center" uk-grid="true">
-            <div className="uk-flex-last@s uk-card-media-right uk-cover-container">
+        <div className="uk-card uk-card-default uk-grid-collapse uk-margin dash-card uk-text-center" uk-grid="true">
+            <div className="uk-flex-last@s uk-card-media-right uk-cover-container uk-width-1-2@m">
                 <SavedEventsContext.Provider value={savedEvents}>
                     <DashCalendar
                         elections={savedEvents.events}
@@ -60,7 +61,7 @@ function WhenCard(props) {
                     />
                 </SavedEventsContext.Provider>
             </div>
-            <div>
+            <div className="uk-width-1-2@m">
                 <div className="uk-card-body dash-card-body">
                     <h3 className="uk-card-title dash-card-title when-card-title">When</h3>
                     <hr className="dash-hr" />
