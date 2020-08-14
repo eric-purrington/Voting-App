@@ -43,9 +43,6 @@ function WhenPage() {
         });
 
         UserAPI.addUserEvent(user.email, addItem[0])
-            .then(() => {
-                alert("Event saved to Dashboard!")
-            })
             .catch(err => console.log(err));
     };
 
@@ -80,6 +77,12 @@ function WhenPage() {
                 </div>
             </ContentContainer>
             <Footer />
+            <div id="add-event-modal" className="uk-flex-top" uk-modal="true">
+                <div className="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+                    <button className="uk-modal-close-default" type="button" uk-close="true"></button>
+                    <p>Event Added to Dashboard!</p>
+                </div>
+            </div>
         </div>
     )
 };
