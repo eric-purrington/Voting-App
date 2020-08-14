@@ -17,7 +17,7 @@ function OfficialsTable(props) {
                 {
                     props.officials.map((official, index) => {
                         return <tr key={index}>
-                            <td className="delete-icon delete-icon-td">
+                            <td className="delete-icon officials-td">
                                 <button className="delete-btn" onClick={() => props.handleDeleteOfficial(index)} id={official.name}>
                                     <span uk-icon="icon: minus-circle; ratio: 1"></span>
                                 </button>

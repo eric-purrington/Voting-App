@@ -15,7 +15,7 @@ function WhereTable(props) {
                 {
                     props.places.map((place, index) => {
                         return <tr key={index}>
-                            <td className="delete-icon delete-icon-td">
+                            <td className="delete-icon where-td">
                                 <button className="delete-btn" onClick={() => props.handleDeleteClick(index)} id={place.name}>
                                     <span uk-icon="icon: minus-circle; ratio: 1"></span>
                                 </button>
