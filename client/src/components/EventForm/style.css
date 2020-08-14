@@ -12,7 +12,7 @@
     letter-spacing: 1px;
 }
 
-.add-event-btn:hover {
+.add-event-btn:hover, .add-event-btn:focus {
     background-color: rgb(58, 82, 148);
     color: white;
 }
