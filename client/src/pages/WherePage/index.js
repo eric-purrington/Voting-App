@@ -13,6 +13,7 @@ import Note from "../../components/Note";
 // import PollingInfo from "../../components/PollingInfo";
 import LocationCard from "../../components/LocationCard";
 import Distance from "../../utils/Distance";
+import ShowingResults from "../../components/ShowingResults";
 
 function WherePage() {
     const [loggedIn, setLoggedIn] = useState(false);
@@ -58,7 +59,6 @@ function WherePage() {
 
     function whereData(param, json) {
         API.getVoterInfo(param).then(res => {
-            console.log(res.data)
             setElectionName(res.data.election.name);
             setDataCheck(true);
             if (res.data.pollingLocations) {
@@ -73,7 +73,7 @@ function WherePage() {
                 let earlyDive = res.data.earlyVoteSites;
                 locationData(earlyDive, json).then(res => setEarlyVoteSites(res))
             }
-            if (res.data === null) {
+            if (res.data === "") {
                 setDataCheck(false);
                 setPollingLocations([]);
                 setDropOffLocations([]);
@@ -93,13 +93,16 @@ function WherePage() {
             <Cover image={image} header={"WHERE"}>
                 <AddressSearchForm handleAddressChange={handleAddressChange} />
             </Cover>
+            <ShowingResults text="Showing locations near" address={address} />
             <ContentContainer>
-
                 {dataCheck ? "" : <Note />}
-                {dataCheck ? <h1>Upcoming Election: {electionName}</h1> : ""}
-                {pollingLocations[0] || dataCheck ? <h1>Polling Locations</h1> : ""}
+                {pollingLocations[0] && dataCheck ? (
+                    <div className="uk-text-center polling-title">
+                        <h1>Polling Locations</h1>
+                    </div>
+                ) : ""}
                 <OfficialContainer>
-                    {pollingLocations[0] || dataCheck ? pollingLocations.map(loc =>
+                    {pollingLocations[0]  && dataCheck ? pollingLocations.map(loc =>
                         <LocationCard
                             key={loc.name}
                             name={loc.name}
@@ -108,10 +111,13 @@ function WherePage() {
                             loggedIn={loggedIn}
                         />) : ""}
                 </OfficialContainer>
-                {dropOffLocations[0] ? <h1>Ballot Drop Off Locations</h1> : ""}
-
+                {dropOffLocations[0] && dataCheck ? (
+                    <div className="uk-text-center polling-title">
+                        <h1>Ballot Drop Off Locations</h1>
+                    </div>
+                ) : ""}
                 <OfficialContainer>
-                    {dropOffLocations[0] ? dropOffLocations.map(loc =>
+                    {dropOffLocations[0] && dataCheck ? dropOffLocations.map(loc =>
                         <LocationCard
                             key={loc.name}
                             name={loc.name}
@@ -120,9 +126,13 @@ function WherePage() {
                             loggedIn={loggedIn}
                         />) : ""}
                 </OfficialContainer>
-                {earlyVoteSites[0] ? <h1>Early Vote Sites</h1> : ""}
+                {earlyVoteSites[0] && dataCheck ? (
+                    <div className="uk-text-center polling-title">
+                        <h1>Early Vote Sites</h1>
+                    </div>
+                ) : ""}
                 <OfficialContainer>
-                    {earlyVoteSites[0] ? earlyVoteSites.map(loc =>
+                    {earlyVoteSites[0] && dataCheck ? earlyVoteSites.map(loc =>
                         <LocationCard
                             key={loc.name}
                             name={loc.name}
