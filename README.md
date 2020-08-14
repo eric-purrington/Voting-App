@@ -70,5 +70,5 @@ https://github.com/eric-purrington/Voting-App
 
 ## Directions for Future Development
 
---Email reminders about important registration and voting dates
---Maps that show where polling places and ballot drop-off boxes are located.
+--Email reminders about important registration and voting dates  
+--Maps that show where polling places and ballot drop-off boxes are located   
