@@ -30,3 +30,7 @@
 span:hover {
     cursor: pointer;
 }
+
+.addBtn {
+    color: white;
+}

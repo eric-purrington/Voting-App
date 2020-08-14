@@ -16,21 +16,11 @@ function WhoPage() {
     const [results, setResults] = useState([]);
 
     const { user } = useAuth0();
-        console.log(user);
 
     useEffect(() => {
-        if (loggedIn) {
-            // loadUser();
-        }
+        user === undefined || user === false ? setLoggedIn(false) : setLoggedIn(true);
         whoData(address);
     }, []);
-
-    // function loadUser() {
-    //     API.getSavedData(userID).then(user => {
-    //         let modifiedAddress = user.homeAddress.replace(/,./g, "").replace(/ /g, "%20");
-    //         setAddress(modifiedAddress);
-    //     });
-    // }
 
     function whoData(param) {
         var modifiedResults = [];
