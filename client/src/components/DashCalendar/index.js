@@ -17,6 +17,10 @@ function DashCalendar(props) {
     });
     const { events, getSavedEvents } = useContext(SavedEventsContext);
 
+    useEffect(() => {
+        setActiveDay({ day: activeDay.day, elections: props.elections.filter(el => el.electionDay === activeDay.day || el.date === activeDay.day) })
+    }, [props.elections]);
+
     const handleDayClick = (event) => {
         openDayCard(true);
         let date = moment(event).format("MM-DD-YYYY");

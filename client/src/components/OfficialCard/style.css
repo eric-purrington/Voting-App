@@ -36,7 +36,7 @@ span:hover {
     color: rgba(0, 0, 255, 0.637);
 }
 
-.addOfficial:hover {
+.addOfficial:hover, .addOfficial:focus {
     background-color: white;
     color: rgba(0, 0, 255, 0.637);
 }

@@ -23,10 +23,10 @@
     border: 1px solid white;
 }
 
-.zip-search-btn:hover {
-    background-color: #d27977;
-    color:white;
-    border: none;
+.zip-search-btn:hover, .zip-search-btn:focus {
+    background-color: #d27977 !important;
+    color:white !important;
+    border: none !important;
 }
 
 @media only screen and (max-width: 460px) {
