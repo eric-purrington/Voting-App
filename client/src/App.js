@@ -7,6 +7,7 @@ import DashboardPage from "./pages/DashboardPage";
 import WhenPage from "./pages/WhenPage";
 import WherePage from "./pages/WherePage";
 import WhoPage from "./pages/WhoPage";
+import WhatPage from "./pages/WhatPage";
 import MobileMenu from "./components/Navbar/MobileMenu";
 import AboutCanvas from "./components/AboutCanvas";
 import NoMatch from "./components/NoMatch";
@@ -30,6 +31,7 @@ function App() {
         <Route exact path="/where" component={WherePage} />
         <Route exact path="/when" component={WhenPage} />
         <Route exact path="/who" component={WhoPage} />
+        <Route exact path="/what" component={WhatPage} />
         <Route component={NoMatch} />
       </Switch>
       <MobileMenu />
