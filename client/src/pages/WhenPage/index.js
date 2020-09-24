@@ -16,7 +16,24 @@ import moment from "moment";
 import UserAPI from "../../utils/UserAPI";
 
 function WhenPage() {
-    const [results, setResults] = useState([]);
+    const [results, setResults] = useState([
+        {
+            name: "First Presidential Debate",
+            electionDay: "09-29-2020"
+        },
+        {
+            name: "Second Presidential Debate",
+            electionDay: "10-15-2020"
+        },
+        {
+            name: "Third Presidential Debate",
+            electionDay: "10-22-2020"
+        },
+        {
+            name: "Vice Presidential Debate",
+            electionDay: "10-07-2020"
+        },
+    ]);
     const [loggedIn, setLoggedIn] = useState(false);
 
     const { user } = useAuth0();
@@ -32,7 +49,7 @@ function WhenPage() {
                 name: election.name,
                 electionDay: moment(election.electionDay).format("MM-DD-YYYY")
             }))
-            setResults(modifiedResults);
+            setResults([...results, ...modifiedResults]);
         });
     }
 
