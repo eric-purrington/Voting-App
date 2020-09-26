@@ -14,12 +14,16 @@ const app = express();
 // app.use(bodyParser.json());
 // app.use(cookieParser());
 
-// Should this go somewhere else?
 const { sendEmail } = require("./nodemailer/mail");
 
 app.post("/api/sendMail", (req, res) => {
   console.log(req.body)
   sendEmail(req.body.email, "welcome")
+})
+
+app.post("/api/sendMail/savedevent", (req, res) => {
+  console.log(req.body)
+  sendEmail(req.body.email, "events")
 })
 
 // Define middleware here
