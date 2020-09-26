@@ -2,9 +2,25 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const routes = require("./routes");
+const { sendEmail } = require("./nodemailer/mail");
+// const bodyParser = require("body-parser");
+// const cookieParser = require("cookie-parser");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
+
+// These are supposed to help nodemailer work, but I don't know if they are necessary
+// app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(bodyParser.json());
+// app.use(cookieParser());
+
+// Should this go somewhere else?
+const { sendEmail } = require("./nodemailer/mail");
+
+app.post("/api/sendMail", (req, res) => {
+  console.log(req.body)
+  sendEmail(req.body.email, "welcome")
+})
 
 // Define middleware here
 app.use(express.json());

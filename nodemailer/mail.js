@@ -6,7 +6,7 @@ require("dotenv").config();
 const MAILEREMAIL = process.env.MAILEREMAIL;
 const MAILERPASSWORD = process.env.MAILERPASSWORD;
 
-const getEmailData = (to, name, template) => {
+const getEmailData = (to, template) => {
   let data = null;
 
   switch (template) {
@@ -14,7 +14,7 @@ const getEmailData = (to, name, template) => {
       data = {
         from: "Vote Goat Team <votegoatmail@gmail.com>",
         to,
-        subject: `Welcome ${name}`,
+        subject: `Welcome Voter!`,
         html: Welcome()
       }
       break;
@@ -34,7 +34,7 @@ const getEmailData = (to, name, template) => {
   return data;
 }
 
-const sendEmail = (to, name,type) => {
+const sendEmail = (to, type) => {
   const smtpTransport = mailer.createTransport({
     service: "gmail",
     auth: {
@@ -43,7 +43,7 @@ const sendEmail = (to, name,type) => {
     }
   })
 
-  const mail = getEmailData(to, name, type)
+  const mail = getEmailData(to, type)
 
   smtpTransport.sendMail(mail, function(error, response) {
     if(error) {

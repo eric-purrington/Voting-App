@@ -11,6 +11,7 @@ import UserAPI from "../../utils/UserAPI";
 function HomePage() {
     const { user } = useAuth0();
 
+    // Put sendEmail here ("welcome")?
     useEffect(() => {
         UserAPI.findUser(user.email)
             .then(res => {
