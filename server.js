@@ -9,7 +9,7 @@ const cookieParser = require("cookie-parser");
 const PORT = process.env.PORT || 3001;
 const app = express();
 
-// These are supposed to help nodemailer work, but I don't know if they are necessary
+// Set up nodemailer
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(cookieParser());

@@ -53,7 +53,6 @@ function WhenPage() {
         });
     }
 
-    // Put sendEmail here ("events")?
     const handleAddEvent = (index) => {
 
         let addItem = results.filter(election => {

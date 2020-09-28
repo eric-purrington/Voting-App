@@ -14,6 +14,7 @@ const Events = data => {
               <br />
               <br />
               <div>You have saved events!</div>
+              <br />
               <div>Go to https://vote-goat.herokuapp.com/#/dashboard for details.</div>
               <br />
               <br />
