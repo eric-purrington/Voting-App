@@ -3,24 +3,25 @@ const path = require("path");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const { sendEmail } = require("./nodemailer/mail");
-// const bodyParser = require("body-parser");
-// const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
 
 // These are supposed to help nodemailer work, but I don't know if they are necessary
-// app.use(bodyParser.urlencoded({ extended: true }));
-// app.use(bodyParser.json());
-// app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(cookieParser());
 
 app.post("/api/sendMail", (req, res) => {
-  console.log(req.body)
+  console.log("email: ")
+  console.log(req.body.email);
   sendEmail(req.body.email, "welcome")
 })
 
 app.post("/api/sendMail/savedevent", (req, res) => {
-  console.log(req.body)
+  console.log("request body: " + req.body)
   sendEmail(req.body.email, "events")
 })
 
@@ -41,7 +42,7 @@ app.get("*", function (req, res) {
 
 // Connect to the Mongo DB
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://"+process.env.dbUser+":"+process.env.dbPassword+"@ds141950.mlab.com:41950/heroku_tktjc2j0",
+  process.env.MONGODB_URI || "mongodb://" + process.env.dbUser + ":" + process.env.dbPassword + "@ds141950.mlab.com:41950/heroku_tktjc2j0",
 
   // "mongodb://localhost/votegoat"
 
