@@ -19,6 +19,8 @@ export default {
     },
 
     addUserEvent: function (email, body) {
+        console.log("add")
+        console.log(body);
         return axios.put("/api/users/events/" + email, body);
     },
 
@@ -45,5 +47,15 @@ export default {
     deleteUserPlace: function (email, body) {
         return axios.put("/api/users/places/delete/" + email, body);
     },
+
+    sendWelcomeEmail: function (email) {
+        console.log(email);
+        return axios.post("/api/sendMail", { email: email });
+    },
+
+    sendEventEmail: function (email) {
+        console.log(email);
+        return axios.post("/api/sendMail/savedevent", { email: email });
+    }
 
 };

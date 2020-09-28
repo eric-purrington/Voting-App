@@ -53,6 +53,7 @@ function WhenPage() {
         });
     }
 
+    // Put sendEmail here ("events")?
     const handleAddEvent = (index) => {
 
         let addItem = results.filter(election => {
@@ -60,6 +61,9 @@ function WhenPage() {
         });
 
         UserAPI.addUserEvent(user.email, addItem[0])
+            .catch(err => console.log(err));
+
+        UserAPI.sendEventEmail(user.email)
             .catch(err => console.log(err));
     };
 

@@ -11,12 +11,15 @@ import UserAPI from "../../utils/UserAPI";
 function HomePage() {
     const { user } = useAuth0();
 
+    // Put sendEmail here ("welcome")?
     useEffect(() => {
         UserAPI.findUser(user.email)
             .then(res => {
                 if (res.data === null || res.data.length === 0) {
                     UserAPI.addUser({ email: user.email })
                         .catch(err => console.log(err));
+                    // UserAPI.sendWelcomeEmail(user.email)
+                    //     .catch(err => console.log(err));
                 }
             })
             .catch(err => console.log(err));
