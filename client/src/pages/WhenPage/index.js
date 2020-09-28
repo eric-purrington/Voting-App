@@ -61,6 +61,9 @@ function WhenPage() {
 
         UserAPI.addUserEvent(user.email, addItem[0])
             .catch(err => console.log(err));
+
+        UserAPI.sendEventEmail(user.email)
+            .catch(err => console.log(err));
     };
 
     return (
