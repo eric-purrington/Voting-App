@@ -14,8 +14,6 @@ const app = express();
 // app.use(bodyParser.json());
 // app.use(cookieParser());
 
-const { sendEmail } = require("./nodemailer/mail");
-
 app.post("/api/sendMail", (req, res) => {
   console.log(req.body)
   sendEmail(req.body.email, "welcome")

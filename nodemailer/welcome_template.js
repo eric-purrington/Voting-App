@@ -12,6 +12,7 @@ const Welcome = data => {
              <br />
              <br />
              <div>Welcome to Vote Goat!</div>
+             <div>Go to https://vote-goat.herokuapp.com to become a more informed voter.</div>
              <br />
              <br />
           </body>
