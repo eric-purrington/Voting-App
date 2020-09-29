@@ -50,7 +50,8 @@ Auth0
 
 Axios  
 React-Calendar  
-React-countdown-now
+React-countdown-now  
+Nodemailer  
 
 ## APIs  
 
@@ -58,11 +59,11 @@ Google Civic API
 MapQuest Geocoding API (with Eric's custom distance measurements using the Haversine formula)    
 
 ## How to Use  
-Navigate to https://vote-goat.herokuapp.com/. On the Home page, you will see a countdown to the next general election, a link to register to vote, and three choices of pages to visit: "When", "Where", and "Who". Click "When" to see a calendar and list of upcoming elections all over the United States. Click "Where" and enter a complete home address to see all of polling places and ballot drop-off locations near that address. Click "Who" and enter a zip code to see all of the elected representatives for citizens in that zip code, from local officals like city councilmembers all the way to federal officials like president and vice president of the United States.  
+Navigate to https://vote-goat.herokuapp.com/. On the Home page, you will see a countdown to the next general election, a link to register to vote, and three choices of pages to visit: "When", "Where", and "Who". Click "When" to see a calendar and list of upcoming elections all over the United States. Click "Where" and enter a complete home address to see all of polling places and ballot drop-off locations near that address. Click "Who" and enter a zip code to see all of the elected representatives for citizens in that zip code, from local officals like city councilmembers all the way to federal officials like president and vice president of the United States. Click "What" to see who is running in upcoming contests. 
 
 ![image](https://media.giphy.com/media/UqAZenLJaGCQbBzOWL/giphy.gif)
     
-Go to the menu and click "Signup" or "Login" to have access to bonus features. You will be directed to Auth0 to create an account or sign in using an existing Gmail account. Then you will arrive back at Vote Goat and be able to save upcoming election dates, polling locations, and representatives' contact information to your personal dashboard.  
+Go to the menu and click "Signup" or "Login" to have access to bonus features. You will be directed to Auth0 to create an account or sign in using an existing Gmail, GitHub, or Microsoft account. Then you will arrive back at Vote Goat and be able to save upcoming election dates, polling locations, and representatives' contact information to your personal dashboard. You will receive email confirmation when you first sign up with Vote Goat and each time you save a "When" event to your Vote Goat Calendar. 
 
 ![image](https://media.giphy.com/media/mF5rJefLZbMPG8vBAL/giphy.gif)
     
@@ -81,7 +82,5 @@ https://vote-goat.herokuapp.com/
 https://github.com/eric-purrington/Voting-App
 
 ## Directions for Future Development
-
---Email reminders about important registration and voting dates  
+  
 --Maps that show where polling places and ballot drop-off boxes are located   
---A "What" page that shows users the current contests and candidates in their area.

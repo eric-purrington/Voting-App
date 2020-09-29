@@ -17,6 +17,8 @@ function HomePage() {
                 if (res.data === null || res.data.length === 0) {
                     UserAPI.addUser({ email: user.email })
                         .catch(err => console.log(err));
+                    UserAPI.sendWelcomeEmail(user.email)
+                        .catch(err => console.log(err));
                 }
             })
             .catch(err => console.log(err));

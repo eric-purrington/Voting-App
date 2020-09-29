@@ -22,6 +22,7 @@ function Navbar(props) {
                         <li><Link to="/when" className="nav-item" style={{ color: props.color }}>When</Link></li>
                         <li><Link to="/where" className="nav-item" style={{ color: props.color }}>Where</Link></li>
                         <li><Link to="/who" className="nav-item" style={{ color: props.color }}>Who</Link></li>
+                        <li><Link to="/what" className="nav-item" style={{ color: props.color }}>What</Link></li>
                     </ul>
                     <a className="uk-hidden@m" href="#menu-canvas" uk-toggle="target: #menu-canvas"><span className="menu-icon"
                         uk-icon="icon: menu; ratio: 1.5"></span></a>

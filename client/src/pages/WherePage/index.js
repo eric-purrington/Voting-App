@@ -15,7 +15,7 @@ import ShowingResults from "../../components/ShowingResults";
 
 function WherePage() {
     const [loggedIn, setLoggedIn] = useState(false);
-    const [address, setAddress] = useState("5016 Foxen Ct Cheyenne, WY 82001");
+    const [address, setAddress] = useState("18 Brittany Way NE, Atlanta, GA 30324");
     const [pollingLocations, setPollingLocations] = useState([]);
     const [dropOffLocations, setDropOffLocations] = useState([]);
     const [earlyVoteSites, setEarlyVoteSites] = useState([]);
@@ -44,7 +44,7 @@ function WherePage() {
             location.name = webdive[i].address.locationName
             location.address = `${webdive[i].address.line1} ${webdive[i].address.city}, ${webdive[i].address.state} ${webdive[i].address.zip}`;
             const locLatLon = await API.getLatLon(location.address).then(res => res.data.results[0].locations[0]);
-            if (locLatLon.geocodeQuality == "COUNTRY") {
+            if (locLatLon.geocodeQuality == "COUNTRY" || locLatLon.geocodeQuality == "STATE") {
                 location.distance = 4.1;
             } else {
                 location.distance = Distance.findDistanceBetween(json.lat, json.lng, locLatLon.latLng.lat, locLatLon.latLng.lng);

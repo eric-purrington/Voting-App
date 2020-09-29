@@ -13,6 +13,7 @@ function HomeHeader() {
                         <Button name="WHEN" to="/when" />
                         <Button name="WHERE" to="/where" />
                         <Button name="WHO" to="/who" />
+                        <Button name="WHAT" to="/what" />
                     </div>
                 </div>
             </div>

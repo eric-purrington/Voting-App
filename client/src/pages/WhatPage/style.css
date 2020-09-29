@@ -1,0 +1,11 @@
+.calendar-card {
+    border-radius: 15px !important;
+    margin-bottom: 50px !important;
+}
+
+.whatContainer {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+}
