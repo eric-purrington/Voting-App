@@ -17,7 +17,7 @@ function HomeCountdown(props) {
         <div className="countdown-div uk-text-center uk-card-default">
             <h5 className="countdown-header">General Election Day</h5>
             <CountStyle>
-                <Countdown date={'2020-11-03T00:00:00'} className="countdown-timer" />
+                <Countdown date={'2024-11-05T00:00:00'} className="countdown-timer" />
             </CountStyle>
             <a href="https://vote.gov/" target="_blank" rel="noopener noreferrer" className="register-link">Register Here</a>
         </div>
